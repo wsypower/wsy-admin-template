@@ -13,10 +13,7 @@ export default {
      * @param {Object} payload password {String} 密码
      * @param {Object} payload route {Object} 登录成功后定向的路由对象 任何 vue-router 支持的格式
      */
-    async login ({ dispatch }, {
-      username = '',
-      password = ''
-    } = {}) {
+    async login ({ dispatch }, { username = '', password = '' } = {}) {
       const res = await api.SYS_USER_LOGIN({ username, password })
       // 设置 cookie 一定要存 uuid 和 token 两个 cookie
       // 整个系统依赖这两个数据进行校验和存储
@@ -51,7 +48,9 @@ export default {
       // 判断是否需要确认
       if (confirm) {
         commit('d2admin/gray/set', true, { root: true })
-        MessageBox.confirm('确定要注销当前用户吗', '注销用户', { type: 'warning' })
+        MessageBox.confirm('确定要注销当前用户吗', '注销用户', {
+          type: 'warning'
+        })
           .then(() => {
             commit('d2admin/gray/set', false, { root: true })
             logout()

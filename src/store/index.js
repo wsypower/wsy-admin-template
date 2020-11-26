@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import d2admin from './d2admin'
+import d2admin from './wadmin'
 
 Vue.use(Vuex)
 
