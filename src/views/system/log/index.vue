@@ -78,50 +78,50 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { get } from "lodash";
+import { mapState } from 'vuex'
+import { get } from 'lodash'
 export default {
   data() {
     return {
-      uploading: false,
-    };
+      uploading: false
+    }
   },
   computed: {
-    ...mapState("w-admin/log", ["log"]),
+    ...mapState('w-admin/log', ['log'])
   },
   methods: {
     get,
     handleShowMore(log) {
       // 打印一条日志的所有信息到控制台
       this.$notify({
-        type: "info",
-        title: "日志详情",
-        message: "完整的日志内容已经打印到控制台",
-      });
-      this.$log.capsule("WAdmin", "handleShowMore", "primary");
-      console.group(log.message);
-      console.log("time: ", log.time);
-      console.log("type: ", log.type);
-      console.log(log.meta);
-      console.groupEnd();
+        type: 'info',
+        title: '日志详情',
+        message: '完整的日志内容已经打印到控制台'
+      })
+      this.$log.capsule('WAdmin', 'handleShowMore', 'primary')
+      console.group(log.message)
+      console.log('time: ', log.time)
+      console.log('type: ', log.type)
+      console.log(log.meta)
+      console.groupEnd()
     },
     // 日志上传
     handleUpload() {
-      this.uploading = true;
+      this.uploading = true
       this.$notify({
-        type: "info",
-        title: "日志上传",
-        message: `开始上传${this.log.length}条日志`,
-      });
+        type: 'info',
+        title: '日志上传',
+        message: `开始上传${this.log.length}条日志`
+      })
       setTimeout(() => {
-        this.uploading = false;
+        this.uploading = false
         this.$notify({
-          type: "success",
-          title: "日志上传",
-          message: "上传成功",
-        });
-      }, 3000);
-    },
-  },
-};
+          type: 'success',
+          title: '日志上传',
+          message: '上传成功'
+        })
+      }, 3000)
+    }
+  }
+}
 </script>
