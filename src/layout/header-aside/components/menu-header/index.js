@@ -5,58 +5,60 @@ import { createMenu } from '../libs/util.menu'
 
 export default {
   name: 'd2-layout-header-aside-menu-header',
-  mixins: [
-    menuMixin
-  ],
+  mixins: [menuMixin],
   render (h) {
-    return <div
-      flex="cross:center"
-      class={ { 'd2-theme-header-menu': true, 'is-scrollable': this.isScroll } }
-      ref="page">
+    return (
       <div
-        ref="content"
-        class="d2-theme-header-menu__content"
-        flex-box="1"
-        flex>
+        flex="cross:center"
+        class={{ 'd2-theme-header-menu': true, 'is-scrollable': this.isScroll }}
+        ref="page"
+      >
         <div
-          class="d2-theme-header-menu__scroll"
-          flex-box="0"
-          style={ { transform: `translateX(${this.currentTranslateX}px)` } }
-          ref="scroll">
-          <el-menu
-            mode="horizontal"
-            defaultActive={ this.active }
-            onSelect={ this.handleMenuSelect }>
-            { this.header.map(menu => createMenu.call(this, h, menu)) }
-          </el-menu>
+          ref="content"
+          class="d2-theme-header-menu__content"
+          flex-box="1"
+          flex
+        >
+          <div
+            class="d2-theme-header-menu__scroll"
+            flex-box="0"
+            style={{ transform: `translateX(${this.currentTranslateX}px)` }}
+            ref="scroll"
+          >
+            <el-menu
+              mode="horizontal"
+              defaultActive={this.active}
+              onSelect={this.handleMenuSelect}
+            >
+              {this.header.map(menu => createMenu.call(this, h, menu))}
+            </el-menu>
+          </div>
         </div>
-      </div>
-      {
-        this.isScroll
+        {this.isScroll
           ? [
             <div
               class="d2-theme-header-menu__prev"
               flex="main:center cross:center"
               flex-box="0"
-              onClick={ () => this.scroll('left') }>
+              onClick={() => this.scroll('left')}
+            >
               <i class="el-icon-arrow-left"></i>
             </div>,
             <div
               class="d2-theme-header-menu__next"
               flex="main:center cross:center"
               flex-box="0"
-              onClick={ () => this.scroll('right') }>
+              onClick={() => this.scroll('right')}
+            >
               <i class="el-icon-arrow-right"></i>
             </div>
           ]
-          : []
-      }
-    </div>
+          : []}
+      </div>
+    )
   },
   computed: {
-    ...mapState('d2admin/menu', [
-      'header'
-    ])
+    ...mapState('w-admin/menu', ['header'])
   },
   data () {
     return {
@@ -83,7 +85,10 @@ export default {
         this.currentTranslateX = 0
       } else {
         // 向左滚动
-        if (this.contentWidth * 2 - this.currentTranslateX <= this.scrollWidth) {
+        if (
+          this.contentWidth * 2 - this.currentTranslateX <=
+          this.scrollWidth
+        ) {
           this.currentTranslateX -= this.contentWidth
         } else {
           this.currentTranslateX = this.contentWidth - this.scrollWidth

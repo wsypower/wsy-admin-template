@@ -16,7 +16,7 @@ export default {
     apply ({ state, commit }, refresh) {
       Vue.prototype.$ELEMENT.size = state.value
       if (refresh) {
-        commit('d2admin/page/keepAliveClean', null, { root: true })
+        commit('w-admin/page/keepAliveClean', null, { root: true })
         router.replace('/refresh')
       }
     },
@@ -43,12 +43,16 @@ export default {
       // 应用
       dispatch('apply', true)
       // 持久化
-      await dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'size.value',
-        value: state.value,
-        user: true
-      }, { root: true })
+      await dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'size.value',
+          value: state.value,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * @description 从持久化数据读取尺寸设置
@@ -56,12 +60,16 @@ export default {
      */
     async load ({ state, dispatch }) {
       // store 赋值
-      state.value = await dispatch('d2admin/db/get', {
-        dbName: 'sys',
-        path: 'size.value',
-        defaultValue: 'default',
-        user: true
-      }, { root: true })
+      state.value = await dispatch(
+        'w-admin/db/get',
+        {
+          dbName: 'sys',
+          path: 'size.value',
+          defaultValue: 'default',
+          user: true
+        },
+        { root: true }
+      )
       // 应用
       dispatch('apply')
     }

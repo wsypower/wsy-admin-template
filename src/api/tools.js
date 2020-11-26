@@ -52,7 +52,7 @@ export function responseError (data = {}, msg = '请求失败', code = 500) {
  */
 export function errorLog (error) {
   // 添加到日志
-  store.dispatch('d2admin/log/push', {
+  store.dispatch('w-admin/log/push', {
     message: '数据请求异常',
     type: 'danger',
     meta: {

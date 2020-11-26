@@ -26,13 +26,13 @@ export default {
     }
   },
   computed: {
-    ...mapState('d2admin/theme', [
+    ...mapState('w-admin/theme', [
       'list',
       'activeName'
     ])
   },
   methods: {
-    ...mapActions('d2admin/theme', [
+    ...mapActions('w-admin/theme', [
       'set'
     ]),
     handleSelectTheme (name) {

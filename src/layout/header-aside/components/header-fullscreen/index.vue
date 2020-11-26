@@ -11,12 +11,12 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapState('d2admin/fullscreen', [
+    ...mapState('w-admin/fullscreen', [
       'active'
     ])
   },
   methods: {
-    ...mapActions('d2admin/fullscreen', [
+    ...mapActions('w-admin/fullscreen', [
       'toggle'
     ])
   }

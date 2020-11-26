@@ -23,12 +23,16 @@ export default {
       // store 赋值
       state.asideCollapse = collapse
       // 持久化
-      await dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'menu.asideCollapse',
-        value: state.asideCollapse,
-        user: true
-      }, { root: true })
+      await dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'menu.asideCollapse',
+          value: state.asideCollapse,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * 切换侧边栏展开和收缩
@@ -38,12 +42,16 @@ export default {
       // store 赋值
       state.asideCollapse = !state.asideCollapse
       // 持久化
-      await dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'menu.asideCollapse',
-        value: state.asideCollapse,
-        user: true
-      }, { root: true })
+      await dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'menu.asideCollapse',
+          value: state.asideCollapse,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * 设置侧边栏折叠动画
@@ -54,12 +62,16 @@ export default {
       // store 赋值
       state.asideTransition = transition
       // 持久化
-      await dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'menu.asideTransition',
-        value: state.asideTransition,
-        user: true
-      }, { root: true })
+      await dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'menu.asideTransition',
+          value: state.asideTransition,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * 切换侧边栏折叠动画
@@ -69,12 +81,16 @@ export default {
       // store 赋值
       state.asideTransition = !state.asideTransition
       // 持久化
-      await dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'menu.asideTransition',
-        value: state.asideTransition,
-        user: true
-      }, { root: true })
+      await dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'menu.asideTransition',
+          value: state.asideTransition,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * 持久化数据加载侧边栏设置
@@ -82,14 +98,24 @@ export default {
      */
     async asideLoad ({ state, dispatch }) {
       // store 赋值
-      const menu = await dispatch('d2admin/db/get', {
-        dbName: 'sys',
-        path: 'menu',
-        defaultValue: setting.menu,
-        user: true
-      }, { root: true })
-      state.asideCollapse = menu.asideCollapse !== undefined ? menu.asideCollapse : setting.menu.asideCollapse
-      state.asideTransition = menu.asideTransition !== undefined ? menu.asideTransition : setting.menu.asideTransition
+      const menu = await dispatch(
+        'w-admin/db/get',
+        {
+          dbName: 'sys',
+          path: 'menu',
+          defaultValue: setting.menu,
+          user: true
+        },
+        { root: true }
+      )
+      state.asideCollapse =
+        menu.asideCollapse !== undefined
+          ? menu.asideCollapse
+          : setting.menu.asideCollapse
+      state.asideTransition =
+        menu.asideTransition !== undefined
+          ? menu.asideTransition
+          : setting.menu.asideTransition
     }
   },
   mutations: {
