@@ -14,12 +14,7 @@ export default {
      * @param {Object} payload value {*} 需要存储的值
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    set (context, {
-      dbName = 'database',
-      path = '',
-      value = '',
-      user = false
-    }) {
+    set (context, { dbName = 'database', path = '', value = '', user = false }) {
       dbSet({ dbName, path, value, user })
     },
     /**
@@ -31,22 +26,19 @@ export default {
      * @param {Object} payload defaultValue {*} 取值失败的默认值
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    get (context, {
-      dbName = 'database',
-      path = '',
-      defaultValue = '',
-      user = false
-    }) {
+    get (
+      context,
+      { dbName = 'database', path = '', defaultValue = '', user = false }
+    ) {
       return dbGet({ dbName, path, defaultValue, user })
     },
+
     /**
      * @description 获取存储数据库对象
      * @param {Object} context
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    database (context, {
-      user = false
-    } = {}) {
+    database (context, { user = false } = {}) {
       return getDatabase({
         user,
         defaultValue: {}
@@ -57,9 +49,7 @@ export default {
      * @param {Object} context
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    databaseClear (context, {
-      user = false
-    } = {}) {
+    databaseClear (context, { user = false } = {}) {
       return getDatabase({
         user,
         validator: () => false,
@@ -72,10 +62,7 @@ export default {
      * @param {Object} payload basis {String} 页面区分依据 [ name | path | fullPath ]
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    databasePage (context, {
-      basis = 'fullPath',
-      user = false
-    } = {}) {
+    databasePage (context, { basis = 'fullPath', user = false } = {}) {
       return getDatabase({
         path: `$page.${router.app.$route[basis]}`,
         user,
@@ -88,10 +75,7 @@ export default {
      * @param {Object} payload basis {String} 页面区分依据 [ name | path | fullPath ]
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    databasePageClear (context, {
-      basis = 'fullPath',
-      user = false
-    } = {}) {
+    databasePageClear (context, { basis = 'fullPath', user = false } = {}) {
       return getDatabase({
         path: `$page.${router.app.$route[basis]}`,
         user,
@@ -106,11 +90,7 @@ export default {
      * @param {Object} payload basis {String} 页面区分依据 [ name | path | fullPath ]
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    pageSet (context, {
-      instance,
-      basis = 'fullPath',
-      user = false
-    }) {
+    pageSet (context, { instance, basis = 'fullPath', user = false }) {
       return getDatabase({
         path: `$page.${router.app.$route[basis]}.$data`,
         user,
@@ -125,11 +105,7 @@ export default {
      * @param {Object} payload basis {String} 页面区分依据 [ name | path | fullPath ]
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    pageGet (context, {
-      instance,
-      basis = 'fullPath',
-      user = false
-    }) {
+    pageGet (context, { instance, basis = 'fullPath', user = false }) {
       return dbGet({
         path: `$page.${router.app.$route[basis]}.$data`,
         user,
@@ -142,10 +118,7 @@ export default {
      * @param {Object} payload basis {String} 页面区分依据 [ name | path | fullPath ]
      * @param {Object} payload user {Boolean} 是否区分用户
      */
-    pageClear (context, {
-      basis = 'fullPath',
-      user = false
-    }) {
+    pageClear (context, { basis = 'fullPath', user = false }) {
       return getDatabase({
         path: `$page.${router.app.$route[basis]}.$data`,
         user,
