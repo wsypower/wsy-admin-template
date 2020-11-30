@@ -39,12 +39,16 @@ export default {
      */
     async openedLoad ({ state, commit, dispatch }) {
       // store 赋值
-      const value = await dispatch('d2admin/db/get', {
-        dbName: 'sys',
-        path: 'page.opened',
-        defaultValue: setting.page.opened,
-        user: true
-      }, { root: true })
+      const value = await dispatch(
+        'w-admin/db/get',
+        {
+          dbName: 'sys',
+          path: 'page.opened',
+          defaultValue: setting.page.opened,
+          user: true
+        },
+        { root: true }
+      )
       // 在处理函数中进行数据优化 过滤掉现在已经失效的页签或者已经改变了信息的页签
       // 以 fullPath 字段为准
       // 如果页面过多的话可能需要优化算法
@@ -78,12 +82,16 @@ export default {
      */
     async opened2db ({ state, dispatch }) {
       // 设置数据
-      dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'page.opened',
-        value: state.opened,
-        user: true
-      }, { root: true })
+      dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'page.opened',
+          value: state.opened,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * @class opened
@@ -91,7 +99,10 @@ export default {
      * @param {Object} context
      * @param {Object} payload { index, params, query, fullPath } 路由信息
      */
-    async openedUpdate ({ state, commit, dispatch }, { index, params, query, fullPath }) {
+    async openedUpdate (
+      { state, commit, dispatch },
+      { index, params, query, fullPath }
+    ) {
       // 更新页面列表某一项
       const page = state.opened[index]
       page.params = params || page.params
@@ -140,7 +151,10 @@ export default {
      * @param {Object} context
      * @param {Object} payload 从路由钩子的 to 对象上获取 { name, params, query, fullPath, meta } 路由信息
      */
-    async open ({ state, commit, dispatch }, { name, params, query, fullPath, meta }) {
+    async open (
+      { state, commit, dispatch },
+      { name, params, query, fullPath, meta }
+    ) {
       // 已经打开的页面
       const opened = state.opened
       // 判断此页面是否已经打开 并且记录位置
@@ -327,7 +341,9 @@ export default {
      * @param {Object} state state
      */
     keepAliveRefresh (state) {
-      state.keepAlive = state.opened.filter(item => isKeepAlive(item)).map(e => e.name)
+      state.keepAlive = state.opened
+        .filter(item => isKeepAlive(item))
+        .map(e => e.name)
     },
     /**
      * @description 删除一个页面的缓存设置

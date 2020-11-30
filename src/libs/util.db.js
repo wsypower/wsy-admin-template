@@ -3,15 +3,15 @@ import LocalStorage from 'lowdb/adapters/LocalStorage'
 import util from '@/libs/util'
 import { cloneDeep } from 'lodash'
 
-const adapter = new LocalStorage(`d2admin-${process.env.VUE_APP_VERSION}`)
+const adapter = new LocalStorage(
+  `${process.env.VUE_APP_PROJECT_NAME}-${process.env.VUE_APP_VERSION}`
+)
 const db = low(adapter)
 
-db
-  .defaults({
-    sys: {},
-    database: {}
-  })
-  .write()
+db.defaults({
+  sys: {},
+  database: {}
+}).write()
 
 export default db
 
@@ -32,12 +32,12 @@ export function pathInit ({
   defaultValue = ''
 }) {
   const uuid = util.cookies.get('uuid') || 'ghost-uuid'
-  const currentPath = `${dbName}.${user ? `user.${uuid}` : 'public'}${path ? `.${path}` : ''}`
+  const currentPath = `${dbName}.${user ? `user.${uuid}` : 'public'}${
+    path ? `.${path}` : ''
+  }`
   const value = db.get(currentPath).value()
   if (!(value !== undefined && validator(value))) {
-    db
-      .set(currentPath, defaultValue)
-      .write()
+    db.set(currentPath, defaultValue).write()
   }
   return currentPath
 }
@@ -56,11 +56,14 @@ export function dbSet ({
   value = '',
   user = false
 }) {
-  db.set(pathInit({
-    dbName,
-    path,
-    user
-  }), value).write()
+  db.set(
+    pathInit({
+      dbName,
+      path,
+      user
+    }),
+    value
+  ).write()
 }
 
 /**
@@ -77,12 +80,18 @@ export function dbGet ({
   defaultValue = '',
   user = false
 }) {
-  return cloneDeep(db.get(pathInit({
-    dbName,
-    path,
-    user,
-    defaultValue
-  })).value())
+  return cloneDeep(
+    db
+      .get(
+        pathInit({
+          dbName,
+          path,
+          user,
+          defaultValue
+        })
+      )
+      .value()
+  )
 }
 
 /**
@@ -96,7 +105,13 @@ export function database ({
   validator = () => true,
   defaultValue = ''
 } = {}) {
-  return db.get(pathInit({
-    dbName, path, user, validator, defaultValue
-  }))
+  return db.get(
+    pathInit({
+      dbName,
+      path,
+      user,
+      validator,
+      defaultValue
+    })
+  )
 }

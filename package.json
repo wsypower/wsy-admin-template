@@ -6,6 +6,7 @@
     "start": "npm run serve",
     "dev": "npm run serve",
     "build": "vue-cli-service build",
+    "examine": "serve -s dist",
     "build:preview": "NODE_OPTIONS=--max_old_space_size=4096 vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit"
@@ -55,6 +56,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
+    "serve": "^11.3.2",
     "svg-sprite-loader": "^4.1.6",
     "text-loader": "^0.0.1",
     "vue-cli-plugin-i18n": "^1.0.1",

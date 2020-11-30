@@ -14,12 +14,16 @@ export default {
       // store 赋值
       state.info = info
       // 持久化
-      await dispatch('d2admin/db/set', {
-        dbName: 'sys',
-        path: 'user.info',
-        value: info,
-        user: true
-      }, { root: true })
+      await dispatch(
+        'w-admin/db/set',
+        {
+          dbName: 'sys',
+          path: 'user.info',
+          value: info,
+          user: true
+        },
+        { root: true }
+      )
     },
     /**
      * @description 从数据库取用户数据
@@ -27,12 +31,16 @@ export default {
      */
     async load ({ state, dispatch }) {
       // store 赋值
-      state.info = await dispatch('d2admin/db/get', {
-        dbName: 'sys',
-        path: 'user.info',
-        defaultValue: {},
-        user: true
-      }, { root: true })
+      state.info = await dispatch(
+        'w-admin/db/get',
+        {
+          dbName: 'sys',
+          path: 'user.info',
+          defaultValue: {},
+          user: true
+        },
+        { root: true }
+      )
     }
   }
 }
