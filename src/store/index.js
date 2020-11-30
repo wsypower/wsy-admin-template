@@ -27,7 +27,6 @@ const collectModules = () => {
   })
   return storeModules
 }
-// modules下的模块
 const storeModules = collectModules()
 
 // 导出store模块
