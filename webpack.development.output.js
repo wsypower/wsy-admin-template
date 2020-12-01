@@ -1,7 +1,7 @@
 {
-  mode: 'production',
+  mode: 'development',
   context: '/Users/weiyafei/Documents/中国电信/cloud/cloud',
-  devtool: false,
+  devtool: 'cheap-source-map',
   node: {
     setImmediate: false,
     process: 'mock',
@@ -13,9 +13,9 @@
   },
   output: {
     path: '/Users/weiyafei/Documents/中国电信/cloud/cloud/dist',
-    filename: 'js/[name].[contenthash:8].js',
+    filename: 'js/[name].js',
     publicPath: '/',
-    chunkFilename: 'js/[name].[contenthash:8].js'
+    chunkFilename: 'js/[name].js'
   },
   resolve: {
     symlinks: true,
@@ -81,7 +81,7 @@
             loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/.cache/vue-loader',
-              cacheIdentifier: 'f9e90d0c'
+              cacheIdentifier: '6a25684b'
             }
           },
           {
@@ -91,7 +91,7 @@
                 whitespace: 'condense'
               },
               cacheDirectory: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/.cache/vue-loader',
-              cacheIdentifier: 'f9e90d0c'
+              cacheIdentifier: '6a25684b'
             }
           }
         ]
@@ -203,10 +203,10 @@
             resourceQuery: /module/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -232,10 +232,10 @@
             resourceQuery: /\?vue/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -258,10 +258,10 @@
             test: /\.module\.\w+$/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -286,10 +286,10 @@
           {
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -318,10 +318,10 @@
             resourceQuery: /module/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -347,10 +347,10 @@
             resourceQuery: /\?vue/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -373,10 +373,10 @@
             test: /\.module\.\w+$/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -401,10 +401,10 @@
           {
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -433,10 +433,10 @@
             resourceQuery: /module/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -505,10 +505,10 @@
             resourceQuery: /\?vue/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -574,10 +574,10 @@
             test: /\.module\.\w+$/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -645,10 +645,10 @@
           {
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -720,10 +720,10 @@
             resourceQuery: /module/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -795,10 +795,10 @@
             resourceQuery: /\?vue/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -867,10 +867,10 @@
             test: /\.module\.\w+$/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -941,10 +941,10 @@
           {
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1019,10 +1019,10 @@
             resourceQuery: /module/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1054,10 +1054,10 @@
             resourceQuery: /\?vue/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1086,10 +1086,10 @@
             test: /\.module\.\w+$/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1120,10 +1120,10 @@
           {
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1158,10 +1158,10 @@
             resourceQuery: /module/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1194,10 +1194,10 @@
             resourceQuery: /\?vue/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1227,10 +1227,10 @@
             test: /\.module\.\w+$/,
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1262,10 +1262,10 @@
           {
             use: [
               {
-                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/mini-css-extract-plugin/dist/loader.js',
+                loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/vue-style-loader/index.js',
                 options: {
-                  hmr: false,
-                  publicPath: '../'
+                  sourceMap: false,
+                  shadowMode: false
                 }
               },
               {
@@ -1303,11 +1303,8 @@
             loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/.cache/babel-loader',
-              cacheIdentifier: 'ec1c5664'
+              cacheIdentifier: '502aea0c'
             }
-          },
-          {
-            loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/thread-loader/dist/cjs.js'
           },
           {
             loader: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/babel-loader/lib/index.js'
@@ -1332,7 +1329,7 @@
                 '.vue'
               ],
               cache: true,
-              cacheIdentifier: '4593941e',
+              cacheIdentifier: 'ed255cb4',
               emitWarning: true,
               emitError: false,
               eslintPath: '/Users/weiyafei/Documents/中国电信/cloud/cloud/node_modules/eslint',
@@ -1418,12 +1415,7 @@
               unused: true,
               conditionals: true,
               dead_code: true,
-              evaluate: true,
-              drop_console: true,
-              drop_debugger: true,
-              pure_funcs: [
-                'console.log'
-              ]
+              evaluate: true
             },
             mangle: {
               safari10: true
@@ -1440,16 +1432,16 @@
     new DefinePlugin(
       {
         'process.env': {
-          NODE_ENV: '"production"',
-          VUE_APP_PROJECT_NAME: '"TyCloud"',
-          VUE_APP_TITLE: '"存证云"',
+          VUE_APP_TITLE: '"wsy-cli Dev"',
+          NODE_ENV: '"development"',
+          VUE_APP_PROJECT_NAME: '"wsy-cli"',
           VUE_APP_API: '"/api/"',
           VUE_APP_REPO: '"https://github.com/d2-projects/d2-admin-start-kit"',
           VUE_APP_I18N_LOCALE: '"zh-chs"',
           VUE_APP_I18N_FALLBACK_LOCALE: '"en"',
           VUE_APP_ELEMENT_COLOR: '"#409EFF"',
           VUE_APP_VERSION: '"1.20.1"',
-          VUE_APP_BUILD_TIME: '"2020-11-27 19:29:22"',
+          VUE_APP_BUILD_TIME: '"2020-12-1 10:19:55"',
           BASE_URL: '"/"'
         }
       }
@@ -1467,80 +1459,13 @@
         ]
       }
     ),
-    /* config.plugin('extract-css') */
-    new MiniCssExtractPlugin(
-      {
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].css'
-      }
-    ),
-    /* config.plugin('optimize-css') */
-    new OptimizeCssnanoPlugin(
-      {
-        sourceMap: false,
-        cssnanoOptions: {
-          preset: [
-            'default',
-            {
-              mergeLonghand: false,
-              cssDeclarationSorter: false
-            }
-          ]
-        }
-      }
-    ),
-    /* config.plugin('hash-module-ids') */
-    new HashedModuleIdsPlugin(
-      {
-        hashDigest: 'hex'
-      }
-    ),
-    /* config.plugin('named-chunks') */
-    new NamedChunksPlugin(
-      function () { /* omitted long function */ }
-    ),
     /* config.plugin('html') */
     new HtmlWebpackPlugin(
       {
         title: 'd2-admin',
         templateParameters: function () { /* omitted long function */ },
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          collapseBooleanAttributes: true,
-          removeScriptTypeAttributes: true,
-          minifyCSS: true
-        },
         template: '/Users/weiyafei/Documents/中国电信/cloud/cloud/public/index.html',
-        cdn: {
-          css: [
-            'https://cdn.jsdelivr.net/npm/element-ui@2.13.0/lib/theme-chalk/index.css',
-            'https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css'
-          ],
-          js: [
-            'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
-            'https://cdn.jsdelivr.net/npm/vue-i18n@8.15.1/dist/vue-i18n.min.js',
-            'https://cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js',
-            'https://cdn.jsdelivr.net/npm/vuex@3.1.2/dist/vuex.min.js',
-            'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js',
-            'https://cdn.jsdelivr.net/npm/better-scroll@1.15.2/dist/bscroll.min.js',
-            'https://cdn.jsdelivr.net/npm/axios-mock-adapter@1.18.1/dist/axios-mock-adapter.min.js',
-            'https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/index.js',
-            'https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js',
-            'https://cdn.jsdelivr.net/npm/ua-parser-js@0.7.20/dist/ua-parser.min.js',
-            'https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js',
-            'https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js',
-            'https://cdn.jsdelivr.net/npm/dayjs@1.8.17/dayjs.min.js',
-            'https://cdn.jsdelivr.net/npm/fuse.js@5.2.3/dist/fuse.min.js',
-            'https://cdn.jsdelivr.net/npm/hotkeys-js@3.7.3/dist/hotkeys.min.js',
-            'https://cdn.jsdelivr.net/npm/qs@6.9.1/dist/qs.js',
-            'https://cdn.jsdelivr.net/npm/lowdb@1.0.0/dist/low.min.js',
-            'https://cdn.jsdelivr.net/npm/lowdb@1.0.0/dist/LocalStorage.min.js',
-            'https://cdn.jsdelivr.net/npm/screenfull@5.0.2/dist/screenfull.min.js',
-            'https://cdn.jsdelivr.net/npm/sortablejs@1.10.1/Sortable.min.js'
-          ]
-        }
+        cdn: []
       }
     ),
     /* config.plugin('copy') */
@@ -1586,49 +1511,11 @@
         ],
         changeSelector: function () { /* omitted long function */ }
       }
-    ),
-    {
-      options: {
-        test: /\.(js|css)$/,
-        include: undefined,
-        exclude: undefined,
-        cache: false,
-        algorithm: function () { /* omitted long function */ },
-        compressionOptions: {
-          level: 9
-        },
-        filename: '[path].gz[query]',
-        threshold: 10240,
-        minRatio: 0.8,
-        deleteOriginalAssets: false
-      }
-    }
+    )
   ],
   entry: {
     app: [
       './src/main.js'
     ]
-  },
-  externals: {
-    vue: 'Vue',
-    'vue-i18n': 'VueI18n',
-    'vue-router': 'VueRouter',
-    vuex: 'Vuex',
-    axios: 'axios',
-    'better-scroll': 'BScroll',
-    'axios-mock-adapter': 'AxiosMockAdapter',
-    'element-ui': 'ELEMENT',
-    lodash: '_',
-    'ua-parser-js': 'UAParser',
-    'js-cookie': 'Cookies',
-    nprogress: 'NProgress',
-    dayjs: 'dayjs',
-    'fuse.js': 'Fuse',
-    'hotkeys-js': 'hotkeys',
-    qs: 'Qs',
-    lowdb: 'low',
-    'lowdb/adapters/LocalStorage': 'LocalStorage',
-    screenfull: 'screenfull',
-    sortablejs: 'Sortable'
   }
 }
