@@ -191,8 +191,8 @@ export default {
     styleLayoutMainGroup() {
       return this.themeActiveSetting.backgroundImage
         ? {
-            backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
-          }
+          backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
+        }
         : {}
     }
   },
