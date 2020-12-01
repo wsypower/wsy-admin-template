@@ -1,17 +1,14 @@
-/*
- * @Author: wsy
- * @description 将数据存储到指定位置 | 路径不存在会自动初始化
- * @Date: 2020-11-Mo 08:01:42
- * @Last Modified by:   wsy
- * @Last Modified time: 2020-11-Mo 08:01:42
- */
 import router from '@/router'
 import { cloneDeep } from 'lodash'
-import { database as getDatabase, dbGet, dbSet } from '@/libs/util.db'
+import db from '@/libs/util.db'
 
 export default {
   namespaced: true,
   actions: {
+    // ##################################################################### //
+    // ################################ root ############################### //
+    // ##################################################################### //
+
     /**
      * @description 将数据存储到指定位置 | 路径不存在会自动初始化
      * @description 效果类似于取值 dbName.path = value
@@ -22,7 +19,7 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     set(context, { dbName = 'database', path = '', value = '', user = false }) {
-      dbSet({ dbName, path, value, user })
+      db.dbSet({ dbName, path, value, user })
     },
     /**
      * @description 获取数据
@@ -37,8 +34,12 @@ export default {
       context,
       { dbName = 'database', path = '', defaultValue = '', user = false }
     ) {
-      return dbGet({ dbName, path, defaultValue, user })
+      return db.dbGet({ dbName, path, defaultValue, user })
     },
+
+    // ##################################################################### //
+    // ################################ 存储实例 ############################### //
+    // ##################################################################### //
 
     /**
      * @description 获取存储数据库对象
@@ -46,7 +47,7 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     database(context, { user = false } = {}) {
-      return getDatabase({
+      return db.getDatabase({
         user,
         defaultValue: {}
       })
@@ -57,12 +58,17 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     databaseClear(context, { user = false } = {}) {
-      return getDatabase({
+      return db.getDatabase({
         user,
         validator: () => false,
         defaultValue: {}
       })
     },
+
+    // ##################################################################### //
+    // ############################### 路由存储实例 ############################## //
+    // ##################################################################### //
+
     /**
      * @description 获取存储数据库对象 [ 区分页面 ]
      * @param {Object} context
@@ -70,7 +76,7 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     databasePage(context, { basis = 'fullPath', user = false } = {}) {
-      return getDatabase({
+      return db.getDatabase({
         path: `$page.${router.app.$route[basis]}`,
         user,
         defaultValue: {}
@@ -83,13 +89,17 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     databasePageClear(context, { basis = 'fullPath', user = false } = {}) {
-      return getDatabase({
+      return db.getDatabase({
         path: `$page.${router.app.$route[basis]}`,
         user,
         validator: () => false,
         defaultValue: {}
       })
     },
+
+    // ##################################################################### //
+    // ################################ 路由快照 ############################### //
+    // ##################################################################### //
     /**
      * @description 快速将页面当前的数据 ( $data ) 持久化
      * @param {Object} context
@@ -98,7 +108,7 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     pageSet(context, { instance, basis = 'fullPath', user = false }) {
-      return getDatabase({
+      return db.getDatabase({
         path: `$page.${router.app.$route[basis]}.$data`,
         user,
         validator: () => false,
@@ -113,7 +123,7 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     pageGet(context, { instance, basis = 'fullPath', user = false }) {
-      return dbGet({
+      return db.dbGet({
         path: `$page.${router.app.$route[basis]}.$data`,
         user,
         defaultValue: cloneDeep(instance.$data)
@@ -126,7 +136,7 @@ export default {
      * @param {Object} payload user {Boolean} 是否区分用户
      */
     pageClear(context, { basis = 'fullPath', user = false }) {
-      return getDatabase({
+      return db.getDatabase({
         path: `$page.${router.app.$route[basis]}.$data`,
         user,
         validator: () => false,
