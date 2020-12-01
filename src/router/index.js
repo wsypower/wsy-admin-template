@@ -11,13 +11,17 @@ import util from '@/libs/util.js'
 // 路由数据
 import routes from './routes'
 
-// fix vue-router NavigationDuplicated
+/**
+ * Vue-router 报NavigationDuplicated的解决方案
+ * Vue-router在3.1之后把$router.push()方法改为了Promise
+ * 所以假如没有回调函数，错误信息就会交给全局的路由错误处理，因此就会报上述的错误
+ */
 const VueRouterPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (location) {
+VueRouter.prototype.push = function push(location) {
   return VueRouterPush.call(this, location).catch(err => err)
 }
 const VueRouterReplace = VueRouter.prototype.replace
-VueRouter.prototype.replace = function replace (location) {
+VueRouter.prototype.replace = function replace(location) {
   return VueRouterReplace.call(this, location).catch(err => err)
 }
 
