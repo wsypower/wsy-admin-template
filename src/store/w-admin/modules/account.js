@@ -22,13 +22,28 @@ export default {
      */
     async login({ dispatch }, { username = '', password = '' } = {}) {
       const res = await api.SYS_USER_LOGIN({ username, password })
+      //
+      // ────────────────────────────────────────────── I ──────────
+      //   :::::: T I P : :  :   :    :     :        :          :
+      // ────────────────────────────────────────────────────────
+      //
       // 设置 cookie 一定要存 uuid 和 token 两个 cookie
       // 整个系统依赖这两个数据进行校验和存储
-      // uuid 是用户身份唯一标识 用户注册的时候确定 并且不可改变 不可重复
-      // token 代表用户当前登录状态 建议在网络请求中携带 token
+      // 所以,如在项目中配置的是 userId 的身份标识符,这里也统一改成[uuid]
       // 如有必要 token 需要定时更新，默认保存一天
-      util.cookies.set('uuid', res.uuid)
-      util.cookies.set('token', res.token)
+      // ────────────────────────────────────────────────────────
+      
+      /**
+       * uuid 是用户身份唯一标识 用户注册的时候确定 并且不可改变 不可重复
+       * 注:uuid是通用唯一识别码（Universally Unique Identifier）的缩写,是一种软件建构的标准
+       */
+      const uuid = res.uuid || res.userId
+      /**
+       * token 代表用户当前登录状态 建议在网络请求中携带 token
+       */
+      const token = res.token
+      util.cookies.set('uuid', uuid)
+      util.cookies.set('token', token)
       // 设置 vuex 用户信息
       await dispatch('w-admin/user/set', { name: res.name }, { root: true })
       // 用户登录后从持久化数据加载一系列的设置
