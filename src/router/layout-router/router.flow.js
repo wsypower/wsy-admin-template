@@ -2,6 +2,7 @@ import { frameIn } from './frameIn.router'
 import { isMatchSuffix, routerError } from '../utils/utils'
 /**
  * @description
+ * 收集整理模块内的router
  * @author weiyafei
  * @date 2020-12-03
  * @class RouterFlow
