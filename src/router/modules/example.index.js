@@ -1,14 +1,14 @@
 export default [
-  // // 首页
-  // {
-  //   path: 'index',
-  //   name: 'index',
-  //   meta: {
-  //     auth: true
-  //   },
-  //   component: () =>
-  //     import(/* webpackChunkName: "index" */ '@/views/system/index')
-  // },
+  // 首页
+  {
+    path: 'home',
+    name: 'home',
+    meta: {
+      auth: true
+    },
+    component: () =>
+      import(/* webpackChunkName: "index" */ '@/views/system/index')
+  },
   // 演示页面
   {
     path: 'page1',

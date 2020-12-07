@@ -10,19 +10,9 @@ export const frameIn = [
   {
     path: '/',
     name: 'index',
-    redirect: { name: 'index' },
+    redirect: { name: 'home' },
     component: layoutHeaderAside,
     children: [
-      // 首页
-      {
-        path: 'index',
-        name: 'index',
-        meta: {
-          auth: true
-        },
-        component: () =>
-          import(/* webpackChunkName: "index" */ '@/views/system/index')
-      },
       // 系统 前端日志
       {
         path: 'log',
