@@ -14,8 +14,9 @@ export default [
     path: 'page1',
     name: 'page1',
     meta: {
-      title: '页面 1',
-      auth: true
+      title: '测试缓存页面',
+      auth: true,
+      cache: true
     },
     component: () =>
       import(/* webpackChunkName: "page1" */ '@/views/demo/page1')

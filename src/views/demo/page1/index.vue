@@ -9,7 +9,13 @@
 export default {
   name: 'page1',
   mounted() {
-    console.log('this is page1')
+    console.log('测试缓存页面')
+    console.log(this.key++)
+  },
+  data() {
+    return {
+      key: 1
+    }
   }
 }
 </script>
