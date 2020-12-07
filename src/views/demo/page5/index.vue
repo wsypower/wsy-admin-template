@@ -1,8 +1,7 @@
 <template>
-  <d2-container>
-    <template slot="header">Page 5 header</template>
-    Hello World
-  </d2-container>
+  <div class="page5">
+    大页面跳转demo
+  </div>
 </template>
 
 <script>
@@ -10,3 +9,10 @@ export default {
   name: 'page5'
 }
 </script>
+<style lang="scss" scoped>
+.page5 {
+  width: 100%;
+  height: 100%;
+  background-color: silver;
+}
+</style>
