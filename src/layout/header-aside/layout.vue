@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       // [侧边栏宽度] 正常状态
-      asideWidth: '200px',
+      asideWidth: '256px',
       // [侧边栏宽度] 折叠状态
       asideWidthCollapse: '65px'
     }
