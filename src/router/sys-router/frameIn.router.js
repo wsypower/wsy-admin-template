@@ -13,16 +13,6 @@ export const frameIn = [
     redirect: { name: 'home' },
     component: layoutHeaderAside,
     children: [
-      // 首页
-      {
-        path: 'home',
-        name: 'home',
-        meta: {
-          auth: true
-        },
-        component: () =>
-          import(/* webpackChunkName: "index" */ '@/views/system/index')
-      },
       // 系统 前端日志
       {
         path: 'log',

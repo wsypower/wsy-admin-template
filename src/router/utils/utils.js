@@ -22,7 +22,6 @@ const isMatchSuffix = routerPath => {
   } else {
     routerSuffixKey = routerPath.replace(/[\.\.js\/]/g, '')
   }
-
   return routerSuffixKey
 }
 
