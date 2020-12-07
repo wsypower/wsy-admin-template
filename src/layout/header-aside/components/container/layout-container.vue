@@ -31,7 +31,7 @@
           flex="dir:top"
         >
           <!-- tab -->
-          <div class="d2-theme-container-main-header" flex-box="0">
+          <div class="d2-theme-container-main-header" flex-box="0" v-if="false">
             <d2-tabs />
           </div>
           <!-- 页面 -->
