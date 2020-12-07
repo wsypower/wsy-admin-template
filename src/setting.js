@@ -25,6 +25,11 @@ export default {
       }
     ]
   },
+  // 多页面系统
+  tabs: {
+    // 是否开启多页面
+    show: false
+  },
   // 菜单搜索
   search: {
     enable: true
