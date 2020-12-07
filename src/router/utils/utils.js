@@ -32,7 +32,8 @@ const isMatchSuffix = routerPath => {
  * @author wsy
  * @date 2020-12-02  20:57:21
  */
-const collectRouter = routerContext => {
+const collectRouter = () => {
+  const routerContext = require.context('.././modules', true, /\.js$/)
   return routerContext.keys().reduce((modules, route) => {
     // 获取路由标识符
     const routerKey = isMatchSuffix(route)
