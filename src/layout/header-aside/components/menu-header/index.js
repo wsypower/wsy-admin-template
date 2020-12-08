@@ -3,7 +3,7 @@ import { mapState } from 'vuex'
 import menuMixin from '../mixin/menu'
 import { createMenu } from '../libs/util.menu'
 import util from '@/libs/util.js'
-import { active } from 'sortablejs'
+import anime from 'animejs/lib/anime.es.js'
 export default {
   name: 'd2-layout-header-aside-menu-header',
   render(h) {
@@ -30,16 +30,11 @@ export default {
               defaultActive={this.active}
               onSelect={this.handleMenuSelect}
               ref="headerMenu"
+              style={{ height: '100%' }}
             >
               {this.header.map(menu => createMenu.call(this, h, menu))}
             </el-menu>
-            <div
-              class="header-menu-line"
-              style={{
-                width: `${this.sliderLine.width}px`,
-                left: `${this.sliderLine.left}px`
-              }}
-            ></div>
+            <div class="header-menu-line" ref="line"></div>
           </div>
         </div>
         {this.isScroll
@@ -79,7 +74,7 @@ export default {
       menuItemArr: null,
       sliderLine: {
         width: 0,
-        left: 0
+        translateX: 0
       }
     }
   },
@@ -87,15 +82,20 @@ export default {
     '$route.matched': {
       handler(val) {
         this.active = val[val.length - 1].path
-        this.$nextTick(() => {
-          this.$refs.headerMenu && this.setSliderLine()
-        })
+        this.$refs.headerMenu &&
+          this.$nextTick(() => {
+            this.setSliderLine()
+            this.sliderAnima()
+          })
       },
       immediate: true
     }
   },
   methods: {
-    // menu选择回调
+    /**
+     * @description
+     * menu选择回调
+     */
     handleMenuSelect(index, indexPath) {
       if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
         this.$message.warning('临时菜单')
@@ -107,7 +107,10 @@ export default {
         })
       }
     },
-    // 获取header menuItem的宽度
+    /**
+     * @description
+     * 获取header menuItem的宽度
+     */
     getMenuItemWidth() {
       const headerMenu = this.$refs.headerMenu
       const menuItemChildren = Array.isArray(headerMenu.$children)
@@ -126,30 +129,54 @@ export default {
           width: item.$el.clientWidth
         }))
     },
-    // 初始化slider-line的宽度和右移值
+    /**
+     * @description
+     * 初始化slider-line的宽度和右移值
+     */
     setSliderLine() {
+      // 赋值
       this.menuItemArr = this.getMenuItemWidth()
+      // getMenuItemWidth 为 null 只有不设置header menu的时候 直接返回
       if (this.menuItemArr == null) {
         this.sliderLine = {
           width: 0,
-          left: 0
+          translateX: 0
         }
         return
       }
+      // 进入初始化阶段
+      // 找到当前激活的menu-item,line的宽度就是itme的宽度,left值是当前激活元素之前的宽度之和
       const sliderLine = this.menuItemArr.reduce(
         (activeItem, item, _, ItemArr) => {
           if (item.active) {
             activeItem.width = item.width - 30
-            activeItem.left = ItemArr.slice(0, item.index).reduce(
+            // 取宽度和
+            activeItem.translateX = ItemArr.slice(0, item.index).reduce(
               (a, v) => (a += v.width),
               15
             )
           }
           return activeItem
         },
-        { width: 0, left: 0 }
+        { width: 0, translateX: 0 }
       )
       this.sliderLine = sliderLine
+    },
+    /**
+     * @description
+     * slider line移动动画
+     */
+    sliderAnima() {
+      const targets = this.$refs.line
+      const { translateX, width } = this.sliderLine
+      // 再次往事件栈尾置入,避免卡顿
+      this.$nextTick(() => {
+        anime({
+          targets,
+          translateX,
+          width
+        })
+      })
     },
     scroll(direction) {
       if (direction === 'left') {
@@ -211,6 +238,9 @@ export default {
     window.addEventListener('resize', this.throttledCheckScroll)
     // 初始化line的样式
     this.setSliderLine()
+    this.$nextTick(() => {
+      this.sliderAnima()
+    })
   },
   beforeDestroy() {
     // 取消监听

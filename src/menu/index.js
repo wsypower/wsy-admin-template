@@ -18,9 +18,9 @@ function supplementPath(menu) {
 }
 
 export const menuHeader = supplementPath([
-  { path: '/home', title: '首页', icon: 'home' },
+  { path: '/home', title: '测试单页面联动-首页', icon: 'home' },
   {
-    title: '页面',
+    title: '测试联动多页面',
     icon: 'folder-o',
     children: [
       { path: '/page1', title: '页面 1' },
