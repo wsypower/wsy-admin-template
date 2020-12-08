@@ -7,6 +7,9 @@
 
 <script>
 export default {
-  name: 'page2'
+  name: 'page2',
+  mounted() {
+    console.log('未缓存页面page2')
+  }
 }
 </script>

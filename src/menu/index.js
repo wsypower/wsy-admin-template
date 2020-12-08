@@ -33,6 +33,12 @@ export const menuHeader = supplementPath([
     icon: 'folder-o',
     path: '/page/page5',
     title: '页面 5'
+  },
+  {
+    title: '外联跳转',
+    icon: 'folder-o',
+    path: 'https://element.eleme.cn/#/zh-CN/component/transition',
+    title: 'ElementUI'
   }
 ])
 

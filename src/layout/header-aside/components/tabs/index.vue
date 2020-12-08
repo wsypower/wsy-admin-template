@@ -5,10 +5,14 @@
         <d2-contextmenu
           :visible.sync="contextmenuFlag"
           :x="contentmenuX"
-          :y="contentmenuY">
+          :y="contentmenuY"
+        >
           <d2-contextmenu-list
-            :menulist="tagName === '/index' ? contextmenuListIndex : contextmenuList"
-            @rowClick="contextmenuClick"/>
+            :menulist="
+              tagName === '/home' ? contextmenuListIndex : contextmenuList
+            "
+            @rowClick="contextmenuClick"
+          />
         </d2-contextmenu>
         <el-tabs
           class="d2-multiple-page-control d2-multiple-page-sort"
@@ -16,13 +20,15 @@
           type="card"
           @tab-click="handleClick"
           @tab-remove="handleTabRemove"
-          @contextmenu.native="handleContextmenu">
+          @contextmenu.native="handleContextmenu"
+        >
           <el-tab-pane
             v-for="page in opened"
             :key="page.fullPath"
             :label="page.meta.title || '未命名'"
             :name="page.fullPath"
-            :closable="isTabClosable(page)"/>
+            :closable="isTabClosable(page)"
+          />
         </el-tabs>
       </div>
     </div>
@@ -31,23 +37,24 @@
         size="default"
         split-button
         @click="closeAll"
-        @command="command => handleControlItemClick(command)">
-        <d2-icon name="times-circle"/>
+        @command="command => handleControlItemClick(command)"
+      >
+        <d2-icon name="times-circle" />
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="left">
-            <d2-icon name="arrow-left" class="d2-mr-10"/>
+            <d2-icon name="arrow-left" class="d2-mr-10" />
             关闭左侧
           </el-dropdown-item>
           <el-dropdown-item command="right">
-            <d2-icon name="arrow-right" class="d2-mr-10"/>
+            <d2-icon name="arrow-right" class="d2-mr-10" />
             关闭右侧
           </el-dropdown-item>
           <el-dropdown-item command="other">
-            <d2-icon name="times" class="d2-mr-10"/>
+            <d2-icon name="times" class="d2-mr-10" />
             关闭其它
           </el-dropdown-item>
           <el-dropdown-item command="all">
-            <d2-icon name="times-circle" class="d2-mr-10"/>
+            <d2-icon name="times-circle" class="d2-mr-10" />
             全部关闭
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -65,7 +72,7 @@ export default {
     D2Contextmenu: () => import('../contextmenu'),
     D2ContextmenuList: () => import('../contextmenu/components/contentmenuList')
   },
-  data () {
+  data() {
     return {
       contextmenuFlag: false,
       contentmenuX: 0,
@@ -80,14 +87,11 @@ export default {
         { icon: 'times', title: '关闭其它', value: 'other' },
         { icon: 'times-circle', title: '关闭全部', value: 'all' }
       ],
-      tagName: '/index'
+      tagName: '/home'
     }
   },
   computed: {
-    ...mapState('w-admin/page', [
-      'opened',
-      'current'
-    ])
+    ...mapState('w-admin/page', ['opened', 'current'])
   },
   methods: {
     ...mapActions('w-admin/page', [
@@ -102,14 +106,14 @@ export default {
      * @description 计算某个标签页是否可关闭
      * @param {Object} page 其中一个标签页
      */
-    isTabClosable (page) {
-      return page.name !== 'index'
+    isTabClosable(page) {
+      return page.name !== 'home'
     },
     /**
      * @description 右键菜单功能点击
      * @param {Object} event 事件
      */
-    handleContextmenu (event) {
+    handleContextmenu(event) {
       let target = event.target
       // fix https://github.com/d2-projects/d2-admin/issues/54
       let flag = false
@@ -131,7 +135,7 @@ export default {
      * @description 右键菜单的 row-click 事件
      * @param {String} command 事件类型
      */
-    contextmenuClick (command) {
+    contextmenuClick(command) {
       this.handleControlItemClick(command, this.tagName)
     },
     /**
@@ -139,16 +143,28 @@ export default {
      * @param {String} command 事件类型
      * @param {String} tagName tab 名称
      */
-    handleControlItemClick (command, tagName = null) {
+    handleControlItemClick(command, tagName = null) {
       if (tagName) this.contextmenuFlag = false
       const params = { pageSelect: tagName }
       switch (command) {
-        case 'refresh': this.$router.push({ name: 'refresh' }); break
-        case 'left': this.closeLeft(params); break
-        case 'right': this.closeRight(params); break
-        case 'other': this.closeOther(params); break
-        case 'all': this.closeAll(); break
-        default: this.$message.error('无效的操作'); break
+        case 'refresh':
+          this.$router.push({ name: 'refresh' })
+          break
+        case 'left':
+          this.closeLeft(params)
+          break
+        case 'right':
+          this.closeRight(params)
+          break
+        case 'other':
+          this.closeOther(params)
+          break
+        case 'all':
+          this.closeAll()
+          break
+        default:
+          this.$message.error('无效的操作')
+          break
       }
     },
     /**
@@ -156,7 +172,7 @@ export default {
      * @param {object} tab 标签
      * @param {object} event 事件
      */
-    handleClick (tab, event) {
+    handleClick(tab, event) {
       // 找到点击的页面在 tag 列表里是哪个
       const page = this.opened.find(page => page.fullPath === tab.name)
       if (page) {
@@ -168,14 +184,16 @@ export default {
      * @description 点击 tab 上的删除按钮触发这里
      * @param {String} tagName tab 名称
      */
-    handleTabRemove (tagName) {
+    handleTabRemove(tagName) {
       this.close({ tagName })
     }
   },
-  mounted () {
-    const el = document.querySelectorAll('.d2-multiple-page-sort .el-tabs__nav')[0]
+  mounted() {
+    const el = document.querySelectorAll(
+      '.d2-multiple-page-sort .el-tabs__nav'
+    )[0]
     Sortable.create(el, {
-      onEnd: (evt) => {
+      onEnd: evt => {
         const { oldIndex, newIndex } = evt
         this.openedSort({ oldIndex, newIndex })
       }
