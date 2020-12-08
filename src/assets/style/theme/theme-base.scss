@@ -31,7 +31,7 @@
     @extend %full;
 
     .d2-theme-header {
-      height: 60px;
+      height: 64px;
 
       .d2-theme-header-menu {
         overflow: hidden;
@@ -158,6 +158,9 @@
 
     // [布局] 顶栏
     .d2-theme-header {
+      height: 64px;
+      box-shadow: 0px 2px 10px 0px rgba(4, 0, 0, 0.1);
+      z-index: 1;
 
       // logo区域
       .logo-group {
@@ -272,6 +275,9 @@
 
       // 侧边栏
       .d2-theme-container-aside {
+        box-shadow: 1px 2px 9px 1px rgba(4, 0, 0, 0.16);
+        z-index: 1;
+
         %d2-theme-container-aside-menu-icon {
           width: 20px;
           text-align: center;

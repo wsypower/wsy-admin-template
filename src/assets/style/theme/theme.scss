@@ -403,9 +403,9 @@
           // [组件]
           // d2-container-full 填充型
           .d2-container-full {
-            border: $theme-container-border-outer;
-            border-top: none;
-            border-bottom: none;
+            // border: $theme-container-border-outer;
+ // border-top: none;
+ // border-bottom: none;
 
             .d2-container-full__header {
               border-bottom: $theme-container-border-inner;
