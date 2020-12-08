@@ -16,14 +16,14 @@
         flex
       >
         <router-link
-          to="/index"
+          to="/home"
           :class="{ 'logo-group': true, 'logo-transition': asideTransition }"
           :style="{ width: asideCollapse ? asideWidthCollapse : asideWidth }"
           flex-box="0"
           flex="main:center cross:center"
         >
           <span v-if="asideCollapse">标题</span>
-          <span v-else>测试标题内容</span>
+          <span v-else>{{ headerTitle }}</span>
           <!-- <img
             v-if="asideCollapse"
             :src="
@@ -45,7 +45,6 @@
         <div class="d2-header-right" flex-box="0">
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
           <d2-header-search @click="handleSearchClick" />
-          <d2-header-log />
           <d2-header-fullscreen />
           <d2-header-theme />
           <d2-header-size />
@@ -74,7 +73,6 @@ import d2HeaderSearch from './components/header-search'
 import d2HeaderSize from './components/header-size'
 import d2HeaderTheme from './components/header-theme'
 import d2HeaderUser from './components/header-user'
-import d2HeaderLog from './components/header-log'
 import d2HeaderColor from './components/header-color'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import mixinSearch from './mixins/search'
@@ -94,7 +92,6 @@ export default {
     d2HeaderSize,
     d2HeaderTheme,
     d2HeaderUser,
-    d2HeaderLog,
     d2HeaderColor,
     wContainer,
     wLayoutContainer
@@ -116,6 +113,12 @@ export default {
     ...mapGetters('w-admin', {
       themeActiveSetting: 'theme/activeSetting'
     }),
+    /**
+     * header-title
+     */
+    headerTitle() {
+      return process.env.VUE_APP_PROJECT_NAME
+    },
     /**
      * @description 最外层容器的背景图片样式
      */

@@ -83,6 +83,9 @@
 
   // 顶栏
   .d2-theme-header {
+    .logo-group {
+      color: $theme-header-title;
+    }
 
     // 顶栏菜单空间不足时显示的滚动控件
     .d2-theme-header-menu {

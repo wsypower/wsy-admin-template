@@ -164,7 +164,7 @@
         float: left;
         text-align: center;
         font-size: 22px;
-        color: #606266;
+        font-family: 'header-title';
 
         img {
           height: 60px;
@@ -561,4 +561,9 @@
       }
     }
   }
+}
+
+@font-face {
+  font-family: 'header-title';
+  src: url('~@/assets/font/title.otf');
 }

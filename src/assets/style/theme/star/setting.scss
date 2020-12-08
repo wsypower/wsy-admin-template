@@ -4,6 +4,9 @@ $theme-name: 'star';
 $theme-bg-color: #EFF4F8;
 // 主题背景图片遮罩
 $theme-bg-mask: rgba(#000, .3);
+// 主题主色调
+$theme-color:#FFF;
+
 
 // 消息提示
 $theme-message-info-background-color: $color-bg;
@@ -29,6 +32,8 @@ $theme-multiple-page-control-background-color-active: #FFF;
 $theme-menu-item-color-hover: #293849;
 $theme-menu-item-background-color-hover: #ecf5ff;
 
+// 顶栏title字体眼色
+$theme-header-title:$theme-color;
 // 顶栏上的文字颜色
 $theme-header-item-color: #FFF;
 $theme-header-item-background-color: transparent;
