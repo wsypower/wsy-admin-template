@@ -37,14 +37,14 @@ export const menuHeader = supplementPath([
 ])
 
 export const menuAside = supplementPath([
-  { path: '/home', title: '首页', icon: 'home' },
+  { path: '/home', title: '首页展示数据', icon: 'home' },
   {
-    title: '页面',
+    title: '页面系列展示数据',
     icon: 'folder-o',
     children: [
-      { path: '/page1', title: '页面 1' },
-      { path: '/page2', title: '页面 2' },
-      { path: '/page3', title: '页面 3' }
+      { path: '/page1', title: '页面 1展示数据' },
+      { path: '/page2', title: '页面 2展示数据' },
+      { path: '/page3', title: '页面 3展示数据' }
     ]
   }
 ])
