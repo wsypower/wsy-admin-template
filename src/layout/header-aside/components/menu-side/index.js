@@ -2,11 +2,10 @@ import { mapState } from 'vuex'
 import menuMixin from '../mixin/menu'
 import { createMenu } from '../libs/util.menu'
 import BScroll from 'better-scroll'
-
+import util from '@/libs/util.js'
 export default {
   name: 'd2-layout-header-aside-menu-side',
-  mixins: [menuMixin],
-  render (h) {
+  render(h) {
     return (
       <div class="d2-layout-header-aside-menu-side">
         <el-menu
@@ -31,7 +30,7 @@ export default {
       </div>
     )
   },
-  data () {
+  data() {
     return {
       asideHeight: 300,
       BS: null
@@ -42,21 +41,32 @@ export default {
   },
   watch: {
     // 折叠和展开菜单的时候销毁 better scroll
-    asideCollapse (val) {
+    asideCollapse(val) {
       this.scrollDestroy()
       setTimeout(() => {
         this.scrollInit()
       }, 500)
     }
   },
-  mounted () {
+  mounted() {
     this.scrollInit()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.scrollDestroy()
   },
   methods: {
-    scrollInit () {
+    handleMenuSelect(index, indexPath) {
+      if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
+        this.$message.warning('临时菜单')
+      } else if (/^https:\/\/|http:\/\//.test(index)) {
+        util.open(index)
+      } else {
+        this.$router.push({
+          path: index
+        })
+      }
+    },
+    scrollInit() {
       this.BS = new BScroll(this.$el, {
         mouseWheel: true,
         click: true
@@ -67,7 +77,7 @@ export default {
         // }
       })
     },
-    scrollDestroy () {
+    scrollDestroy() {
       // https://github.com/d2-projects/d2-admin/issues/75
       try {
         this.BS.destroy()

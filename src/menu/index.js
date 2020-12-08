@@ -29,16 +29,14 @@ export const menuHeader = supplementPath([
     ]
   },
   {
-    title: '测试切换',
+    title: '测试切换主体内容',
     icon: 'folder-o',
-    path: '/page/page5',
-    title: '页面 5'
+    path: '/page/page5'
   },
   {
-    title: '外联跳转',
+    title: '外联跳转测试',
     icon: 'folder-o',
-    path: 'https://element.eleme.cn/#/zh-CN/component/transition',
-    title: 'ElementUI'
+    path: 'https://element.eleme.cn/#/zh-CN/component/transition'
   }
 ])
 

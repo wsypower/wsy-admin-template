@@ -49,6 +49,7 @@
         }
 
         .d2-theme-header-menu__content {
+          height: 100%;
           overflow: hidden;
 
           .d2-theme-header-menu__scroll {
@@ -245,6 +246,16 @@
             border-bottom: none;
           }
         }
+      }
+
+      // 顶栏menu滑动线
+      .header-menu-line {
+        width: 50px;
+        height: 4px;
+        border-radius: 3px;
+        position: absolute;
+        bottom: 0px;
+        left: 19px;
       }
 
       // 顶栏右侧的按钮

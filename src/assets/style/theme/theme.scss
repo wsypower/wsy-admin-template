@@ -212,6 +212,13 @@
           }
         }
       }
+
+    }
+
+    // 顶栏menu滑动线
+    .header-menu-line {
+      background-color: $theme-slider-line;
+      box-shadow: 1px 2px 11px 0px rgba($theme-slider-line, .6);
     }
 
     // 顶栏右侧
@@ -404,8 +411,8 @@
           // d2-container-full 填充型
           .d2-container-full {
             // border: $theme-container-border-outer;
- // border-top: none;
- // border-bottom: none;
+            // border-top: none;
+            // border-bottom: none;
 
             .d2-container-full__header {
               border-bottom: $theme-container-border-inner;
