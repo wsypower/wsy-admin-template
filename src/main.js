@@ -6,7 +6,6 @@ import App from './App'
 import wAdmin from '@/plugin/w-admin'
 // store
 import store from '@/store/index'
-
 // 菜单和路由设置
 import router from './router'
 import { menuHeader, menuAside } from '@/menu'
@@ -14,13 +13,12 @@ import { frameInRoutes } from '@/router/routes'
 
 // 核心插件
 Vue.use(wAdmin)
-
 new Vue({
   router,
   store,
   i18n,
   render: h => h(App),
-  created () {
+  created() {
     // 处理路由 得到每一级的路由设置
     this.$store.commit('w-admin/page/init', frameInRoutes)
     // 设置顶栏菜单
@@ -30,7 +28,7 @@ new Vue({
     // 初始化菜单搜索功能
     this.$store.commit('w-admin/search/init', menuHeader)
   },
-  mounted () {
+  mounted() {
     // 展示系统信息
     this.$store.commit('w-admin/releases/versionShow')
     // 用户登录后从数据库加载一系列的设置

@@ -165,6 +165,30 @@
         text-align: center;
         font-size: 22px;
         font-family: 'header-title';
+        padding: 0 7px 0 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+
+        .logo-group-logo {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding-top: 2px;
+
+          .logo {
+            width: 26px;
+          }
+        }
+
+        .logo-group-title {
+          position: absolute;
+          left: 52px;
+          white-space: nowrap;
+        }
 
         img {
           height: 60px;

@@ -83,8 +83,15 @@
 
   // 顶栏
   .d2-theme-header {
+    background-color: $theme-header-bg;
+
     .logo-group {
       color: $theme-header-title;
+
+      .logo {
+        width: 26px;
+        fill: $theme-header-title;
+      }
     }
 
     // 顶栏菜单空间不足时显示的滚动控件

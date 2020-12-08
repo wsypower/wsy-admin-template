@@ -20,22 +20,15 @@
           :class="{ 'logo-group': true, 'logo-transition': asideTransition }"
           :style="{ width: asideCollapse ? asideWidthCollapse : asideWidth }"
           flex-box="0"
-          flex="main:center cross:center"
         >
-          <span v-if="asideCollapse">标题</span>
-          <span v-else>{{ headerTitle }}</span>
-          <!-- <img
-            v-if="asideCollapse"
-            :src="
-              `${$baseUrl}image/theme/${themeActiveSetting.name}/logo/icon-only.png`
-            "
-          />
-          <img
-            v-else
-            :src="
-              `${$baseUrl}image/theme/${themeActiveSetting.name}/logo/all.png`
-            "
-          /> -->
+          <div class="logo-group-logo">
+            <d2-icon-svg class="logo" name="logo" flex-box="0" />
+          </div>
+          <transition name="el-fade-in">
+            <span class="logo-group-title" v-if="!asideCollapse">{{
+              headerTitle
+            }}</span>
+          </transition>
         </router-link>
         <div class="toggle-aside-btn" @click="handleToggleAside" flex-box="0">
           <d2-icon name="bars" />
