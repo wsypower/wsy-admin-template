@@ -9,17 +9,26 @@ const ANIMATION_ARR = {
   left: 'rotate-sides',
   right: 'rotate-sides'
 }
-
+const LAYOUT_CONTAINER = {
+  basic: 'w-layoutContainer',
+  full: 'w-container'
+}
 export default {
   namespaced: true,
   state: {
     // 是否开启页面过度动画
-    transition: 'rotate-sides'
+    transition: 'rotate-sides',
+    // 选用哪个基础组件容器
+    fullLayout: []
   },
   mutations: {
     // 切换container组件的动画朝向
-    change(state, direction) {
+    setAnimation(state, direction) {
       state.transition = direction
+    },
+    // 收集需要full-container容器
+    setFullLayout(state, layout) {
+      state.fullLayout = layout
     }
   },
   actions: {
@@ -33,11 +42,23 @@ export default {
         const direction =
           oldIndex < newIndex ? 'right' : oldIndex === newIndex ? '' : 'left'
         const animate = ANIMATION_ARR[direction]
-        commit('change', animate)
+        commit('setAnimation', animate)
         resolve()
       }).catch(err => {
         throw new Error(err)
       })
+    },
+    /**
+     * @description
+     * 切换容器
+     * @author weiyafei
+     * @date 2020-12-09
+     */
+    initViewLayout({ commit }, frameInRoutes) {
+      const fullRouter = frameInRoutes
+        .filter(router => router.meta && router.meta.full)
+        .map(item => item.path)
+      commit('setFullLayout', fullRouter)
     }
   }
 }

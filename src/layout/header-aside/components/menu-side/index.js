@@ -1,5 +1,4 @@
 import { mapState } from 'vuex'
-import menuMixin from '../mixin/menu'
 import { createMenu } from '../libs/util.menu'
 import BScroll from 'better-scroll'
 import util from '@/libs/util.js'
@@ -57,7 +56,7 @@ export default {
   methods: {
     handleMenuSelect(index, indexPath) {
       if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
-        this.$message.warning('临时菜单')
+        this.$message.warning('功能暂未上线')
       } else if (/^https:\/\/|http:\/\//.test(index)) {
         util.open(index)
       } else {

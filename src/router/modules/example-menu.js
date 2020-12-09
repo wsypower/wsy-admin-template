@@ -2,25 +2,24 @@ import layoutHeaderAside from '@/layout/header-aside'
 export default [
   // 演示页面
   {
-    path: '/page',
-    name: 'page',
+    path: '/page-menu',
+    name: 'page-menu',
     meta: {
-      title: '页面 5',
-      auth: true,
-      full: true
+      title: '页面 7',
+      auth: true
     },
     component: layoutHeaderAside,
     children: [
       {
-        path: 'page5',
-        name: 'page5',
+        path: 'page7',
+        name: 'page7',
         meta: {
-          title: '测试切换大页面',
+          title: '切换相同带menu容器',
           auth: true,
           cache: true
         },
         component: () =>
-          import(/* webpackChunkName: "page5" */ '@/views/demo/page5')
+          import(/* webpackChunkName: "page5" */ '@/views/demo/page7')
       }
     ]
   }

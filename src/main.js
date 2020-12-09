@@ -27,6 +27,8 @@ new Vue({
     this.$store.commit('w-admin/menu/asideSet', menuAside)
     // 初始化菜单搜索功能
     this.$store.commit('w-admin/search/init', menuHeader)
+    // 初始化layout容器组件选择
+    this.$store.dispatch('w-admin/container/initViewLayout', frameInRoutes)
   },
   mounted() {
     // 展示系统信息

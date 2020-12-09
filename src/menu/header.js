@@ -1,7 +1,7 @@
 const header = [
   { path: '/home', title: '测试单页面联动-首页', icon: 'home' },
   {
-    title: '测试联动多页面',
+    title: '测试同页面联动',
     icon: 'folder-o',
     children: [
       { path: '/page1', title: '页面 1' },
@@ -10,9 +10,19 @@ const header = [
     ]
   },
   {
-    title: '测试切换主体内容',
+    title: '切换相同容器带menu',
+    icon: 'folder-o',
+    path: '/page-menu/page7'
+  },
+  {
+    title: '切换容器full',
     icon: 'folder-o',
     path: '/page/page5'
+  },
+  {
+    title: '同容器full切换',
+    icon: 'folder-o',
+    path: '/page-full/page6'
   },
   {
     title: '外联跳转测试',

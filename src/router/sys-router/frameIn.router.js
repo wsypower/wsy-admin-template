@@ -12,6 +12,7 @@ export const frameIn = [
     name: 'index',
     redirect: { name: 'home' },
     component: layoutHeaderAside,
+    meta: {},
     children: [
       // 系统 前端日志
       {

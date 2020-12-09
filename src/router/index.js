@@ -61,7 +61,6 @@ router.beforeEach(async (to, from, next) => {
           redirect: to.fullPath
         }
       })
-      // https://github.com/d2-projects/d2-admin/issues/138
       NProgress.done()
     }
   } else {

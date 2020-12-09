@@ -102,7 +102,8 @@ export default {
       grayActive: state => state.gray.active,
       asideCollapse: state => state.menu.asideCollapse,
       asideTransition: state => state.menu.asideTransition,
-      transition: state => state.container.transition
+      transition: state => state.container.transition,
+      fullLayout: state => state.container.fullLayout
     }),
     ...mapGetters('w-admin', {
       themeActiveSetting: 'theme/activeSetting'
@@ -127,10 +128,13 @@ export default {
      * @description 布局组件
      */
     layoutContainerMain() {
-      if (this.$route.path === '/page/page5') {
-        return 'w-container'
-      }
-      return 'w-layoutContainer'
+      const fullRouter = this.$route.matched.map(router => {
+        if (router.path === '') router.path = '/'
+        return router
+      })[0].path
+      return this.fullLayout.includes(fullRouter)
+        ? 'w-container'
+        : 'w-layoutContainer'
     }
   },
   methods: {
