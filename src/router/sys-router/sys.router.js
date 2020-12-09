@@ -21,6 +21,6 @@ export const errorPage = [
     path: '*',
     name: '404',
     component: () =>
-      import(/* webpackChunkName: "404" */ '@/views/system/error/404')
+      import(/* webpackChunkName: "404" */ '@/views/system/error/404/404.vue')
   }
 ]
