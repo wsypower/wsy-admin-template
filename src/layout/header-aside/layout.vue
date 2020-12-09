@@ -48,7 +48,7 @@
       </div>
       <!-- 下面 主体 -->
       <div class="d2-theme-container" flex-box="1" flex>
-        <transition name="rotate-sides">
+        <transition :name="transition">
           <component :is="layoutContainerMain"></component>
         </transition>
       </div>
@@ -101,7 +101,8 @@ export default {
     ...mapState('w-admin', {
       grayActive: state => state.gray.active,
       asideCollapse: state => state.menu.asideCollapse,
-      asideTransition: state => state.menu.asideTransition
+      asideTransition: state => state.menu.asideTransition,
+      transition: state => state.container.transition
     }),
     ...mapGetters('w-admin', {
       themeActiveSetting: 'theme/activeSetting'

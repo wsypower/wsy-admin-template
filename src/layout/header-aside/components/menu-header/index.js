@@ -1,5 +1,5 @@
 import { throttle } from 'lodash'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import menuMixin from '../mixin/menu'
 import { createMenu } from '../libs/util.menu'
 import util from '@/libs/util.js'
@@ -92,19 +92,45 @@ export default {
     }
   },
   methods: {
+    ...mapActions('w-admin/container', ['changeAnimation']),
     /**
      * @description
      * menu选择回调
      */
-    handleMenuSelect(index, indexPath) {
-      if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
-        this.$message.warning('临时菜单')
-      } else if (/^https:\/\/|http:\/\//.test(index)) {
-        util.open(index)
-      } else {
-        this.$router.push({
-          path: index
+    async handleMenuSelect(index, indexPath) {
+      try {
+        if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
+          this.$message.warning('功能暂未上线')
+        } else if (/^https:\/\/|http:\/\//.test(index)) {
+          util.open(index)
+        } else {
+          await this.setContainerCompAnimation(indexPath)
+          this.$router.push({
+            path: index
+          })
+        }
+      } catch (error) {
+        throw new Error(error)
+      }
+    },
+    /**
+     * 获取页面内组件切换的动画
+     */
+    async setContainerCompAnimation(routerMatch) {
+      try {
+        if (this.menuItemArr == null) {
+          return
+        }
+        const oldActivePathIndex = this.menuItemArr.find(v => v.active).index
+        const newActivePathIndex = this.menuItemArr.find(
+          v => v.path === routerMatch[0]
+        ).index
+        await this.changeAnimation({
+          oldIndex: oldActivePathIndex,
+          newIndex: newActivePathIndex
         })
+      } catch (error) {
+        throw new Error(error)
       }
     },
     /**
@@ -115,8 +141,8 @@ export default {
       const headerMenu = this.$refs.headerMenu
       const menuItemChildren = Array.isArray(headerMenu.$children)
         ? headerMenu.$children.map(children => {
-          const { active, $el } = children
-          return { active, $el }
+          const { active, $el, index: path } = children
+          return { active, $el, path }
         })
         : null
 
@@ -126,7 +152,8 @@ export default {
         : menuItemChildren.map((item, index) => ({
           active: item.active,
           index,
-          width: item.$el.clientWidth
+          width: item.$el.clientWidth,
+          path: item.path
         }))
     },
     /**
