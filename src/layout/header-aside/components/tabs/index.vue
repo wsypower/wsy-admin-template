@@ -1,6 +1,12 @@
 <template>
-  <div class="d2-multiple-page-control-group" flex>
-    <div class="d2-multiple-page-control-content" flex-box="1">
+  <div
+    class="d2-multiple-page-control-group"
+    flex
+  >
+    <div
+      class="d2-multiple-page-control-content"
+      flex-box="1"
+    >
       <div class="d2-multiple-page-control-content-inner">
         <d2-contextmenu
           :visible.sync="contextmenuFlag"
@@ -32,7 +38,10 @@
         </el-tabs>
       </div>
     </div>
-    <div class="d2-multiple-page-control-btn" flex-box="0">
+    <div
+      class="d2-multiple-page-control-btn"
+      flex-box="0"
+    >
       <el-dropdown
         size="default"
         split-button
@@ -42,19 +51,31 @@
         <d2-icon name="times-circle" />
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="left">
-            <d2-icon name="arrow-left" class="d2-mr-10" />
+            <d2-icon
+              name="arrow-left"
+              class="d2-mr-10"
+            />
             关闭左侧
           </el-dropdown-item>
           <el-dropdown-item command="right">
-            <d2-icon name="arrow-right" class="d2-mr-10" />
+            <d2-icon
+              name="arrow-right"
+              class="d2-mr-10"
+            />
             关闭右侧
           </el-dropdown-item>
           <el-dropdown-item command="other">
-            <d2-icon name="times" class="d2-mr-10" />
+            <d2-icon
+              name="times"
+              class="d2-mr-10"
+            />
             关闭其它
           </el-dropdown-item>
           <el-dropdown-item command="all">
-            <d2-icon name="times-circle" class="d2-mr-10" />
+            <d2-icon
+              name="times-circle"
+              class="d2-mr-10"
+            />
             全部关闭
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -115,7 +136,6 @@ export default {
      */
     handleContextmenu(event) {
       let target = event.target
-      // fix https://github.com/d2-projects/d2-admin/issues/54
       let flag = false
       if (target.className.indexOf('el-tabs__item') > -1) flag = true
       else if (target.parentNode.className.indexOf('el-tabs__item') > -1) {
@@ -189,6 +209,9 @@ export default {
     }
   },
   mounted() {
+    /**
+     * 执行拖拽事件
+     */
     const el = document.querySelectorAll(
       '.d2-multiple-page-sort .el-tabs__nav'
     )[0]
