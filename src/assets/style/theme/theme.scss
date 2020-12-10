@@ -119,6 +119,14 @@
           color: $theme-header-item-color-hover;
         }
       }
+
+      #menu-icon-wrapper {
+        svg {
+          path {
+            stroke: $theme-header-item-color;
+          }
+        }
+      }
     }
 
     // 顶栏菜单
