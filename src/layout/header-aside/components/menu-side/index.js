@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     handleMenuSelect(index, indexPath) {
-      if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
+      if (/^w-menu-empty-\d+$/.test(index) || index === undefined) {
         this.$message.warning('功能暂未上线')
       } else if (/^https:\/\/|http:\/\//.test(index)) {
         util.open(index)

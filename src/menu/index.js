@@ -9,7 +9,7 @@ import slider from './slider'
 function supplementPath(menu) {
   return menu.map(e => ({
     ...e,
-    path: e.path || uniqueId('d2-menu-empty-'),
+    path: e.path || uniqueId('w-menu-empty-'),
     ...(e.children
       ? {
         children: supplementPath(e.children)
