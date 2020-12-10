@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import Sortable from 'sortablejs'
 
 export default {
@@ -112,7 +112,18 @@ export default {
     }
   },
   computed: {
-    ...mapState('w-admin/page', ['opened', 'current'])
+    ...mapState('w-admin', {
+      opened: state => state.page.opened,
+      current: state => state.page.current
+    }),
+    ...mapGetters('w-admin', {
+      filterMenuAside: 'menu/filterMenuAside'
+    })
+    // openedFilter() {
+    // console.log(this.opened)
+    // console.log(this.filterMenuAside)
+    // return this.opened.filter(router => this.filterMenuAside.includes(router.fullPath))
+    // }
   },
   methods: {
     ...mapActions('w-admin/page', [
