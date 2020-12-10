@@ -1,6 +1,6 @@
 <template>
   <div class="page6">
-    相同容器大页面跳转demo
+    相同容器full大页面跳转demo
   </div>
 </template>
 

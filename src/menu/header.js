@@ -10,19 +10,14 @@ const header = [
     ]
   },
   {
-    title: '切换相同容器带menu',
-    icon: 'folder-o',
-    path: '/page-menu/page7'
-  },
-  {
     title: '切换容器full',
     icon: 'folder-o',
-    path: '/page/page5'
+    path: '/example-full/page5'
   },
   {
-    title: '同容器full切换',
+    title: '切换相同容器',
     icon: 'folder-o',
-    path: '/page-full/page6'
+    path: '/full/page6'
   },
   {
     title: '外联跳转测试',

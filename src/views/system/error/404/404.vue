@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: '404',
+  name: 'error',
   computed: {
     message() {
       return 'The webmaster said that you can not enter this page...'

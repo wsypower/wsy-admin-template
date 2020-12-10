@@ -7,6 +7,7 @@ import layoutHeaderAside from '@/layout/header-aside'
 // ########################### 通常需要登录或权限认证的路由 ################# //
 // ##################################################################### //
 export const frameIn = [
+  // 首页主路由
   {
     path: '/',
     name: 'index',
@@ -46,5 +47,16 @@ export const frameIn = [
           )
       }
     ]
+  },
+  // 演示页面
+  {
+    path: '/example-full',
+    name: 'example-full',
+    meta: {
+      title: '页面 5',
+      auth: true,
+      full: true
+    },
+    component: layoutHeaderAside
   }
 ]
