@@ -7,7 +7,8 @@ export default [
     meta: {
       title: '测试切换full容器',
       auth: true,
-      full: true
+      full: true,
+      hidden: true
     },
     children: [
       {
@@ -16,7 +17,8 @@ export default [
         meta: {
           title: '测试切换full容器',
           auth: true,
-          cache: false
+          cache: false,
+          hidden: true
         },
         children: [],
         component: () =>

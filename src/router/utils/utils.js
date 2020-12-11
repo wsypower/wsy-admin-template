@@ -1,28 +1,17 @@
 import util from '@/libs/util'
-
+const path = require('path')
 /**
  * @description
- * 如果文件名有识别路由标识符，返回值就是识别符
- * 如果没有返回值是文件名
- * 路由标识符应该与frameIn中对象name值相同
- * @example
- * [example.index.js] => [index]
- * [example.js] => [example]
- *
- * @author wsy
- * @date 2020-12-02  15:43:59
+ * 通过path去除basename
+ * 有后缀的返回后缀，没有就返回basename
  * @param {String} 路由文件相对路径
  * @returns {String} key值
  */
-const isMatchSuffix = routerPath => {
-  let routerSuffixKey
-  const MatchSuffixRegexp = routerPath.match(/\.([\w-])+\./g)
-  if (MatchSuffixRegexp != null) {
-    routerSuffixKey = MatchSuffixRegexp[0].replace(/\./g, '')
-  } else {
-    routerSuffixKey = routerPath.replace(/[\.\.js\/]/g, '')
-  }
-  return routerSuffixKey
+const getPathBaseName = routerPath => {
+  const pathBaseName = path
+    .basename(routerPath, path.extname(routerPath))
+    .split('.')
+  return pathBaseName[pathBaseName.length - 1]
 }
 
 /**
@@ -35,7 +24,7 @@ const collectRouter = () => {
   const routerContext = require.context('.././modules', true, /\.js$/)
   return routerContext.keys().reduce((modules, route) => {
     // 获取路由标识符
-    const routerKey = isMatchSuffix(route)
+    const routerKey = getPathBaseName(route)
     const routerModules = routerContext(route)
     // 如果文件为导出为空对象跳过
     if (!Object.keys(routerModules).length) {
@@ -104,7 +93,7 @@ const routerError = route => {
 }
 
 export {
-  isMatchSuffix,
+  getPathBaseName,
   routerError,
   collectRouter,
   chunkModulesRouter,

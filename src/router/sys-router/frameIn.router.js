@@ -55,7 +55,8 @@ export const frameIn = [
     meta: {
       title: '页面 5',
       auth: true,
-      full: true
+      full: true,
+      hidden: true
     },
     component: layoutHeaderAside
   }
