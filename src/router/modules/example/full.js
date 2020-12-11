@@ -7,18 +7,17 @@ export default [
     meta: {
       title: '测试切换full容器',
       auth: true,
-      full: true,
-      hidden: true
+      full: true
     },
     children: [
       {
         path: 'page6',
         name: 'page6',
+        hidden: true,
         meta: {
           title: '测试切换full容器',
           auth: true,
-          cache: false,
-          hidden: true
+          cache: false
         },
         children: [],
         component: () =>

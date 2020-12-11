@@ -11,7 +11,6 @@ const development = process.env.NODE_ENV !== 'production'
 
 // 收集modules的路由
 const collectModule = collectRouter()
-console.log(collectModule)
 // 按需切分
 const chunkModules = chunkModulesRouter(collectModule, frameIn)
 // 挂载路由

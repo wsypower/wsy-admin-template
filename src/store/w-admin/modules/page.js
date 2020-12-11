@@ -175,7 +175,7 @@ export default {
       } else {
         // 页面以前没有打开过
         const page = state.pool.find(t => t.name === name)
-        console.log('page======>',page)
+        console.log('page======>', page)
         // 如果这里没有找到 page 代表这个路由虽然在框架内 但是不参与标签页显示
         if (page) {
           await dispatch('add', {
@@ -392,6 +392,7 @@ export default {
      * @param {Array} routes routes
      */
     init(state, routes) {
+      console.log(routes)
       const pool = []
       const push = function(routes) {
         routes.forEach(route => {
@@ -405,6 +406,7 @@ export default {
           }
         })
       }
+      console.log(pool)
       push(routes)
       state.pool = pool
     }
