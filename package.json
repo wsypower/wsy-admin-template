@@ -80,6 +80,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/d2-projects/d2-admin.git"
+    "url": "git@github.com:wsypower/wsy-admin-template.git"
   }
 }
