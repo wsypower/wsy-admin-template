@@ -14,7 +14,6 @@
     "webpack:development": "vue inspect --mode=development > webpack.development.output.js"
   },
   "dependencies": {
-    "@types/animejs": "^3.1.2",
     "animejs": "^3.2.1",
     "axios": "^0.19.0",
     "axios-mock-adapter": "^1.18.1",
