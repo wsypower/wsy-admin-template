@@ -1,6 +1,5 @@
 import { throttle } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import menuMixin from '../mixin/menu'
 import { createMenu } from '../libs/util.menu'
 import util from '@/libs/util.js'
 import anime from 'animejs/lib/anime.es.js'

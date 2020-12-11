@@ -51,7 +51,7 @@
 <script>
 import d2MenuSide from '../menu-side'
 import d2Tabs from '../tabs'
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import mixinSearch from '../../mixins/search'
 export default {
   name: 'w-layout-container',

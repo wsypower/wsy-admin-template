@@ -6,8 +6,8 @@ import util from '@/libs/util'
  * 如果没有返回值是文件名
  * 路由标识符应该与frameIn中对象name值相同
  * @example
- * [./example.index.js] => [index]
- * [./example.js] => [example]
+ * [example.index.js] => [index]
+ * [example.js] => [example]
  *
  * @author wsy
  * @date 2020-12-02  15:43:59
