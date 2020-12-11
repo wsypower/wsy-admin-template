@@ -16,6 +16,9 @@ import pluginApi from '@/plugin/api'
 import pluginLog from '@/plugin/log'
 import pluginOpen from '@/plugin/open'
 
+// w-[directive] 指令
+import directive from '@/directive'
+
 export default {
   async install(Vue, options) {
     // 设置为 false 以阻止 vue 在启动时生成生产提示
@@ -39,5 +42,7 @@ export default {
     // Vue.use(pluginError)
     Vue.use(pluginLog)
     Vue.use(pluginOpen)
+    // 指令
+    Vue.use(directive)
   }
 }

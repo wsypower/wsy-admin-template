@@ -392,7 +392,6 @@ export default {
      * @param {Array} routes routes
      */
     init(state, routes) {
-      console.log(routes)
       const pool = []
       const push = function(routes) {
         routes.forEach(route => {
@@ -406,7 +405,6 @@ export default {
           }
         })
       }
-      console.log(pool)
       push(routes)
       state.pool = pool
     }
