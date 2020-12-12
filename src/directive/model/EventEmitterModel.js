@@ -1,4 +1,4 @@
-class EventEmitter {
+export default class EventEmitter {
   constructor() {
     this._maxListeners = 10
     this._events = Object.create(null)
@@ -58,5 +58,3 @@ class EventEmitter {
     this.maxListeners = count
   }
 }
-
-export default EventEmitter

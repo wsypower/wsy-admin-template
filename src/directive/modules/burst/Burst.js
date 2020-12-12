@@ -1,9 +1,10 @@
 import mojs from '@mojs/core'
 import animation from './animation'
-
+import ObserveEmitter from '../../model/observeModel'
 const defaultOptions = {
   left: '50%',
   top: '50%',
+  icon: false,
   color: '#409EFF'
 }
 /**
@@ -18,29 +19,50 @@ const defaultOptions = {
  * @class Burst
  */
 
-export default class Burst {
-  constructor(el, arg, value, modifiers) {
-    // 目标元素
-    this.el = el
+export default class Burst extends ObserveEmitter {
+  constructor(el, binding) {
+    super(el, binding)
     // 选择的动画库
-    this.arg = arg || 'burst'
-    /**
-     * 区别于点击事件触发burst动画
-     * icon 调用dom数据监测去启动动画
-     * event 通过事件去触发
-     */
-    this.modifiers = this.checkModifiers(modifiers)
-    this.value = Object.assign(defaultOptions, animation[this.arg], value)
-    // Mojs动画的大类型,扩展留下位置
-    this.MoTag = 'Burst'
-    this.Mo = null
+    this.arg = binding.arg || 'burst'
+    //  添加默认值
+    this.value = Object.assign(
+      defaultOptions,
+      animation[this.arg],
+      binding.value
+    )
+    this.MoTag = 'Burst' // Mojs动画的大类型,扩展留下位置
   }
 
+  /**
+   * @description
+   * 初始化
+   * @author wsy
+   * @date 2020-12-12  21:03:31
+   */
   init() {
-    this.observe()
+    return super.init(this.createBurst)
   }
 
-  Mojs(el) {
+  /**
+   * @description
+   * 执行逻辑
+   * @author wsy
+   * @date 2020-12-12  21:02:35
+   */
+  createBurst() {
+    if (this.value.icon) {
+      this.observeIcon()
+      return
+    }
+    this.startMoAnimation()
+  }
+
+  startMoAnimation() {
+    this.initMojs()
+    this.tuneMojs()
+  }
+
+  initMojs(el) {
     if (el) {
       el.style.position = 'relative'
     } else {
@@ -51,41 +73,6 @@ export default class Burst {
     )
   }
 
-  // 根据修饰符选择监测事件
-  observe() {
-    return this.modifiers === 'icon'
-      ? this.observeIcon()
-      : this.observeEvent(this.modifiers)
-  }
-
-  observeEvent(event) {
-    this.Mojs()
-    this.el.addEventListener(event, e => {
-      this.startMojs()
-    })
-  }
-
-  /**
-   * @description
-   * 监测icon 父元素 查找icon,以他动画父元素启动mo
-   * @author wsy
-   * @date 2020-12-12  17:34:29
-   */
-  observeIcon() {
-    const icon = (this.el.querySelectorAll('i') ||
-      this.el.querySelectorAll('svg'))[0]
-    this.Mojs(icon)
-    const observe = new window.MutationObserver(() => {
-      if (~this.el.className.search('active')) {
-        this.startMojs()
-      }
-    })
-    observe.observe(this.el, {
-      attributeFilter: ['class'],
-      subtree: true
-    })
-  }
-
   /**
    * @description
    * 监测有无需要添加的指令
@@ -93,7 +80,7 @@ export default class Burst {
    * @author wsy
    * @date 2020-12-12  17:33:58
    */
-  startMojs() {
+  tuneMojs() {
     const color =
       this.arg === 'burst'
         ? { children: { stroke: this.value.color } }
@@ -105,15 +92,16 @@ export default class Burst {
 
   /**
    * @description
-   * 取值icon 如果取不到就是事件驱动
+   * 监测icon 父元素 查找icon,以他动画父元素启动mo
    * @author wsy
-   * @date 2020-12-12  15:16:06
+   * @date 2020-12-12  17:34:29
    */
-  checkModifiers(modifiers) {
-    const def = ['click']
-    // 默认值的下标是0,传入值只要有值就会替换下标0
-    const event = Object.assign(def, Object.keys(modifiers))
-    if (event.length > 1) throw new Error('Burst指令仅支持一个标识符')
-    return event[0]
+  observeIcon() {
+    const icon = (this.el.querySelectorAll('i') ||
+      this.el.querySelectorAll('svg'))[0]
+    this.initMojs(icon)
+    if (~this.el.className.search('active')) {
+      this.tuneMojs()
+    }
   }
 }

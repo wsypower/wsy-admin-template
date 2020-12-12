@@ -4,7 +4,7 @@
     Hello World
     <el-button
       type="primary"
-      v-burst:burst
+      v-burst:burst.event.click
     ></el-button>
   </d2-container>
 </template>

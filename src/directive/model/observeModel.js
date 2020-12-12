@@ -12,7 +12,7 @@ import EventEmitter from './EventEmitterModel'
  * @module Observe
  */
 
-class Observe extends EventEmitter {
+export default class ObserveEmitter extends EventEmitter {
   constructor(el, { arg, modifiers }) {
     super()
     this.el = el
@@ -22,10 +22,24 @@ class Observe extends EventEmitter {
     this.observe()
   }
 
-  init() {
-    this.emit(this.modifiers.observe)
+  /**
+   * @description
+   * 初始化开始监听
+   * @author wsy
+   * @date 2020-12-12  21:09:40
+   * @param {Object} fn your introduction
+   */
+  init(fn) {
+    const { observe, listen } = this.modifiers
+    this.emit(observe, listen, fn)
   }
 
+  /**
+   * @description
+   * 判断是监听dom还是监听事件
+   * @author wsy
+   * @date 2020-12-12  21:09:23
+   */
   observe() {
     const observeMo = this.modifiers.observe
     this.addListener(
@@ -34,16 +48,32 @@ class Observe extends EventEmitter {
     )
   }
 
-  observeEvent(fn) {
-    this.el.addEventListener(listenEvent, fn)
+  /**
+   * @description
+   * 监听事件
+   * @author wsy
+   * @date 2020-12-12  21:08:39
+   * @param {Function} fn 执行逻辑
+   */
+  observeEvent(listenEvent, fn) {
+    this.el.addEventListener(listenEvent[0], () => {
+      fn.apply(this)
+    })
   }
 
-  observeAttribute(fn) {
+  /**
+   * @description
+   * MutationObserver 监听dom
+   * @author wsy
+   * @date 2020-12-12  21:08:39
+   * @param {Function} fn 执行逻辑
+   */
+  observeAttribute(listenEvent, fn) {
     const observe = new window.MutationObserver(() => {
-      fn()
+      fn.apply(this)
     })
     observe.observe(this.el, {
-      attributeFilter: this.modifiers.listen,
+      attributeFilter: listenEvent,
       subtree: true
     })
   }
@@ -74,5 +104,3 @@ class Observe extends EventEmitter {
     }
   }
 }
-
-export default Observe
