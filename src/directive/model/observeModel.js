@@ -19,7 +19,6 @@ class Observe extends EventEmitter {
     // 多种效果的时候使用
     this.arg = arg
     this.modifiers = this.checkModifiers(modifiers)
-    this._events = Object.create(null)
     this.observe()
   }
 
