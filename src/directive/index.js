@@ -9,6 +9,7 @@ files.keys().forEach(key => {
     return vueDirective
   }
 })
+// TODO Vue-directive的value,可以传递对象,但是数据共享---动态指令的方式是选用 binding - modifiers
 export default {
   install: function(Vue, options) {
     Object.keys(vueDirective).forEach(name => {
