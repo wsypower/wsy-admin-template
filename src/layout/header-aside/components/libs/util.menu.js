@@ -26,7 +26,7 @@ export function elMenuItem(h, menu) {
       ref="menuItem"
       vBurst:burst_icon
 
-      // vBurst_burst={{ left: 50 }}
+      // vBurst:burst_observe_click='{{ left: 50 }}'
     >
       {icon}
       <span slot="title">{menu.title || '未命名菜单'}</span>
