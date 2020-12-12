@@ -22,7 +22,7 @@ export default {
   burst: {
     left: '50%',
     top: '50%',
-    radius: { 4: 19 },
+    radius: { 11: 16 },
     angle: 45,
     children: {
       shape: 'line',
@@ -31,7 +31,7 @@ export default {
       stroke: '#FD7932',
       strokeDasharray: '100%',
       strokeDashoffset: { '-100%': '100%' },
-      duration: 400,
+      duration: 330,
       easing: 'quad.out'
     }
   }

@@ -99,8 +99,8 @@ export default class Burst extends ObserveEmitter {
     const icon = (this.el.querySelectorAll('i') ||
       this.el.querySelectorAll('svg'))[0]
     if (icon) {
-      this.initMojs(icon)
       if (~this.el.className.search('active')) {
+        this.initMojs(icon)
         this.tuneMojs()
       }
       return
