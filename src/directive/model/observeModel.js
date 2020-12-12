@@ -57,7 +57,6 @@ export default class ObserveEmitter extends EventEmitter {
    */
   observeEvent(listenEvent, fn) {
     this.el.addEventListener(listenEvent[0], () => {
-      console.log('sdadsasd')
       fn.apply(this)
     })
   }

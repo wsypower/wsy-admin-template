@@ -49,18 +49,14 @@ export default class Burst extends ObserveEmitter {
    * @date 2020-12-12  21:02:35
    */
   createBurst() {
-    console.log(this)
-    console.log(this.value)
     if (this.value.icon) {
       this.observeIcon()
       return
     }
-    console.log('created----1')
     this.startMoAnimation()
   }
 
   startMoAnimation() {
-    console.log('click')
     this.initMojs()
     this.tuneMojs()
   }
@@ -102,9 +98,13 @@ export default class Burst extends ObserveEmitter {
   observeIcon() {
     const icon = (this.el.querySelectorAll('i') ||
       this.el.querySelectorAll('svg'))[0]
-    this.initMojs(icon)
-    if (~this.el.className.search('active')) {
-      this.tuneMojs()
+    if (icon) {
+      this.initMojs(icon)
+      if (~this.el.className.search('active')) {
+        this.tuneMojs()
+      }
+      return
     }
+    this.startMoAnimation()
   }
 }
