@@ -16,14 +16,16 @@ export function createMenu(h, menu) {
 export function elMenuItem(h, menu) {
   let icon = null
   if (menu.icon) icon = <i class={`fa fa-${menu.icon}`} />
-  else if (menu.iconSvg) icon = <d2-icon-svg name={menu.iconSvg} />
-  else icon = <i class="fa fa-file-o" />
+  else if (menu.iconSvg) {
+    icon = <d2-icon-svg name={menu.iconSvg} />
+  } else icon = <i class="fa fa-file-o" />
   return (
     <el-menu-item
       key={menu.path}
       index={menu.path}
       ref="menuItem"
-      // vBurst_burst
+      vBurst:burst_icon
+
       // vBurst_burst={{ left: 50 }}
     >
       {icon}
