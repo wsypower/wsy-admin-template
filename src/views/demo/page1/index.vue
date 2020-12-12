@@ -10,9 +10,6 @@
 </template>
 
 <script>
-//      @click='handler'
-
-// v-burst:smoke
 import mojs from '@mojs/core'
 export default {
   name: 'page1',

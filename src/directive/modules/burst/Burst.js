@@ -1,6 +1,6 @@
 import mojs from '@mojs/core'
 import animation from './animation'
-import ObserveEmitter from '../../model/observeModel'
+import ObserveEmitter from '../../model/ObserveModel'
 const defaultOptions = {
   left: '50%',
   top: '50%',
@@ -18,7 +18,6 @@ const defaultOptions = {
  * @param {Object} modifiers 分icon 和  任意事件（事件默认是click）
  * @class Burst
  */
-
 export default class Burst extends ObserveEmitter {
   constructor(el, binding) {
     super(el, binding)
@@ -40,7 +39,7 @@ export default class Burst extends ObserveEmitter {
    * @date 2020-12-12  21:03:31
    */
   init() {
-    return super.init(this.createBurst)
+    super.init(this.createBurst)
   }
 
   /**
@@ -50,14 +49,18 @@ export default class Burst extends ObserveEmitter {
    * @date 2020-12-12  21:02:35
    */
   createBurst() {
+    console.log(this)
+    console.log(this.value)
     if (this.value.icon) {
       this.observeIcon()
       return
     }
+    console.log('created----1')
     this.startMoAnimation()
   }
 
   startMoAnimation() {
+    console.log('click')
     this.initMojs()
     this.tuneMojs()
   }
