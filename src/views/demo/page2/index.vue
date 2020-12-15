@@ -12,7 +12,8 @@ export default {
   name: 'page2',
   mounted() {
     console.log('请求dom展示')
-    this.requestDemo()
+    this.requestDemoAny()
+    this.requestDemoGet()
   },
   data() {
     return {
@@ -21,8 +22,21 @@ export default {
     }
   },
   methods: {
-    requestDemo() {
-      return this.$api.DEMO_FETCH().then(res => {
+    requestDemoAny() {
+      return this.$api.DEMO_ANY({ id: '123' }).then(res => {
+        console.log(res)
+        const { id, image, address } = res
+        this.id = id
+        this.address = address
+      })
+    },
+    requestDemoGet() {
+      return this.$api.DEMO_GET({ user: '123123' }).then(res => {
+        console.log(res)
+      })
+    },
+    requestDemoPost() {
+      return this.$api.DEMO_POST().then(res => {
         console.log(res)
         const { id, image, address } = res
         this.id = id
