@@ -5,7 +5,7 @@ const slider = [
     icon: 'folder-o',
     children: [
       { path: '/page1', title: '测试缓存页面' },
-      { path: '/page2', title: '页面 2 展示数据' },
+      { path: '/page2', title: '请求demo' },
       { path: '/page3', title: '页面 3 展示数据' }
     ]
   },

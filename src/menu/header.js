@@ -5,7 +5,7 @@ const header = [
     icon: 'folder-o',
     children: [
       { path: '/page1', title: '页面 1' },
-      { path: '/page2', title: '页面 2' },
+      { path: '/page2', title: '请求demo' },
       { path: '/page3', title: '页面 3' }
     ]
   },
