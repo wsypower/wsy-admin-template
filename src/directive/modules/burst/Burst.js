@@ -1,6 +1,6 @@
 import mojs from '@mojs/core'
 import animation from './animation'
-import ObserveEmitter from '../../model/ObserveModel'
+import ObserveEmitter from '../../model/observeModel.js'
 const defaultOptions = {
   left: '50%',
   top: '50%',
