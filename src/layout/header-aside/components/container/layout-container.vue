@@ -1,12 +1,15 @@
 <template>
-  <div class="layout-container" flex>
+  <div
+    class="layout-container"
+    flex
+  >
     <!-- 主体 侧边栏 -->
     <div
       flex-box="0"
       ref="aside"
       :class="{
-        'd2-theme-container-aside': true,
-        'd2-theme-container-transition': asideTransition
+        'w-theme-container-aside': true,
+        'w-theme-container-transition': asideTransition
       }"
       :style="{
         width: asideCollapse ? asideWidthCollapse : asideWidth,
@@ -16,26 +19,43 @@
       <d2-menu-side />
     </div>
     <!-- 主体 -->
-    <div class="d2-theme-container-main" flex-box="1" flex>
+    <div
+      class="w-theme-container-main"
+      flex-box="1"
+      flex
+    >
       <!-- 搜索 -->
       <transition name="fade-scale">
-        <div v-if="searchActive" class="d2-theme-container-main-layer" flex>
-          <d2-panel-search ref="panelSearch" @close="searchPanelClose" />
+        <div
+          v-if="searchActive"
+          class="w-theme-container-main-layer"
+          flex
+        >
+          <d2-panel-search
+            ref="panelSearch"
+            @close="searchPanelClose"
+          />
         </div>
       </transition>
       <!-- 内容 -->
       <transition name="fade-scale">
         <div
           v-if="!searchActive"
-          class="d2-theme-container-main-layer"
+          class="w-theme-container-main-layer"
           flex="dir:top"
         >
           <!-- tab -->
-          <div class="d2-theme-container-main-header" flex-box="0">
+          <div
+            class="w-theme-container-main-header"
+            flex-box="0"
+          >
             <d2-tabs />
           </div>
           <!-- 页面 -->
-          <div class="d2-theme-container-main-body" flex-box="1">
+          <div
+            class="w-theme-container-main-body"
+            flex-box="1"
+          >
             <transition :name="transitionActive ? 'fade-transverse' : ''">
               <keep-alive :include="keepAlive">
                 <router-view :key="routerViewKey" />
@@ -89,7 +109,7 @@ export default {
 </script>
 <style lang="scss">
 // 注册主题
-@import '~@/assets/style/theme/register.scss';
+@import "~@/assets/style/theme/register.scss";
 .layout-container {
   width: 100%;
   height: 100%;

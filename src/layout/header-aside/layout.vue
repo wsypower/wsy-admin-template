@@ -1,19 +1,19 @@
 <template>
   <div
-    class="d2-layout-header-aside-group"
+    class="w-layout-header-aside-group"
     :style="styleLayoutMainGroup"
     :class="{ grayMode: grayActive }"
   >
-    <!-- 半透明遮罩 -->
-    <div class="d2-layout-header-aside-mask"></div>
-    <!-- 主体内容 -->
+    <!-- [半透明遮罩] -->
+    <div class="w-layout-header-aside-mask"></div>
+    <!-- [主体内容] -->
     <div
-      class="d2-layout-header-aside-content"
+      class="w-layout-header-aside-content"
       flex="dir:top"
     >
-      <!-- 顶栏 -->
+      <!-- [顶栏] -->
       <div
-        class="d2-theme-header"
+        class="w-theme-header"
         :style="{ opacity: this.searchActive ? 0.5 : 1 }"
         flex-box="0"
         flex
@@ -48,25 +48,25 @@
           <!-- <d2-icon name="bars" /> -->
           <menu-icon :open='asideCollapse' />
         </div>
-        <d2-menu-header flex-box="1" />
+        <w-menu-header flex-box="1" />
         <!-- 顶栏右侧 -->
         <div
-          class="d2-header-right"
+          class="w-header-right"
           flex-box="0"
         >
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
-          <d2-header-search @click="handleSearchClick" />
-          <d2-header-fullscreen />
-          <d2-header-theme />
-          <d2-header-size />
-          <d2-header-locales />
-          <d2-header-color />
-          <d2-header-user />
+          <w-header-search @click="handleSearchClick" />
+          <w-header-fullscreen />
+          <w-header-theme />
+          <w-header-size />
+          <w-header-locales />
+          <w-header-color />
+          <w-header-user />
         </div>
       </div>
       <!-- 下面 主体 -->
       <div
-        class="d2-theme-container"
+        class="w-theme-container"
         flex-box="1"
         flex
       >
@@ -79,36 +79,36 @@
 </template>
 
 <script>
-import d2MenuSide from './components/menu-side'
-import d2MenuHeader from './components/menu-header'
-import d2Tabs from './components/tabs'
-import d2HeaderFullscreen from './components/header-fullscreen'
-import d2HeaderLocales from './components/header-locales'
-import d2HeaderSearch from './components/header-search'
-import d2HeaderSize from './components/header-size'
-import d2HeaderTheme from './components/header-theme'
-import d2HeaderUser from './components/header-user'
-import d2HeaderColor from './components/header-color'
-import { mapState, mapGetters, mapActions } from 'vuex'
-import mixinSearch from './mixins/search'
+import wMenuSide from './components/menu-side'
+import wMenuHeader from './components/menu-header'
+import wTabs from './components/tabs'
+import wHeaderFullscreen from './components/header-fullscreen'
+import wHeaderLocales from './components/header-locales'
+import wHeaderSearch from './components/header-search'
+import wHeaderSize from './components/header-size'
+import wHeaderTheme from './components/header-theme'
+import wHeaderUser from './components/header-user'
+import wHeaderColor from './components/header-color'
 import wContainer from './components/container/container.vue'
 import wLayoutContainer from './components/container/layout-container.vue'
+import mixinSearch from './mixins/search'
 import menuIcon from './components/menu-icon'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import 'vue-transition.css'
 export default {
   name: 'd2-layout-header-aside',
   mixins: [mixinSearch],
   components: {
-    d2MenuSide,
-    d2MenuHeader,
-    d2Tabs,
-    d2HeaderFullscreen,
-    d2HeaderLocales,
-    d2HeaderSearch,
-    d2HeaderSize,
-    d2HeaderTheme,
-    d2HeaderUser,
-    d2HeaderColor,
+    wMenuSide,
+    wMenuHeader,
+    wTabs,
+    wHeaderFullscreen,
+    wHeaderLocales,
+    wHeaderSearch,
+    wHeaderSize,
+    wHeaderTheme,
+    wHeaderUser,
+    wHeaderColor,
     wContainer,
     wLayoutContainer,
     menuIcon

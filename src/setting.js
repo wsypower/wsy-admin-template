@@ -38,17 +38,17 @@ export default {
   theme: {
     list: [
       {
-        title: 'd2admin 经典',
+        title: '经典淡雅',
         name: 'd2',
         preview: 'image/theme/d2/preview@2x.png'
       },
       {
-        title: 'Chester',
+        title: '暗色模式',
         name: 'chester',
         preview: 'image/theme/chester/preview@2x.png'
       },
       {
-        title: 'Element',
+        title: '经典蔚蓝',
         name: 'element',
         preview: 'image/theme/element/preview@2x.png'
       },
@@ -70,7 +70,7 @@ export default {
         preview: 'image/theme/star/preview@2x.png'
       },
       {
-        title: 'Tomorrow Night Blue (vsCode)',
+        title: '暗色模式',
         name: 'tomorrow-night-blue',
         preview: 'image/theme/tomorrow-night-blue/preview@2x.png'
       }
