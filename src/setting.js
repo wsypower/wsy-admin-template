@@ -39,8 +39,8 @@ export default {
     list: [
       {
         title: '经典淡雅',
-        name: 'd2',
-        preview: 'image/theme/d2/preview@2x.png'
+        name: 'lightblue',
+        preview: 'image/theme/lightblue/preview@2x.png'
       },
       {
         title: '暗色模式',
