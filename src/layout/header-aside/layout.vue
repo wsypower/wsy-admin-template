@@ -55,12 +55,15 @@
           flex-box="0"
         >
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
-          <w-header-search @click="handleSearchClick" />
-          <w-header-fullscreen />
-          <w-header-theme />
-          <w-header-size />
-          <w-header-locales />
-          <w-header-color />
+          <w-header-search
+            @click="handleSearchClick"
+            v-if="tool.search"
+          />
+          <w-header-fullscreen v-if="tool.fullScreen" />
+          <w-header-theme v-if="tool.theme" />
+          <w-header-size v-if="tool.size" />
+          <w-header-locales v-if="tool.i18n" />
+          <w-header-color v-if="tool.color" />
           <w-header-user />
         </div>
       </div>
@@ -95,6 +98,8 @@ import mixinSearch from './mixins/search'
 import menuIcon from './components/menu-icon'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import 'vue-transition.css'
+import setting from '@/setting'
+
 export default {
   name: 'd2-layout-header-aside',
   mixins: [mixinSearch],
@@ -118,7 +123,19 @@ export default {
       // [侧边栏宽度] 正常状态
       asideWidth: '256px',
       // [侧边栏宽度] 折叠状态
-      asideWidthCollapse: '65px'
+      asideWidthCollapse: '65px',
+      /**
+       * [settring] 的头部工具配置项
+       * --------------------
+       * | search      搜索
+       * | fullScreen  全屏
+       * | theme       主题
+       * | size        设置大小
+       * | i18n        多国语言
+       * | color       颜色设置
+       * --------------------
+       */
+      tool: setting.tool
     }
   },
   computed: {
