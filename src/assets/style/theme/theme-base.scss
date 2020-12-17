@@ -220,6 +220,16 @@
 
       }
 
+      // user部分
+      .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 5px 0 5px 10px;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
       // [菜单] 顶栏
       .el-menu {
         float: left;

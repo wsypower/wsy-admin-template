@@ -11,13 +11,13 @@ $theme-font-color:#fff;
 
 // 消息提示
 $theme-message-info-background-color: #FFFFFF;
-$theme-message-info-text-color: #202D3D;
-$theme-message-info-border-color: #202D3D;
+$theme-message-info-text-color: $color-text-normal;
+$theme-message-info-border-color: $color-border-1;
 
 // container组件
 $theme-container-background-color: rgba(#FFF, 1);
 $theme-container-header-footer-background-color: #FFF;
-$theme-container-border-inner: 1px solid #CFD7E5;
+$theme-container-border-inner: 1px solid #b7becc;
 $theme-container-border-outer: 1px solid #cfd7e5;
 
 $theme-multiple-page-control-color:rgba($color-text-normal, 0.6);
@@ -26,7 +26,7 @@ $theme-multiple-page-control-nav-prev-color: #cfd7e5;
 $theme-multiple-page-control-nav-next-color: #cfd7e5;
 $theme-multiple-page-control-border-color: 1px solid #cfd7e5;
 $theme-multiple-page-control-border-color-active: #FFFFFF;
-$theme-multiple-page-control-background-color:rgba(#fff, 0.6);
+$theme-multiple-page-control-background-color:rgba(#fff, 0.7);
 $theme-multiple-page-control-background-color-active: #FFFFFF;
 
 
@@ -60,18 +60,18 @@ $theme-aside-item-color:$color-text-normal;
 $theme-aside-item-background-color: transparent;
 // 侧边栏上的项目在 hover 时
 $theme-aside-item-color-hover: $theme-color;
-$theme-aside-item-background-color-hover: rgba($theme-color, 0.2);
+$theme-aside-item-background-color-hover: rgba($theme-color, 0.1);
 // 侧边栏上的项目在 focus 时
 $theme-aside-item-color-focus: $theme-color;
-$theme-aside-item-background-color-focus:rgba($theme-color, 0.2);
+$theme-aside-item-background-color-focus:rgba($theme-color, 0.1);
 // 侧边栏上的项目在 active 时
 $theme-aside-item-color-active: #46A0FC;
-$theme-aside-item-background-color-active: rgba($theme-color, 0.2);
+$theme-aside-item-background-color-active: rgba($theme-color, 0.1);
 
 // 侧边栏菜单为空的时候显示的元素
 $theme-aside-menu-empty-icon-color: $theme-color;
 $theme-aside-menu-empty-text-color: $theme-color;
-$theme-aside-menu-empty-background-color: #202D3D;
+$theme-aside-menu-empty-background-color: $color-text-normal;
 $theme-aside-menu-empty-icon-color-hover: #46A0FC;
 $theme-aside-menu-empty-text-color-hover: #46A0FC;
-$theme-aside-menu-empty-background-color-hover: #202D3D;
+$theme-aside-menu-empty-background-color-hover: $color-text-normal;
