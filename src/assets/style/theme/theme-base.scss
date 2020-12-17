@@ -12,7 +12,7 @@
 }
 
 // 整体框架结构
-.d2-layout-header-aside-group {
+.w-layout-header-aside-group {
   height: 100%;
   width: 100%;
   min-width: 900px;
@@ -22,37 +22,37 @@
   position: relative;
 
   // 背景上面的半透明遮罩
-  .d2-layout-header-aside-mask {
+  .w-layout-header-aside-mask {
     @extend %full;
   }
 
   // 内容层
-  .d2-layout-header-aside-content {
+  .w-layout-header-aside-content {
     @extend %full;
 
-    .d2-theme-header {
+    .w-theme-header {
       height: 64px;
 
-      .d2-theme-header-menu {
+      .w-theme-header-menu {
         overflow: hidden;
 
         &.is-scrollable {
           position: relative;
           padding: 0 20px;
 
-          .d2-theme-header-menu__prev,
-          .d2-theme-header-menu__next {
+          .w-theme-header-menu__prev,
+          .w-theme-header-menu__next {
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
           }
         }
 
-        .d2-theme-header-menu__content {
+        .w-theme-header-menu__content {
           height: 100%;
           overflow: hidden;
 
-          .d2-theme-header-menu__scroll {
+          .w-theme-header-menu__scroll {
             white-space: nowrap;
             position: relative;
             -webkit-transition: -webkit-transform .3s;
@@ -64,8 +64,8 @@
           }
         }
 
-        .d2-theme-header-menu__prev,
-        .d2-theme-header-menu__next {
+        .w-theme-header-menu__prev,
+        .w-theme-header-menu__next {
           height: 60px;
           position: absolute;
           top: 0;
@@ -74,13 +74,13 @@
           display: none;
         }
 
-        .d2-theme-header-menu__prev {
+        .w-theme-header-menu__prev {
           left: 0;
           border-top-left-radius: 2px;
           border-bottom-left-radius: 2px;
         }
 
-        .d2-theme-header-menu__next {
+        .w-theme-header-menu__next {
           right: 0;
           border-top-right-radius: 2px;
           border-bottom-right-radius: 2px;
@@ -88,7 +88,7 @@
       }
     }
 
-    .d2-theme-container {
+    .w-theme-container {
       position: relative;
       width: 100%;
       height: 100%;
@@ -109,7 +109,7 @@
         visibility: visible;
       }
 
-      .d2-theme-container-aside {
+      .w-theme-container-aside {
         position: relative;
 
         .d2-layout-header-aside-menu-side {
@@ -118,16 +118,16 @@
         }
       }
 
-      .d2-theme-container-transition {
+      .w-theme-container-transition {
         transition: width .3s;
       }
 
-      .d2-theme-container-main {
+      .w-theme-container-main {
         padding: 0px;
         position: relative;
         overflow: hidden;
 
-        .d2-theme-container-main-layer {
+        .w-theme-container-main-layer {
           position: absolute;
           top: 0px;
           bottom: 0px;
@@ -135,7 +135,7 @@
           right: 0px;
         }
 
-        .d2-theme-container-main-body {
+        .w-theme-container-main-body {
           position: relative;
         }
       }
@@ -144,7 +144,7 @@
 }
 
 // 主题公用
-.d2-layout-header-aside-group {
+.w-layout-header-aside-group {
   &.grayMode {
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
@@ -155,10 +155,10 @@
   }
 
   // 主体
-  .d2-layout-header-aside-content {
+  .w-layout-header-aside-content {
 
     // [布局] 顶栏
-    .d2-theme-header {
+    .w-theme-header {
       height: 64px;
       box-shadow: 0px 2px 10px 0px rgba(4, 0, 0, 0.1);
       z-index: 3;
@@ -220,6 +220,16 @@
 
       }
 
+      // user部分
+      .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 5px 0 5px 10px;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
       // [菜单] 顶栏
       .el-menu {
         float: left;
@@ -237,13 +247,17 @@
 
         .el-menu-item {
           @extend %header-menu-item;
+          height: 100%;
           border-bottom: none;
         }
 
         .el-submenu {
           @extend %header-menu-item;
+          height: 100%;
 
           .el-submenu__title {
+            height: 100%;
+
             border-bottom: none;
           }
         }
@@ -259,7 +273,7 @@
       }
 
       // 顶栏右侧的按钮
-      .d2-header-right {
+      .w-header-right {
         float: right;
         height: 60px;
         display: flex;
@@ -282,14 +296,14 @@
     }
 
     // [布局] 顶栏下面
-    .d2-theme-container {
+    .w-theme-container {
 
       // 侧边栏
-      .d2-theme-container-aside {
+      .w-theme-container-aside {
         box-shadow: 1px 2px 9px 1px rgba(4, 0, 0, 0.16);
         z-index: 3;
 
-        %d2-theme-container-aside-menu-icon {
+        %w-theme-container-aside-menu-icon {
           width: 20px;
           text-align: center;
           font-size: 16px;
@@ -303,7 +317,7 @@
 
           .el-menu-item {
             i {
-              @extend %d2-theme-container-aside-menu-icon;
+              @extend %w-theme-container-aside-menu-icon;
             }
           }
         }
@@ -313,7 +327,7 @@
 
           .el-submenu__title {
             i {
-              @extend %d2-theme-container-aside-menu-icon;
+              @extend %w-theme-container-aside-menu-icon;
             }
 
             .el-submenu__icon-arrow {
@@ -351,10 +365,10 @@
       }
 
       // 右下 主体
-      .d2-theme-container-main {
+      .w-theme-container-main {
 
         // 主体部分分为多页面控制器 和主体
-        .d2-theme-container-main-header {
+        .w-theme-container-main-header {
           height: 41px;
 
           // 多页面控制器
@@ -396,7 +410,7 @@
         }
 
         // 主体
-        .d2-theme-container-main-body {
+        .w-theme-container-main-body {
 
           // 布局组件
           .container-component {

@@ -1,5 +1,5 @@
 // 主题名称
-$theme-name: 'd2';
+$theme-name: 'lightblue';
 // 主题背景颜色
 $theme-bg-color: #ebf1f6;
 // 主题背景图片遮罩
@@ -50,6 +50,8 @@ $theme-header-item-background-color-focus: rgba(#FFF, .5);
 $theme-header-item-color-active: $theme-color;
 $theme-header-item-background-color-active: rgba(#FFF, .5);
 
+// 侧边栏背景颜色
+$theme-aside-background:transparent;
 // 侧边栏上的文字颜色
 $theme-aside-item-color: $color-text-normal;
 $theme-aside-item-background-color: transparent;

@@ -9,12 +9,22 @@
   <div class="container">
     <!-- 搜索 -->
     <transition name="fade-scale">
-      <div v-if="searchActive" class="d2-theme-container-main-layer" flex>
-        <d2-panel-search ref="panelSearch" @close="searchPanelClose" />
+      <div
+        v-if="searchActive"
+        class="w-theme-container-main-layer"
+        flex
+      >
+        <d2-panel-search
+          ref="panelSearch"
+          @close="searchPanelClose"
+        />
       </div>
     </transition>
     <transition name="fade-scale">
-      <div class="container-main" v-if="!searchActive">
+      <div
+        class="container-main"
+        v-if="!searchActive"
+      >
         <transition :name="transition">
           <router-view class="container-view"></router-view>
         </transition>
@@ -38,7 +48,7 @@ export default {
 </script>
 <style lang="scss">
 // 注册主题
-@import '~@/assets/style/theme/register.scss';
+@import "~@/assets/style/theme/register.scss";
 .container {
   width: 100%;
   height: 100%;

@@ -9,17 +9,17 @@ export default {
     return (
       <div
         flex="cross:center"
-        class={{ 'd2-theme-header-menu': true, 'is-scrollable': this.isScroll }}
+        class={{ 'w-theme-header-menu': true, 'is-scrollable': this.isScroll }}
         ref="page"
       >
         <div
           ref="content"
-          class="d2-theme-header-menu__content"
+          class="w-theme-header-menu__content"
           flex-box="1"
           flex
         >
           <div
-            class="d2-theme-header-menu__scroll"
+            class="w-theme-header-menu__scroll"
             flex-box="0"
             style={{ transform: `translateX(${this.currentTranslateX}px)` }}
             ref="scroll"
@@ -39,7 +39,7 @@ export default {
         {this.isScroll
           ? [
             <div
-              class="d2-theme-header-menu__prev"
+              class="w-theme-header-menu__prev"
               flex="main:center cross:center"
               flex-box="0"
               onClick={() => this.scroll('left')}
@@ -47,7 +47,7 @@ export default {
               <i class="el-icon-arrow-left"></i>
             </div>,
             <div
-              class="d2-theme-header-menu__next"
+              class="w-theme-header-menu__next"
               flex="main:center cross:center"
               flex-box="0"
               onClick={() => this.scroll('right')}

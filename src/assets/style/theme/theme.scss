@@ -20,10 +20,10 @@
   }
 
   // 背景图片和遮罩
-  .d2-layout-header-aside-group {
+  .w-layout-header-aside-group {
     background-color: $theme-bg-color;
 
-    .d2-layout-header-aside-mask {
+    .w-layout-header-aside-mask {
       background: $theme-bg-mask;
     }
   }
@@ -82,7 +82,7 @@
   }
 
   // 顶栏
-  .d2-theme-header {
+  .w-theme-header {
     background-color: $theme-header-bg;
 
     .logo-group {
@@ -95,10 +95,10 @@
     }
 
     // 顶栏菜单空间不足时显示的滚动控件
-    .d2-theme-header-menu {
+    .w-theme-header-menu {
 
-      .d2-theme-header-menu__prev,
-      .d2-theme-header-menu__next {
+      .w-theme-header-menu__prev,
+      .w-theme-header-menu__next {
         color: $theme-header-item-color;
         background: $theme-header-item-background-color;
 
@@ -141,11 +141,11 @@
         }
 
         &:hover {
-          color: $theme-header-item-color-hover;
-          background: $theme-header-item-background-color-hover;
+          color: $theme-header-item-color-hover !important;
+          background: $theme-header-item-background-color-hover !important;
 
           i.fa {
-            color: inherit;
+            color: inherit !important;
           }
         }
 
@@ -230,7 +230,7 @@
     }
 
     // 顶栏右侧
-    .d2-header-right {
+    .w-header-right {
       .btn-text {
         color: $theme-header-item-color;
 
@@ -245,10 +245,11 @@
   }
 
   // [布局] 顶栏下面
-  .d2-theme-container {
+  .w-theme-container {
 
     // 侧边栏
-    .d2-theme-container-aside {
+    .w-theme-container-aside {
+      background-color: $theme-aside-background;
 
       // 菜单为空的时候显示的信息
       .d2-layout-header-aside-menu-empty {
@@ -346,10 +347,10 @@
       }
     }
 
-    .d2-theme-container-main {
+    .w-theme-container-main {
 
       // 主体部分分为多页面控制器 和主体
-      .d2-theme-container-main-header {
+      .w-theme-container-main-header {
 
         // 多页面控制器
         .d2-multiple-page-control {
@@ -410,7 +411,7 @@
       }
 
       // 主体
-      .d2-theme-container-main-body {
+      .w-theme-container-main-body {
 
         // 布局组件
         .container-component {
