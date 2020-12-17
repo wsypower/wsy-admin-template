@@ -45,8 +45,8 @@
           @click="handleToggleAside"
           flex-box="0"
         >
-          <!-- <d2-icon name="bars" /> -->
-          <menu-icon :open='asideCollapse' />
+          <d2-icon name="bars" />
+          <!-- <menu-icon :open='asideCollapse' /> -->
         </div>
         <w-menu-header flex-box="1" />
         <!-- 顶栏右侧 -->

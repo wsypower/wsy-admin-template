@@ -1,5 +1,5 @@
 {
-  "name": "d2-admin",
+  "name": "wsy-admin",
   "version": "1.20.1",
   "scripts": {
     "serve": "vue-cli-service serve --open",

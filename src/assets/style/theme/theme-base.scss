@@ -237,13 +237,17 @@
 
         .el-menu-item {
           @extend %header-menu-item;
+          height: 100%;
           border-bottom: none;
         }
 
         .el-submenu {
           @extend %header-menu-item;
+          height: 100%;
 
           .el-submenu__title {
+            height: 100%;
+
             border-bottom: none;
           }
         }
