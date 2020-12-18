@@ -15,7 +15,7 @@
         >
           <d2-contextmenu-list
             :menulist="
-              tagName === '/home' ? contextmenuListIndex : contextmenuList
+              tagName === '/index' ? contextmenuListIndex : contextmenuList
             "
             @rowClick="contextmenuClick"
           />
@@ -108,7 +108,7 @@ export default {
         { icon: 'times', title: '关闭其它', value: 'other' },
         { icon: 'times-circle', title: '关闭全部', value: 'all' }
       ],
-      tagName: '/home'
+      tagName: '/index'
     }
   },
   computed: {
@@ -139,7 +139,7 @@ export default {
      * @param {Object} page 其中一个标签页
      */
     isTabClosable(page) {
-      return page.name !== 'home'
+      return page.name !== 'index'
     },
     /**
      * @description 右键菜单功能点击

@@ -1,8 +1,8 @@
 export default [
   // 首页
   {
-    path: 'home',
-    name: 'home',
+    path: 'index',
+    name: 'index',
     meta: {
       auth: true,
       title: '首页'

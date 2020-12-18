@@ -19,7 +19,7 @@
         flex
       >
         <router-link
-          to="/home"
+          to="/index"
           :class="{ 'logo-group': true, 'logo-transition': asideTransition }"
           :style="{ width: asideCollapse ? asideWidthCollapse : asideWidth }"
           flex-box="0"

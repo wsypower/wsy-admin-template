@@ -58,7 +58,7 @@ export default {
       state.opened = value
         .map(opened => {
           // 忽略首页
-          if (opened.fullPath === '/home') {
+          if (opened.fullPath === '/index') {
             valid.push(1)
             return opened
           }
@@ -223,7 +223,7 @@ export default {
       await dispatch('opened2db')
       // 决定最后停留的页面
       if (isCurrent) {
-        const { name = 'home', params = {}, query = {} } = newPage
+        const { name = 'index', params = {}, query = {} } = newPage
         const routerObj = { name, params, query }
         await router.push(routerObj)
       }
@@ -243,7 +243,7 @@ export default {
       if (currentIndex > 0) {
         // 删除打开的页面 并在缓存设置中删除
         for (let i = state.opened.length - 1; i >= 0; i--) {
-          if (state.opened[i].name === 'home' || i >= currentIndex) {
+          if (state.opened[i].name === 'index' || i >= currentIndex) {
             continue
           }
 
@@ -271,7 +271,7 @@ export default {
       })
       // 删除打开的页面 并在缓存设置中删除
       for (let i = state.opened.length - 1; i >= 0; i--) {
-        if (state.opened[i].name === 'home' || currentIndex >= i) {
+        if (state.opened[i].name === 'index' || currentIndex >= i) {
           continue
         }
 
@@ -298,7 +298,7 @@ export default {
       })
       // 删除打开的页面数据 并更新缓存设置
       for (let i = state.opened.length - 1; i >= 0; i--) {
-        if (state.opened[i].name === 'home' || currentIndex === i) {
+        if (state.opened[i].name === 'index' || currentIndex === i) {
           continue
         }
 
@@ -319,7 +319,7 @@ export default {
     async closeAll({ state, commit, dispatch }) {
       // 删除打开的页面 并在缓存设置中删除
       for (let i = state.opened.length - 1; i >= 0; i--) {
-        if (state.opened[i].name === 'home') {
+        if (state.opened[i].name === 'index') {
           continue
         }
 
@@ -329,8 +329,8 @@ export default {
       // 持久化
       await dispatch('opened2db')
       // 关闭所有的标签页后需要判断一次现在是不是在首页
-      if (router.app.$route.name !== 'home') {
-        await router.push({ name: 'home' })
+      if (router.app.$route.name !== 'index') {
+        await router.push({ name: 'index' })
       }
     }
   },

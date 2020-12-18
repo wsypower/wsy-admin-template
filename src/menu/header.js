@@ -1,5 +1,5 @@
 const header = [
-  { path: '/home', title: '首页', icon: 'home' },
+  { path: '/index', title: '首页', icon: 'home' },
   {
     title: '切换容器full',
     icon: 'folder-o',

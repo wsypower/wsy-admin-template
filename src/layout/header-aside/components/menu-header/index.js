@@ -88,7 +88,7 @@ export default {
         }
         // FIX:首次加载时没有对应到header-menu指定的路径
         if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
-          routerToPAth = '/home'
+          routerToPAth = '/index'
         }
         this.active = routerToPAth
         this.$refs.headerMenu &&

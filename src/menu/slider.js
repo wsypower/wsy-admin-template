@@ -1,5 +1,5 @@
 const slider = [
-  { path: '/home', title: '首页展示数据', icon: 'home' },
+  { path: '/index', title: '首页展示数据', icon: 'home' },
   { path: '/publish', title: '发布系统', icon: 'home' },
   { path: '/add', title: '新增系统', icon: 'home' },
   { path: '/list', title: '列表系统', icon: 'home' },
