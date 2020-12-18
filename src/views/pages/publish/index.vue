@@ -1,6 +1,6 @@
 <template>
   <div class="publish-index">
-    publish-index
+    <router-view></router-view>
   </div>
 </template>
 

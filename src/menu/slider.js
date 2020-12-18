@@ -1,8 +1,24 @@
 const slider = [
   { path: '/index', title: '首页展示数据', icon: 'home' },
-  { path: '/publish', title: '发布系统', icon: 'home' },
-  { path: '/add', title: '新增系统', icon: 'home' },
-  { path: '/list', title: '列表系统', icon: 'home' },
+  {
+    path: '/publish',
+    title: '发布系统',
+    icon: 'home',
+    children: [
+      {
+        path: '/publish/list',
+        title: '发布系统列表项',
+        icon: 'home',
+        hide: true
+      },
+      {
+        path: '/publish/add',
+        title: '新增发布',
+        icon: 'home',
+        hide: true
+      }
+    ]
+  },
   {
     title: '功能试验',
     icon: 'folder-o',

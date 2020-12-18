@@ -1,4 +1,4 @@
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import { createMenu } from '../libs/util.menu'
 import BScroll from 'better-scroll'
 import util from '@/libs/util.js'
@@ -11,7 +11,7 @@ export default {
           collapse={this.asideCollapse}
           collapseTransition={this.asideTransition}
           uniqueOpened={true}
-          defaultActive={this.$route.fullPath}
+          defaultActive={this.active}
           ref="menu"
           onSelect={this.handleMenuSelect}
         >
@@ -32,11 +32,13 @@ export default {
   data() {
     return {
       asideHeight: 300,
-      BS: null
+      BS: null,
+      active: ''
     }
   },
   computed: {
-    ...mapState('w-admin/menu', ['aside', 'asideCollapse', 'asideTransition'])
+    ...mapState('w-admin/menu', ['aside', 'asideCollapse', 'asideTransition']),
+    ...mapGetters('w-admin/menu', ['deepMenuAside'])
   },
   watch: {
     // 折叠和展开菜单的时候销毁 better scroll
@@ -45,6 +47,21 @@ export default {
       setTimeout(() => {
         this.scrollInit()
       }, 500)
+    },
+    '$route.matched': {
+      handler() {
+        let routerToPAth = this.$route.fullPath
+        // 尝试匹配出dirname路径
+        const rootRouter = routerToPAth.match(/^\/(\w-)*[^\/]*/gi)[0]
+        if (
+          this.deepMenuAside.some(item => new RegExp(rootRouter).test(item))
+        ) {
+          // 如果符合就赋值
+          routerToPAth = rootRouter
+        }
+        this.active = routerToPAth
+      },
+      immediate: true
     }
   },
   mounted() {

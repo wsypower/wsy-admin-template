@@ -4,7 +4,12 @@
  * @param {Object} menu 菜单项
  */
 export function createMenu(h, menu) {
-  if (menu.children === undefined) return elMenuItem.call(this, h, menu)
+  if (
+    menu.children === undefined ||
+    !menu.children.filter(c => !c.hide).length
+  ) {
+    return elMenuItem.call(this, h, menu)
+  }
   return elSubmenu.call(this, h, menu)
 }
 
@@ -19,6 +24,9 @@ export function elMenuItem(h, menu) {
   else if (menu.iconSvg) {
     icon = <d2-icon-svg name={menu.iconSvg} />
   } else icon = <i class="fa fa-file-o" />
+  if (menu.hide) {
+    return ''
+  }
   return (
     <el-menu-item
       key={menu.path}

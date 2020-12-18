@@ -107,6 +107,7 @@ export default {
      * menu选择回调
      */
     async handleMenuSelect(index, indexPath) {
+      console.log(index)
       try {
         if (/^w-menu-empty-\d+$/.test(index) || index === undefined) {
           this.$message.warning('功能暂未上线')
