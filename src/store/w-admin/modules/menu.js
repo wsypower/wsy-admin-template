@@ -35,8 +35,11 @@ export default {
     asideTransition: setting.menu.asideTransition
   },
   getters: {
-    filterMenuAside(state) {
+    deepMenuAside(state) {
       return collectPath(state.aside)
+    },
+    deepMenuHeader(state) {
+      return collectPath(state.header)
     }
   },
   actions: {

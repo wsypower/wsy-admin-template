@@ -47,7 +47,7 @@ export default ({
     // 无论GET POST 只要路径是demo
     mock.onPost('demo/post').reply(config => {
       // 您可以这样在拦截请求时获取携带的数据
-      const data = tools.parse(config.data)
+      // const data = tools.parse(config.data)
       // 模拟正确的返回 并使用 faker 生成假数据
       return tools.responseSuccess({
         rep: '这是POST请求'
@@ -72,10 +72,8 @@ export default ({
     // 模拟数据
     // 无论GET POST 只要路径是demo
     mock.onGet('demo/get').reply(config => {
-      console.log(config)
       // 您可以这样在拦截请求时获取携带的数据
-      const params = config.params
-      console.log(params)
+      // const params = config.params
       // 模拟正确的返回 并使用 faker 生成假数据
       return tools.responseSuccess({
         rep: '这是get请求'

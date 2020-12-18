@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     ...mapState('w-admin/menu', ['header']),
-    ...mapGetters('w-admin/menu', ['filterMenuAside'])
+    ...mapGetters('w-admin/menu', ['deepMenuAside', 'deepMenuHeader'])
   },
   data() {
     return {
@@ -81,15 +81,16 @@ export default {
   watch: {
     '$route.matched': {
       handler(val) {
-        console.log('header-menu', val)
-
-        console.log(this.filterMenuAside)
-        const routerToPAth = val[val.length - 1].path
-        if (this.active !== '' && this.filterMenuAside.includes(routerToPAth)) {
-          console.log('侧面有这个数据')
+        let routerToPAth = val[val.length - 1].path
+        // 只要侧边栏有这个path 头部menu就原位置保持高量
+        if (this.active !== '' && this.deepMenuAside.includes(routerToPAth)) {
           return
         }
-        this.active = val[val.length - 1].path
+        // FIX:首次加载时没有对应到header-menu指定的路径
+        if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
+          routerToPAth = '/home'
+        }
+        this.active = routerToPAth
         this.$refs.headerMenu &&
           this.$nextTick(() => {
             this.setSliderLine()
