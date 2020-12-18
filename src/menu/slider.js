@@ -8,7 +8,8 @@ const slider = [
       {
         path: '/publish/list',
         title: '发布系统列表项',
-        icon: 'home'
+        icon: 'home',
+        hide: true
       },
       {
         path: '/publish/add',

@@ -86,9 +86,15 @@ export default {
         if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
           routerToPAth = this.deepMenuAside[0]
         }
-        // 只要侧边栏有这个path 头部menu就原位置保持高量
-        if (this.active !== '' && this.deepMenuAside.includes(routerToPAth)) {
-          return
+        if (this.active !== '') {
+          if (
+            // FIX:只要侧边栏有这个path的match路径 头部menu就原位置保持高量
+            this.deepMenuAside.includes(val.slice(-2)[0].path) ||
+            // FIX:只要侧边栏有这个path 头部menu就原位置保持高量
+            this.deepMenuAside.includes(routerToPAth)
+          ) {
+            return
+          }
         }
         this.active = routerToPAth
         this.$refs.headerMenu &&

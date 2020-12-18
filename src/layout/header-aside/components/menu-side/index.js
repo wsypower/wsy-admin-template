@@ -50,14 +50,14 @@ export default {
     },
     '$route.matched': {
       handler(val) {
-        const currentPath = val[val.length - 1].path
         let routerToPAth = this.$route.fullPath
-        if (this.deepMenuAside.includes(currentPath)) {
+        // 如果当前路径就在侧边栏内,直接赋值返回
+        if (this.deepMenuAside.includes(routerToPAth)) {
           this.active = routerToPAth
           return
         }
         // 尝试匹配出dirname路径
-        const rootRouter = routerToPAth.match(/^\/(\w-)*[^\/]*/gi)[0]
+        const rootRouter = val.slice(-2)[0].path
         if (
           this.deepMenuAside.some(item => new RegExp(rootRouter).test(item))
         ) {

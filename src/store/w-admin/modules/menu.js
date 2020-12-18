@@ -3,7 +3,7 @@ import setting from '@/setting.js'
 
 /**
  * @description
- * 收集menu真实path
+ * 收集menu有效path
  * @author wsy
  * @date 2020-12-10  20:07:54
  * @param {ArrAy}  header/aside
@@ -11,10 +11,9 @@ import setting from '@/setting.js'
 const collectPath = menu => {
   return menu
     .reduce((collect, router) => {
+      router.path && !router.hide && collect.push(router.path)
       return collect.concat(
-        Array.isArray(router.children)
-          ? collectPath(router.children)
-          : router.path
+        Array.isArray(router.children) ? collectPath(router.children) : []
       )
     }, [])
     .filter(
