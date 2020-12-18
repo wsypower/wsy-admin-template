@@ -58,7 +58,7 @@
           >
             <transition :name="transitionActive ? 'fade-transverse' : ''">
               <keep-alive :include="keepAlive">
-                <router-view :key="routerViewKey" />
+                <router-view :key="routerViewKey" class="layout-content-main-posions" />
               </keep-alive>
             </transition>
           </div>

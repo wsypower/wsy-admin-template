@@ -137,6 +137,10 @@
 
         .w-theme-container-main-body {
           position: relative;
+
+          .layout-content-main-posions {
+            position: absolute;
+          }
         }
       }
     }

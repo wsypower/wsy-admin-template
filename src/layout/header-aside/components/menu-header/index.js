@@ -82,13 +82,13 @@ export default {
     '$route.matched': {
       handler(val) {
         let routerToPAth = val[val.length - 1].path
+        // FIX:首次加载时没有对应到header-menu指定的路径
+        if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
+          routerToPAth = this.deepMenuAside[0]
+        }
         // 只要侧边栏有这个path 头部menu就原位置保持高量
         if (this.active !== '' && this.deepMenuAside.includes(routerToPAth)) {
           return
-        }
-        // FIX:首次加载时没有对应到header-menu指定的路径
-        if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
-          routerToPAth = '/index'
         }
         this.active = routerToPAth
         this.$refs.headerMenu &&
