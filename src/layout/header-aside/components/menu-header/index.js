@@ -1,5 +1,5 @@
 import { throttle } from 'lodash'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import { createMenu } from '../libs/util.menu'
 import util from '@/libs/util.js'
 import anime from 'animejs/lib/anime.es.js'
@@ -60,7 +60,8 @@ export default {
     )
   },
   computed: {
-    ...mapState('w-admin/menu', ['header'])
+    ...mapState('w-admin/menu', ['header']),
+    ...mapGetters('w-admin/menu', ['filterMenuAside'])
   },
   data() {
     return {
@@ -80,6 +81,14 @@ export default {
   watch: {
     '$route.matched': {
       handler(val) {
+        console.log('header-menu', val)
+
+        console.log(this.filterMenuAside)
+        const routerToPAth = val[val.length - 1].path
+        if (this.active !== '' && this.filterMenuAside.includes(routerToPAth)) {
+          console.log('侧面有这个数据')
+          return
+        }
         this.active = val[val.length - 1].path
         this.$refs.headerMenu &&
           this.$nextTick(() => {
@@ -106,6 +115,10 @@ export default {
           await this.setContainerCompAnimation(indexPath)
           this.$router.push({
             path: index
+          })
+          this.$nextTick(() => {
+            this.setSliderLine()
+            this.sliderAnima()
           })
         }
       } catch (error) {

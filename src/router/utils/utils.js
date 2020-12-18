@@ -28,12 +28,15 @@ const collectRouter = () => {
     const routerModules = routerContext(route)
     // 如果文件为导出为空对象跳过
     if (!Object.keys(routerModules).length) {
-      // 书写错误提示（阅读源码可跳过）
+      // 书写错误提示
       routerError(route)
       return modules
     }
     // 兼容 import export 和 require module.export 两种规范
-    modules[routerKey] = routerModules.default || routerModules
+    // FIX:如果modules内已经挂载key值就合并数组
+    modules[routerKey] = (modules[routerKey] || []).concat(
+      routerModules.default || routerModules
+    )
     return modules
   }, {})
 }
