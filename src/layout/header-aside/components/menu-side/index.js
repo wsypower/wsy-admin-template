@@ -49,8 +49,13 @@ export default {
       }, 500)
     },
     '$route.matched': {
-      handler() {
+      handler(val) {
+        const currentPath = val[val.length - 1].path
         let routerToPAth = this.$route.fullPath
+        if (this.deepMenuAside.includes(currentPath)) {
+          this.active = routerToPAth
+          return
+        }
         // 尝试匹配出dirname路径
         const rootRouter = routerToPAth.match(/^\/(\w-)*[^\/]*/gi)[0]
         if (
