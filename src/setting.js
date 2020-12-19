@@ -37,6 +37,7 @@ export default {
   // 头部显示的工具按钮
   tool: {
     search: true,
+    notification: true,
     fullScreen: true,
     theme: true,
     size: true,

@@ -240,6 +240,17 @@
             background: $theme-header-item-background-color-hover;
           }
         }
+
+        .bell {
+          svg {
+            stroke: $theme-header-item-color;
+
+            path {
+              stroke: $theme-header-item-color;
+              fill: $theme-header-item-color;
+            }
+          }
+        }
       }
     }
   }

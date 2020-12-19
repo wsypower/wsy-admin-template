@@ -54,6 +54,8 @@
           class="w-header-right"
           flex-box="0"
         >
+
+          <w-notification v-if="tool.notification" />
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
           <w-header-search
             @click="handleSearchClick"
@@ -94,6 +96,7 @@ import wHeaderUser from './components/header-user'
 import wHeaderColor from './components/header-color'
 import wContainer from './components/container/container.vue'
 import wLayoutContainer from './components/container/layout-container.vue'
+import wNotification from './components/w-notification/index.vue'
 import mixinSearch from './mixins/search'
 import menuIcon from './components/menu-icon'
 import { mapState, mapGetters, mapActions } from 'vuex'
@@ -116,6 +119,7 @@ export default {
     wHeaderColor,
     wContainer,
     wLayoutContainer,
+    wNotification,
     menuIcon
   },
   data() {
@@ -161,8 +165,8 @@ export default {
     styleLayoutMainGroup() {
       return this.themeActiveSetting.backgroundImage
         ? {
-          backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
-        }
+            backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
+          }
         : {}
     },
     /**

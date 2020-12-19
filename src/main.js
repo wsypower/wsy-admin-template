@@ -39,5 +39,7 @@ new Vue({
     this.$store.commit('w-admin/ua/get')
     // 初始化全屏监听
     this.$store.dispatch('w-admin/fullscreen/listen')
+    // 开始用socket.io监听badge数据
+    this.$store.dispatch('w-admin/badge/getBadge')
   }
 }).$mount('#app')
