@@ -12,7 +12,6 @@ export default {
     setBadge(state, { badgeNum, data }) {
       state.badge += badgeNum
       state.data = data
-      console.log(state.badge)
     },
     clear(state) {
       state.badge = 0

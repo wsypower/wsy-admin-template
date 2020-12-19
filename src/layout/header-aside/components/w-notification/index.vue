@@ -1,34 +1,37 @@
 <template>
-  <div>
-    <el-tooltip
-      effect="dark"
-      content="未读信息"
-      placement="bottom"
+  <div class="notifiy-warp">
+    <el-button
+      class=" btn-text can-hover notifiy"
+      type="text"
+      @click="toggle"
     >
-      <el-button
-        class=" btn-text can-hover notifiy"
-        type="text"
-        @click="toggle"
+      <el-badge
+        v-if="badgeNums"
+        :value="badgeNums"
+        class="badge"
       >
-        <el-badge
-          v-if="badgeNums"
-          :value="badgeNums"
-          class="badge"
-        >
-        </el-badge>
-        <div
-          class="bell"
-          ref='bell'
-        ></div>
-      </el-button>
-    </el-tooltip>
+      </el-badge>
+      <div
+        class="bell"
+        ref='bell'
+      ></div>
+    </el-button>
     <el-drawer
-      title="我是标题"
       :visible.sync="drawer"
       :with-header="false"
-      :modal-append-to-body="false"
+      :modal='false'
+      style="outline:none;"
     >
-      <span>我来啦!</span>
+      <div class="drawer-content">
+        <el-card
+          shadow="always"
+          class="el-card-warp"
+        >
+          <div class="card">
+            <d2-icon name="github" />
+          </div>
+        </el-card>
+      </div>
     </el-drawer>
   </div>
 </template>
@@ -85,7 +88,7 @@ export default {
     toggle() {
       this.clearBadge()
       this.stop()
-      this.drawer = true
+      // this.drawer = true
     },
     stop() {
       this.Notifi.stop()
@@ -98,32 +101,53 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.notifiy {
-  width: 42px;
-  height: 48px;
-  position: relative;
-  right: 0px;
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  .badge {
-    top: -0px;
-    right: -7px;
-    position: absolute;
-    z-index: 5;
-  }
-  .bell {
-    width: 24px;
-    height: 40px;
+.notifiy-warp {
+  .notifiy {
+    width: 42px;
+    height: 48px;
     position: relative;
-    right: 4px;
-    ::v-deep {
-      svg {
-        stroke-width: 42px !important;
-        path {
-          stroke-width: 45px !important;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    .badge {
+      top: -0px;
+      right: -7px;
+      position: absolute;
+      z-index: 5;
+    }
+    .bell {
+      width: 24px;
+      height: 40px;
+      position: relative;
+      right: 4px;
+      ::v-deep {
+        svg {
+          stroke-width: 42px !important;
+          path {
+            stroke-width: 45px !important;
+          }
         }
       }
+    }
+  }
+  .drawer-content {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    ::v-deep {
+      .el-card__body {
+        padding: 0px;
+      }
+    }
+
+    .card {
+      width: 100%;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
     }
   }
 }
