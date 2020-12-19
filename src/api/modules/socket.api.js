@@ -14,12 +14,11 @@ export default ({
    * @param {Object} data 请求携带的信息
    */
   DEMO_SOCKET(data = {}) {
-    let num = 10
     // 模拟数据
     mock.onAny('demo/socket').reply(config => {
       // 模拟正确的返回 并使用 faker 生成假数据
       return tools.responseSuccess({
-        badgeNum: num++,
+        badgeNum: 1,
         data: {}
       })
       // 模拟失败的返回

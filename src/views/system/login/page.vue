@@ -2,18 +2,23 @@
   <div class="page-login">
     <div class="page-login--layer page-login--layer-area">
       <ul class="circles">
-        <li v-for="n in 10" :key="n"></li>
+        <li
+          v-for="n in 10"
+          :key="n"
+        ></li>
       </ul>
     </div>
     <div
       class="page-login--layer page-login--layer-time"
-      flex="main:center cross:center">
+      flex="main:center cross:center"
+    >
       {{time}}
     </div>
     <div class="page-login--layer">
       <div
         class="page-login--content"
-        flex="dir:top main:justify cross:stretch box:justify">
+        flex="dir:top main:justify cross:stretch box:justify"
+      >
         <div class="page-login--content-header">
           <p class="page-login--content-header-motto">
             时间是一切财富中最宝贵的财富
@@ -21,9 +26,13 @@
         </div>
         <div
           class="page-login--content-main"
-          flex="dir:top main:center cross:center">
+          flex="dir:top main:center cross:center"
+        >
           <!-- logo -->
-          <img class="page-login--logo" src="./image/logo@2x.png">
+          <img
+            class="page-login--logo"
+            src="./image/logo@2x.png"
+          >
           <!-- form -->
           <div class="page-login--form">
             <el-card shadow="never">
@@ -32,30 +41,43 @@
                 label-position="top"
                 :rules="rules"
                 :model="formLogin"
-                size="default">
+                size="default"
+              >
                 <el-form-item prop="username">
                   <el-input
                     type="text"
                     v-model="formLogin.username"
-                    placeholder="用户名">
-                    <i slot="prepend" class="fa fa-user-circle-o"></i>
+                    placeholder="用户名"
+                  >
+                    <i
+                      slot="prepend"
+                      class="fa fa-user-circle-o"
+                    ></i>
                   </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
                   <el-input
                     type="password"
                     v-model="formLogin.password"
-                    placeholder="密码">
-                    <i slot="prepend" class="fa fa-keyboard-o"></i>
+                    placeholder="密码"
+                  >
+                    <i
+                      slot="prepend"
+                      class="fa fa-keyboard-o"
+                    ></i>
                   </el-input>
                 </el-form-item>
                 <el-form-item prop="code">
                   <el-input
                     type="text"
                     v-model="formLogin.code"
-                    placeholder="验证码">
+                    placeholder="验证码"
+                  >
                     <template slot="append">
-                      <img class="login-code" src="./image/login-code.png">
+                      <img
+                        class="login-code"
+                        src="./image/login-code.png"
+                      >
                     </template>
                   </el-input>
                 </el-form-item>
@@ -63,19 +85,28 @@
                   size="default"
                   @click="submit"
                   type="primary"
-                  class="button-login">
+                  class="button-login"
+                >
                   登录
                 </el-button>
               </el-form>
             </el-card>
             <p
               class="page-login--options"
-              flex="main:justify cross:center">
-              <span><d2-icon name="question-circle"/> 忘记密码</span>
+              flex="main:justify cross:center"
+            >
+              <span>
+                <d2-icon name="question-circle" /> 忘记密码
+              </span>
               <span>注册用户</span>
             </p>
             <!-- quick login -->
-            <el-button class="page-login--quick" size="default" type="info" @click="dialogVisible = true">
+            <el-button
+              class="page-login--quick"
+              size="default"
+              type="info"
+              @click="dialogVisible = true"
+            >
               快速选择用户（测试功能）
             </el-button>
           </div>
@@ -85,13 +116,14 @@
             <a
               v-for="language in $languages"
               :key="language.value"
-              @click="onChangeLocale(language.value)">
+              @click="onChangeLocale(language.value)"
+            >
               {{ language.label }}
             </a>
           </p>
           <p class="page-login--content-footer-copyright">
             Copyright
-            <d2-icon name="copyright"/>
+            <d2-icon name="copyright" />
             2018 D2 Projects 开源组织出品
             <a href="https://github.com/FairyEver">
               @FairyEver
@@ -108,11 +140,24 @@
     <el-dialog
       title="快速选择用户"
       :visible.sync="dialogVisible"
-      width="400px">
-      <el-row :gutter="10" style="margin: -20px 0px -10px 0px;">
-        <el-col v-for="(user, index) in users" :key="index" :span="8">
-          <div class="page-login--quick-user" @click="handleUserBtnClick(user)">
-            <d2-icon name="user-circle-o"/>
+      :modal-append-to-body="false"
+      width="400px"
+    >
+
+      <el-row
+        :gutter="10"
+        style="margin: -20px 0px -10px 0px;"
+      >
+        <el-col
+          v-for="(user, index) in users"
+          :key="index"
+          :span="8"
+        >
+          <div
+            class="page-login--quick-user"
+            @click="handleUserBtnClick(user)"
+          >
+            <d2-icon name="user-circle-o" />
             <span>{{user.name}}</span>
           </div>
         </el-col>
@@ -126,10 +171,8 @@ import dayjs from 'dayjs'
 import { mapActions } from 'vuex'
 import localeMixin from '@/locales/mixin.js'
 export default {
-  mixins: [
-    localeMixin
-  ],
-  data () {
+  mixins: [localeMixin],
+  data() {
     return {
       timeInterval: null,
       time: dayjs().format('HH:mm:ss'),
@@ -184,26 +227,24 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.timeInterval = setInterval(() => {
       this.refreshTime()
     }, 1000)
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearInterval(this.timeInterval)
   },
   methods: {
-    ...mapActions('w-admin/account', [
-      'login'
-    ]),
-    refreshTime () {
+    ...mapActions('w-admin/account', ['login']),
+    refreshTime() {
       this.time = dayjs().format('HH:mm:ss')
     },
     /**
      * @description 接收选择一个用户快速登录的事件
      * @param {Object} user 用户信息
      */
-    handleUserBtnClick (user) {
+    handleUserBtnClick(user) {
       this.formLogin.username = user.username
       this.formLogin.password = user.password
       this.submit()
@@ -212,8 +253,8 @@ export default {
      * @description 提交表单
      */
     // 提交登录信息
-    submit () {
-      this.$refs.loginForm.validate((valid) => {
+    submit() {
+      this.$refs.loginForm.validate(valid => {
         if (valid) {
           // 登录
           // 注意 这里的演示没有传验证码
@@ -221,11 +262,10 @@ export default {
           this.login({
             username: this.formLogin.username,
             password: this.formLogin.password
+          }).then(() => {
+            // 重定向对象不存在则返回顶层路径
+            this.$router.replace(this.$route.query.redirect || '/')
           })
-            .then(() => {
-              // 重定向对象不存在则返回顶层路径
-              this.$router.replace(this.$route.query.redirect || '/')
-            })
         } else {
           // 登录表单校验失败
           this.$message.error('表单校验失败，请检查')
@@ -239,7 +279,7 @@ export default {
 <style lang="scss">
 .page-login {
   @extend %unable-select;
-  $backgroundColor: #F0F2F5;
+  $backgroundColor: #f0f2f5;
   // ---
   background-color: $backgroundColor;
   height: 100%;
@@ -353,7 +393,7 @@ export default {
       color: $color-text-normal;
       a {
         color: $color-text-normal;
-        margin: 0 .5em;
+        margin: 0 0.5em;
         &:hover {
           color: $color-text-main;
         }
@@ -399,16 +439,16 @@ export default {
       list-style: none;
       width: 20px;
       height: 20px;
-      background: #FFF;
+      background: #fff;
       animation: animate 25s linear infinite;
       bottom: -200px;
       @keyframes animate {
-        0%{
+        0% {
           transform: translateY(0) rotate(0deg);
           opacity: 1;
           border-radius: 0;
         }
-        100%{
+        100% {
           transform: translateY(-1000px) rotate(720deg);
           opacity: 0;
           border-radius: 50%;

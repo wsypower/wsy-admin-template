@@ -1,16 +1,21 @@
 import api from '@/api'
 import setting from '@/setting'
+
 export default {
   namespaced: true,
   state: {
     badge: 0,
-    data: 0
+    data: {}
   },
 
   mutations: {
     setBadge(state, { badgeNum, data }) {
-      state.badge = badgeNum
+      state.badge += badgeNum
       state.data = data
+      console.log(state.badge)
+    },
+    clear(state) {
+      state.badge = 0
     }
   },
 
@@ -25,6 +30,9 @@ export default {
         const { badgeNum, data } = await api.DEMO_SOCKET()
         commit('setBadge', { badgeNum, data })
       }, 5000)
+    },
+    clearBadge({ commit }) {
+      commit('clear')
     }
   }
 }

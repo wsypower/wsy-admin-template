@@ -1,27 +1,42 @@
 <template>
-  <el-button
-    class=" btn-text can-hover notifiy"
-    type="text"
-    @click="toggle"
-  >
-    <el-badge
-      v-if="badgeNums"
-      :value="badgeNums"
-      class="badge"
+  <div>
+    <el-tooltip
+      effect="dark"
+      content="未读信息"
+      placement="bottom"
     >
-    </el-badge>
-    <div
-      class="bell"
-      ref='bell'
-    ></div>
-  </el-button>
-
+      <el-button
+        class=" btn-text can-hover notifiy"
+        type="text"
+        @click="toggle"
+      >
+        <el-badge
+          v-if="badgeNums"
+          :value="badgeNums"
+          class="badge"
+        >
+        </el-badge>
+        <div
+          class="bell"
+          ref='bell'
+        ></div>
+      </el-button>
+    </el-tooltip>
+    <el-drawer
+      title="我是标题"
+      :visible.sync="drawer"
+      :with-header="false"
+      :modal-append-to-body="false"
+    >
+      <span>我来啦!</span>
+    </el-drawer>
+  </div>
 </template>
 
 <script>
 import lottie from 'lottie-web'
 import Anim from './data.json'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'w-notification',
   computed: {
@@ -31,7 +46,8 @@ export default {
   },
   data() {
     return {
-      Notifi: null
+      Notifi: null,
+      drawer: false
     }
   },
   computed: {
@@ -56,6 +72,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('w-admin/badge', ['clearBadge']),
     createNotification() {
       this.Notifi = lottie.loadAnimation({
         container: this.bell,
@@ -64,6 +81,11 @@ export default {
         autoplay: true,
         animationData: Anim
       })
+    },
+    toggle() {
+      this.clearBadge()
+      this.stop()
+      this.drawer = true
     },
     stop() {
       this.Notifi.stop()
@@ -80,13 +102,13 @@ export default {
   width: 42px;
   height: 48px;
   position: relative;
-  right: 6px;
+  right: 0px;
   display: flex;
   align-items: center;
   justify-self: center;
   .badge {
     top: -0px;
-    right: -12px;
+    right: -7px;
     position: absolute;
     z-index: 5;
   }
