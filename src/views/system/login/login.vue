@@ -3,17 +3,12 @@
     <div class="page-login--layer page-login--layer-area">
       <ul class="circles">
         <li
-          v-for="n in 10"
+          v-for="n in 30"
           :key="n"
         ></li>
       </ul>
     </div>
-    <div
-      class="page-login--layer page-login--layer-time"
-      flex="main:center cross:center"
-    >
-      {{time}}
-    </div>
+
     <div class="page-login--layer">
       <div
         class="page-login--content"
@@ -21,18 +16,24 @@
       >
         <div class="page-login--content-header">
           <p class="page-login--content-header-motto">
-            时间是一切财富中最宝贵的财富
+
           </p>
         </div>
         <div
           class="page-login--content-main"
           flex="dir:top main:center cross:center"
         >
+          <div class="login-bg"></div>
           <!-- logo -->
-          <img
-            class="page-login--logo"
-            src="./image/logo@2x.png"
-          >
+          <div class="page-login--logo">
+            <d2-icon-svg
+              class="logo"
+              name="logo"
+              flex-box="0"
+            />
+            <div>{{headerTitle}}</div>
+          </div>
+
           <!-- form -->
           <div class="page-login--form">
             <el-card shadow="never">
@@ -105,6 +106,7 @@
               class="page-login--quick"
               size="default"
               type="info"
+              v-if="$env === 'development'"
               @click="dialogVisible = true"
             >
               快速选择用户（测试功能）
@@ -115,7 +117,7 @@
           <p class="page-login--content-footer-copyright">
             Copyright
             <d2-icon name="copyright" />
-            2018 天翼智慧城市科技有限公司
+            2018 杭州天翼智慧城市科技有限公司
             <a href="https://github.com/wsypower">
               @wsypower
             </a>
@@ -165,6 +167,7 @@ export default {
   mixins: [localeMixin],
   data() {
     return {
+      headerTitle: process.env.VUE_APP_PROJECT_NAME,
       timeInterval: null,
       time: dayjs().format('HH:mm:ss'),
       // 快速选择用户
@@ -218,19 +221,8 @@ export default {
       }
     }
   },
-  mounted() {
-    this.timeInterval = setInterval(() => {
-      this.refreshTime()
-    }, 1000)
-  },
-  beforeDestroy() {
-    clearInterval(this.timeInterval)
-  },
   methods: {
     ...mapActions('w-admin/account', ['login']),
-    refreshTime() {
-      this.time = dayjs().format('HH:mm:ss')
-    },
     /**
      * @description 接收选择一个用户快速登录的事件
      * @param {Object} user 用户信息
@@ -270,7 +262,7 @@ export default {
 <style lang="scss">
 .page-login {
   @extend %unable-select;
-  $backgroundColor: #f0f2f5;
+  $backgroundColor: #f1f3fa;
   // ---
   background-color: $backgroundColor;
   height: 100%;
@@ -294,6 +286,8 @@ export default {
   .page-login--content {
     height: 100%;
     min-height: 500px;
+    position: relative;
+    // background-color: red;
   }
   // header
   .page-login--content-header {
@@ -306,18 +300,56 @@ export default {
       font-size: 12px;
     }
   }
+  // 登录背景页面
+  .login-bg {
+    position: absolute;
+    width: 1100px;
+    height: 600px;
+    background: #fff url("./image//login_data.gif") no-repeat;
+    background-size: contain;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 32px 32px 63px #d1d1d1, -32px -32px 63px #ffffff;
+  }
   // main
   .page-login--logo {
-    width: 240px;
-    margin-bottom: 2em;
-    margin-top: -2em;
+    width: 350px;
+    height: 50px;
+    margin-bottom: 1em;
+    z-index: 2;
+    position: relative;
+    left: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-family: "header-title";
+    color: rgba(64, 158, 255, 1);
+    // background-image: -webkit-linear-gradient(
+    //   right,
+    //   rgba(64, 158, 255, 1),
+    //   rgba(64, 158, 255, 0.7)
+    // );
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    .logo {
+      font-size: 12px;
+      height: 50px;
+      width: 33px;
+      fill: rgba(64, 158, 255, 1);
+      margin-right: 15px;
+    }
   }
   // 登录表单
   .page-login--form {
-    width: 280px;
+    width: 350px;
+    z-index: 2;
+    position: relative;
+    left: 300px;
     // 卡片
     .el-card {
       margin-bottom: 15px;
+      border: none;
     }
     // 登录按钮
     .button-login {
@@ -331,8 +363,8 @@ export default {
       height: 40px - 2px;
       display: block;
       margin: 0px -20px;
-      border-top-right-radius: 2px;
-      border-bottom-right-radius: 2px;
+      //   border-top-right-radius: 2px;
+      //   border-bottom-right-radius: 2px;
     }
     // 登陆选项
     .page-login--options {
@@ -430,7 +462,7 @@ export default {
       list-style: none;
       width: 20px;
       height: 20px;
-      background: #fff;
+      background: rgba(111, 144, 238, 0.5);
       animation: animate 25s linear infinite;
       bottom: -200px;
       @keyframes animate {

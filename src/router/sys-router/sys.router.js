@@ -10,7 +10,7 @@ export const frameOut = [
     path: '/login',
     name: 'login',
     component: () =>
-      import(/* webpackChunkName: "login" */ '@/views/system/login')
+      import(/* webpackChunkName: "login" */ '@/views/system/login/login.vue')
   }
 ]
 /**

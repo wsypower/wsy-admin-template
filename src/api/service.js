@@ -40,12 +40,22 @@ function createService() {
           case 'xxx':
             // [ 示例 ] 其它项目和后台约定的 code
             errorCreate(
-              `[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`
+              `[ code: xxx ] ${dataAxios.msg}: ${
+                process.env.NODE_ENV === 'development'
+                  ? response.config.url
+                  : ''
+              }`
             )
             break
           default:
             // 不是正确的 code
-            errorCreate(`${dataAxios.msg}: ${response.config.url}`)
+            errorCreate(
+              `${dataAxios.msg}: ${
+                process.env.NODE_ENV === 'development'
+                  ? response.config.url
+                  : ''
+              }`
+            )
             break
         }
       }
