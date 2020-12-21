@@ -41,6 +41,7 @@ const loadModules = () => {
 }
 const storeModules = loadModules()
 
+// TODO 此处模块导出有待思考
 // 导出store模块
 export default new Vuex.Store({
   modules: {

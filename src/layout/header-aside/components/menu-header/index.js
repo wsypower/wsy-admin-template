@@ -117,7 +117,11 @@ export default {
       try {
         if (/^w-menu-empty-\d+$/.test(index) || index === undefined) {
           this.$message.warning('功能暂未上线')
+          // FIX:修复element-ui menu组件点击之后class自动添加is-active
+          this.$children[0].activeIndex = this.active
         } else if (/^https:\/\/|http:\/\//.test(index)) {
+          // FIX:修复element-ui menu组件点击之后class自动添加is-active
+          this.$children[0].activeIndex = this.active
           util.open(index)
         } else {
           await this.setContainerCompAnimation(indexPath)

@@ -78,8 +78,12 @@ export default {
   methods: {
     handleMenuSelect(index, indexPath) {
       if (/^w-menu-empty-\d+$/.test(index) || index === undefined) {
+        // FIX:修复element-ui menu组件点击之后class自动添加is-active
+        this.$children[0].activeIndex = this.active
         this.$message.warning('功能暂未上线')
       } else if (/^https:\/\/|http:\/\//.test(index)) {
+        // FIX:修复element-ui menu组件点击之后class自动添加is-active
+        this.$children[0].activeIndex = this.active
         util.open(index)
       } else {
         this.$router.push({
