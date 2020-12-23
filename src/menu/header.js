@@ -3,7 +3,7 @@ const header = [
   {
     title: '切换容器full',
     icon: 'folder-o',
-    path: '/index/page5'
+    path: '/full'
   },
   {
     title: '切换相同容器',

@@ -2,7 +2,7 @@ import { layoutContainer, fullContainer } from '@/layout/header-aside'
 export default [
   // 首页
   {
-    path: '/index',
+    path: 'index',
     name: 'index',
     meta: {
       auth: true,

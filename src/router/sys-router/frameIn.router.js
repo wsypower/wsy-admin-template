@@ -2,7 +2,7 @@
 // 通过 dynamic-import-node 插件在babel.config 中配置，使用中就按照vue-router文档编写即可
 
 import layout from '@/layout/header-aside'
-
+import modulesRouter from '../utils/utils'
 // ##################################################################### //
 // ########################### 通常需要登录或权限认证的路由 ################# //
 // ##################################################################### //
@@ -15,18 +15,7 @@ export const frameIn = [
     component: layout,
     meta: {},
     children: [
-      // 演示页面
-      {
-        path: '/example-full',
-        name: 'example-full',
-        meta: {
-          title: '页面 5',
-          auth: true,
-          full: true,
-          hidden: true
-        },
-        component: layout
-      },
+      ...modulesRouter,
       // 系统 前端日志
       {
         path: 'log',
