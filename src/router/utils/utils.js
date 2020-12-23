@@ -11,6 +11,7 @@ const getPathBaseName = routerPath => {
   const pathBaseName = path
     .basename(routerPath, path.extname(routerPath))
     .split('.')
+  console.log(pathBaseName)
   return pathBaseName[pathBaseName.length - 1]
 }
 
@@ -22,23 +23,26 @@ const getPathBaseName = routerPath => {
  */
 const collectRouter = () => {
   const routerContext = require.context('.././modules', true, /\.js$/)
-  return routerContext.keys().reduce((modules, route) => {
-    // 获取路由标识符
-    const routerKey = getPathBaseName(route)
-    const routerModules = routerContext(route)
-    // 如果文件为导出为空对象跳过
-    if (!Object.keys(routerModules).length) {
-      // 书写错误提示
-      routerError(route)
-      return modules
-    }
-    // 兼容 import export 和 require module.export 两种规范
-    // FIX:如果modules内已经挂载key值就合并数组
-    modules[routerKey] = (modules[routerKey] || []).concat(
-      routerModules.default || routerModules
-    )
-    return modules
-  }, {})
+  return routerContext
+    .keys()
+    .reduce((collectRouterModules, modulesRoutePath) => {
+      // 获取路由标识符
+      const routerKey = getPathBaseName(modulesRoutePath)
+      const routerModules = routerContext(modulesRoutePath)
+      // 如果文件为导出为空对象跳过
+      if (!Object.keys(routerModules).length) {
+        // 书写错误提示
+        routerError(modulesRoutePath)
+        return collectRouterModules
+      }
+      // 兼容 import export 和 require module.export 两种规范
+      // FIX:如果modules内已经挂载key值就合并数组
+      collectRouterModules[routerKey] = (
+        collectRouterModules[routerKey] || []
+      ).concat(routerModules.default || routerModules)
+      console.log(collectRouterModules)
+      return collectRouterModules
+    }, {})
 }
 
 /**

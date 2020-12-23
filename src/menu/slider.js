@@ -1,5 +1,5 @@
 const slider = [
-  { path: '/index/page1', title: '首页展示数据', icon: 'home' },
+  { path: '/index', title: '首页展示数据', icon: 'home' },
   {
     title: '功能试验',
     icon: 'folder-o',
