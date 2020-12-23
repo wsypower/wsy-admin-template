@@ -1,31 +1,11 @@
 const slider = [
-  { path: '/index', title: '首页展示数据', icon: 'home' },
-  {
-    path: '/publish',
-    title: '发布系统',
-    icon: 'home',
-    children: [
-      {
-        path: '/publish/list',
-        title: '发布系统列表项',
-        icon: 'home',
-        hide: true
-      },
-      {
-        path: '/publish/add',
-        title: '新增发布',
-        icon: 'home',
-        hide: true
-      }
-    ]
-  },
+  { path: '/index/page1', title: '首页展示数据', icon: 'home' },
   {
     title: '功能试验',
     icon: 'folder-o',
     children: [
-      { path: '/page1', title: '测试缓存页面' },
-      { path: '/page2', title: '请求demo' },
-      { path: '/page3', title: '测试组件大小调整' }
+      { path: '/index/page2', title: '请求demo' },
+      { path: '/index/page3', title: '测试组件大小调整' }
     ]
   },
   {

@@ -1,7 +1,7 @@
 // 由于懒加载页面太多的话会造成webpack热更新太慢，所以开发环境不使用懒加载，只有生产环境使用懒加载
 // 通过 dynamic-import-node 插件在babel.config 中配置，使用中就按照vue-router文档编写即可
 
-import layoutHeaderAside from '@/layout/header-aside'
+import layout from '@/layout/header-aside'
 
 // ##################################################################### //
 // ########################### 通常需要登录或权限认证的路由 ################# //
@@ -12,9 +12,21 @@ export const frameIn = [
     path: '/',
     name: 'root',
     redirect: { name: 'index' },
-    component: layoutHeaderAside,
+    component: layout,
     meta: {},
     children: [
+      // 演示页面
+      {
+        path: '/example-full',
+        name: 'example-full',
+        meta: {
+          title: '页面 5',
+          auth: true,
+          full: true,
+          hidden: true
+        },
+        component: layout
+      },
       // 系统 前端日志
       {
         path: 'log',
@@ -47,17 +59,5 @@ export const frameIn = [
           )
       }
     ]
-  },
-  // 演示页面
-  {
-    path: '/example-full',
-    name: 'example-full',
-    meta: {
-      title: '页面 5',
-      auth: true,
-      full: true,
-      hidden: true
-    },
-    component: layoutHeaderAside
   }
 ]

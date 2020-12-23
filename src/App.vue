@@ -3,7 +3,6 @@
     <router-view />
   </div>
 </template>
-
 <script>
 import util from '@/libs/util'
 export default {
@@ -24,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/assets/style/public-class.scss';
+@import "~@/assets/style/public-class.scss";
 #app {
   position: relative;
   width: 100%;

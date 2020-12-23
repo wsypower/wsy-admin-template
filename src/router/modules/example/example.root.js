@@ -7,6 +7,7 @@ export default [
       auth: true,
       title: '首页'
     },
+    redirect:{name:'page1'},
     component: () =>
       import(/* webpackChunkName: "index" */ '@/views/system/index')
   },

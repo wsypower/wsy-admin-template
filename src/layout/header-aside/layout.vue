@@ -76,7 +76,8 @@
         flex
       >
         <transition :name="transition">
-          <component :is="layoutContainerMain"></component>
+          <!-- <component :is="layoutContainerMain"></component> -->
+          <router-view />
         </transition>
       </div>
     </div>
@@ -101,6 +102,7 @@ import mixinSearch from './mixins/search'
 import menuIcon from './components/menu-icon'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import 'vue-transition.css'
+import { valid } from '@vue/test-utils'
 import setting from '@/setting'
 
 export default {
