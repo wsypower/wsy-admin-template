@@ -76,6 +76,7 @@
         flex
       >
         <transition :name="transition">
+          <!-- 相同组件不刷新页面,绑定一个不重复的key -->
           <router-view
             class="transition-container"
             :key='routerViewKey'
