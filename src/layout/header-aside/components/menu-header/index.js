@@ -3,6 +3,7 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 import { createMenu } from '../libs/util.menu'
 import util from '@/libs/util.js'
 import anime from 'animejs/lib/anime.es.js'
+import setting from '@/setting'
 export default {
   name: 'd2-layout-header-aside-menu-header',
   render(h) {
@@ -31,7 +32,9 @@ export default {
               ref="headerMenu"
               style={{ height: '100%' }}
             >
-              {this.header.map(menu => createMenu.call(this, h, menu))}
+              {this.header.map(menu =>
+                createMenu.call(this, h, menu, setting.headerMenu.disableCollapse)
+              )}
             </el-menu>
             <div class="header-menu-line" ref="line"></div>
           </div>
@@ -60,7 +63,7 @@ export default {
     )
   },
   computed: {
-    ...mapState('w-admin/menu', ['header']),
+    ...mapState('w-admin/menu', ['header', 'aside']),
     ...mapGetters('w-admin/menu', ['deepMenuAside', 'deepMenuHeader'])
   },
   data() {
@@ -81,22 +84,15 @@ export default {
   watch: {
     '$route.matched': {
       handler(val) {
-        let routerToPAth = val[val.length - 1].path
-        // FIX:首次加载时没有对应到header-menu指定的路径
-        if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
-          routerToPAth = this.deepMenuAside[0]
+        let routerActive = val[val.length - 1].path
+        if (
+          setting.headerMenu.disableCollapse && this.aside
+            .map(item => item.path)
+            .some(item => !!~item.search(val[1].path))
+        ) {
+          routerActive = val[1].path
         }
-        if (this.active !== '') {
-          if (
-            // FIX:只要侧边栏有这个path的match路径 头部menu就原位置保持高量
-            this.deepMenuAside.includes(val.slice(-2)[0].path) ||
-            // FIX:只要侧边栏有这个path 头部menu就原位置保持高量
-            this.deepMenuAside.includes(routerToPAth)
-          ) {
-            return
-          }
-        }
-        this.active = routerToPAth
+        this.active = routerActive
         this.$refs.headerMenu &&
           this.$nextTick(() => {
             this.setSliderLine()

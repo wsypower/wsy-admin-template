@@ -3,10 +3,11 @@
  * @param {Function} h createElement
  * @param {Object} menu 菜单项
  */
-export function createMenu(h, menu) {
+export function createMenu(h, menu, isHeader) {
   if (
     menu.children === undefined ||
-    !menu.children.filter(c => !c.hide).length
+    !menu.children.filter(c => !c.hide).length ||
+    isHeader
   ) {
     return elMenuItem.call(this, h, menu)
   }

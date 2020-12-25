@@ -7,6 +7,11 @@ export default {
       close: 'esc'
     }
   },
+  // 头部menu配置
+  headerMenu: {
+    // 头部menu是否可展开
+    disableCollapse: true
+  },
   // 侧边栏默认配置
   menu: {
     asideCollapse: false,
