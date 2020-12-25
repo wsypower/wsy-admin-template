@@ -86,6 +86,7 @@ export default {
         if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
           routerToPAth = this.deepMenuAside[0]
         }
+        console.log(this.deepMenuAside)
         if (this.active !== '') {
           if (
             // FIX:只要侧边栏有这个path的match路径 头部menu就原位置保持高量
@@ -113,7 +114,7 @@ export default {
      * menu选择回调
      */
     async handleMenuSelect(index, indexPath) {
-      console.log(index)
+      console.log('这是点击回调页面', index)
       try {
         if (/^w-menu-empty-\d+$/.test(index) || index === undefined) {
           this.$message.warning('功能暂未上线')
@@ -141,10 +142,8 @@ export default {
      * 获取页面内组件切换的动画
      */
     async setContainerCompAnimation(routerMatch) {
+      if (this.menuItemArr == null) return
       try {
-        if (this.menuItemArr == null) {
-          return
-        }
         const oldActivePathIndex = this.menuItemArr.find(v => v.active).index
         const newActivePathIndex = this.menuItemArr.find(
           v => v.path === routerMatch[0]

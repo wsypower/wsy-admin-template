@@ -1,3 +1,4 @@
+import { fullContainer } from '@/layout/header-aside'
 export default [
   {
     path: 'page10',
@@ -9,7 +10,6 @@ export default [
       cache: false
     },
     children: [],
-    component: () =>
-      import(/* webpackChunkName: "page6" */ '@/views/demo/page6')
+    component: fullContainer
   }
 ]

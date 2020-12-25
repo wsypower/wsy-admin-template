@@ -71,13 +71,15 @@
       </div>
       <!-- 下面 主体 -->
       <div
-        class="w-theme-container"
+        class="w-theme-container transition-persoective"
         flex-box="1"
         flex
       >
         <transition :name="transition">
-          <!-- <component :is="layoutContainerMain"></component> -->
-          <router-view />
+          <router-view
+            class="transition-container"
+            :key='routerViewKey'
+          />
         </transition>
       </div>
     </div>
@@ -182,6 +184,12 @@ export default {
       return this.fullLayout.includes(fullRouter)
         ? 'w-container'
         : 'w-layoutContainer'
+    },
+    routerViewKey() {
+      // 默认情况下 key 类似 __transition-n-/foo
+      // 这里的字符串操作是为了最终 key 的格式和原来相同 类似 __transition-n-__stamp-time-/foo
+      const stamp = this.$route.meta[`__stamp-${this.$route.path}`] || ''
+      return `${stamp ? `__stamp-${stamp}-` : ''}${this.$route.path}`
     }
   },
   methods: {

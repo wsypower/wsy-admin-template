@@ -53,7 +53,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-
+  background-color: red;
   .container-main {
     width: 100%;
     height: 100%;

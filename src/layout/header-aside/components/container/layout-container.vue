@@ -58,7 +58,10 @@
           >
             <transition :name="transitionActive ? 'fade-transverse' : ''">
               <keep-alive :include="keepAlive">
-                <router-view :key="routerViewKey" class="layout-content-main-posions" />
+                <router-view
+                  :key="routerViewKey"
+                  class="layout-content-main-posions"
+                />
               </keep-alive>
             </transition>
           </div>
@@ -80,6 +83,7 @@ export default {
     d2MenuSide,
     d2Tabs
   },
+
   data() {
     return {
       // [侧边栏宽度] 正常状态

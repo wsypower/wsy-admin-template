@@ -41,5 +41,22 @@ new Vue({
     this.$store.dispatch('w-admin/fullscreen/listen')
     // 开始用socket.io监听badge数据
     this.$store.dispatch('w-admin/badge/getBadge')
+  },
+  watch: {
+    // 检测路由变化切换侧边栏内容
+    '$route.matched': {
+      handler(matched) {
+        if (matched.length > 0) {
+          console.log(matched[1])
+          const _side = menuAside.filter(menu => menu.path === matched[1].path)
+          console.log('_side===>', _side)
+          this.$store.commit(
+            'w-admin/menu/asideSet',
+            _side.length > 0 ? _side[0].children : []
+          )
+        }
+      },
+      immediate: true
+    }
   }
 }).$mount('#app')
