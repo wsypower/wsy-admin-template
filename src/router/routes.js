@@ -1,6 +1,5 @@
 import { frameOut, errorPage } from './sys-router/sys.router'
 import { frameIn } from './sys-router/frameIn.router'
-import util from '@/libs/util.js'
 
 // 需要显示菜单的
 const frameInRoutes = frameIn
