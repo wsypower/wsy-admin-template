@@ -57,11 +57,10 @@
             flex-box="1"
           >
             <transition :name="transitionActive ? 'fade-transverse' : ''">
+
+              <!-- :key="routerViewKey" -->
               <keep-alive :include="keepAlive">
-                <router-view
-                  :key="routerViewKey"
-                  class="layout-content-main-posions"
-                />
+                <router-view class="layout-content-main-posions" />
               </keep-alive>
             </transition>
           </div>

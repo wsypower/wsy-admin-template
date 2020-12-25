@@ -6,8 +6,8 @@
  *     right: 'rotate-glue-right-to-left'
  */
 const ANIMATION_ARR = {
-  left: 'rotate-sides',
-  right: 'rotate-sides'
+  left: 'rotate-glue-left-to-right', // rotate-sides
+  right: 'rotate-glue-right-to-left'
 }
 const LAYOUT_CONTAINER = {
   basic: 'w-layoutContainer',

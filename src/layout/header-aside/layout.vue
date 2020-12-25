@@ -76,10 +76,10 @@
         flex
       >
         <transition :name="transition">
-          <!-- 相同组件不刷新页面,绑定一个不重复的key -->
+          <!-- 相同组件不刷新页面,绑定一个不重复的key   :key='routerViewKey'-->
           <router-view
             class="transition-container"
-            :key='routerViewKey'
+            :key="routerPagesKey"
           />
         </transition>
       </div>
@@ -186,11 +186,11 @@ export default {
         ? 'w-container'
         : 'w-layoutContainer'
     },
-    routerViewKey() {
-      // 默认情况下 key 类似 __transition-n-/foo
-      // 这里的字符串操作是为了最终 key 的格式和原来相同 类似 __transition-n-__stamp-time-/foo
-      const stamp = this.$route.meta[`__stamp-${this.$route.path}`] || ''
-      return `${stamp ? `__stamp-${stamp}-` : ''}${this.$route.path}`
+    routerPagesKey() {
+      if (this.$route.matched.length > 1) {
+        return this.$route.matched[1].path
+      }
+      throw Error('router嵌套层级不符合预期')
     }
   },
   methods: {

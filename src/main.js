@@ -47,9 +47,9 @@ new Vue({
     '$route.matched': {
       handler(matched) {
         if (matched.length > 0) {
-          console.log(matched[1])
+          // console.log(matched[1])
           const _side = menuAside.filter(menu => menu.path === matched[1].path)
-          console.log('_side===>', _side)
+          // console.log('_side===>', _side)
           this.$store.commit(
             'w-admin/menu/asideSet',
             _side.length > 0 ? _side[0].children : []
