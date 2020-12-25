@@ -2,12 +2,12 @@
  * 可以在这个网址选取一类动画
  * @see https://webcodefarmer.github.io/vue-transition.css/dist/index.html#/scaleDownToUp
  *
- * 推荐 left: 'rotate-glue-left-to-right'
- *     right: 'rotate-glue-right-to-left'
+ * 推荐 left: 'rotate-glue-left-to-right' , 'move-fade-left-to-right'
+ *     right: 'rotate-glue-right-to-left' , 'move-fade-right-to-left'
  */
 const ANIMATION_ARR = {
-  left: 'rotate-glue-left-to-right', // rotate-sides
-  right: 'rotate-glue-right-to-left'
+  left: 'rotate-sides',
+  right: 'rotate-sides'
 }
 const LAYOUT_CONTAINER = {
   basic: 'w-layoutContainer',

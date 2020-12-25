@@ -46,13 +46,13 @@ new Vue({
     // 检测路由变化切换侧边栏内容
     '$route.matched': {
       handler(matched) {
-        if (matched.length > 0) {
-          // console.log(matched[1])
-          const _side = menuAside.filter(menu => menu.path === matched[1].path)
-          // console.log('_side===>', _side)
+        if (matched.length > 1) {
+          const _side = menuAside.filter(
+            menu => !!~menu.path.search(matched[1].path)
+          )
           this.$store.commit(
             'w-admin/menu/asideSet',
-            _side.length > 0 ? _side[0].children : []
+            _side.length > 0 ? _side : []
           )
         }
       },

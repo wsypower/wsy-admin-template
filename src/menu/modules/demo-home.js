@@ -1,5 +1,5 @@
 export default {
-  path: '/',
+  path: '/index',
   title: '首页',
   icon: 'home',
   children: [

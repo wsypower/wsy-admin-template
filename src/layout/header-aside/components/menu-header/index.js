@@ -86,7 +86,6 @@ export default {
         if (this.active == '' && !this.deepMenuHeader.includes(routerToPAth)) {
           routerToPAth = this.deepMenuAside[0]
         }
-        console.log(this.deepMenuAside)
         if (this.active !== '') {
           if (
             // FIX:只要侧边栏有这个path的match路径 头部menu就原位置保持高量
@@ -114,7 +113,6 @@ export default {
      * menu选择回调
      */
     async handleMenuSelect(index, indexPath) {
-      console.log('这是点击回调页面', index)
       try {
         if (/^w-menu-empty-\d+$/.test(index) || index === undefined) {
           this.$message.warning('功能暂未上线')

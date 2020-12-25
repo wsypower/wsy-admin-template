@@ -174,23 +174,10 @@ export default {
           }
         : {}
     },
-    /**
-     * @description 布局组件
-     */
-    layoutContainerMain() {
-      const fullRouter = this.$route.matched.map(router => {
-        if (router.path === '') router.path = '/'
-        return router
-      })[0].path
-      return this.fullLayout.includes(fullRouter)
-        ? 'w-container'
-        : 'w-layoutContainer'
-    },
     routerPagesKey() {
-      if (this.$route.matched.length > 1) {
-        return this.$route.matched[1].path
-      }
-      throw Error('router嵌套层级不符合预期')
+      return this.$route.matched.length > 1
+        ? this.$route.matched[1].path
+        : this.$route.path
     }
   },
   methods: {
