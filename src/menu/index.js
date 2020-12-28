@@ -1,4 +1,4 @@
-import { uniqueId, flatten } from 'lodash'
+import { uniqueId } from 'lodash'
 import header from './header'
 import slider from './slider'
 /**
@@ -18,4 +18,7 @@ function supplementPath(menu) {
   }))
 }
 export const menuHeader = supplementPath(header)
-export const menuAside = supplementPath(flatten(slider.map(e => e.children)))
+export const menuAside = supplementPath(slider)
+// export const menuAside = supplementPath(
+//   flatten(slider.map(e => e.children || e))
+// )

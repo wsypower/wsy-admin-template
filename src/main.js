@@ -10,7 +10,7 @@ import store from '@/store/index'
 import router from './router'
 import { menuHeader, menuAside } from '@/menu'
 import { frameInRoutes } from '@/router/routes'
-
+import { flatten } from 'lodash'
 // 核心插件
 Vue.use(wAdmin)
 new Vue({
@@ -50,9 +50,10 @@ new Vue({
           const _side = menuAside.filter(
             menu => !!~menu.path.search(matched[1].path)
           )
+          console.log(_side.map(e => e.children || e))
           this.$store.commit(
             'w-admin/menu/asideSet',
-            _side.length > 0 ? _side : []
+            _side.length > 0 ? flatten(_side.map(e => e.children || e)) : []
           )
         }
       },
