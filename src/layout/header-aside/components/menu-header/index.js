@@ -32,11 +32,20 @@ export default {
               ref="headerMenu"
               style={{ height: '100%' }}
             >
-              {this.header.map(menu =>
-                createMenu.call(this, h, menu, setting.headerMenu.disableCollapse)
-              )}
+              {this.header.length > 1 &&
+                this.header.map(menu =>
+                  createMenu.call(
+                    this,
+                    h,
+                    menu,
+                    setting.headerMenu.disableCollapse
+                  )
+                )}
             </el-menu>
-            <div class="header-menu-line" ref="line"></div>
+            <div
+              class={{ 'header-menu-line': this.header.length > 1 }}
+              ref="line"
+            ></div>
           </div>
         </div>
         {this.isScroll
@@ -84,20 +93,23 @@ export default {
   watch: {
     '$route.matched': {
       handler(val) {
-        let routerActive = val[val.length - 1].path
-        if (
-          setting.headerMenu.disableCollapse && this.aside
-            .map(item => item.path)
-            .some(item => !!~item.search(val[1].path))
-        ) {
-          routerActive = val[1].path
+        if (this.header.length > 0) {
+          let routerActive = val[val.length - 1].path
+          if (
+            setting.headerMenu.disableCollapse &&
+            this.aside
+              .map(item => item.path)
+              .some(item => !!~item.search(val[1].path))
+          ) {
+            routerActive = val[1].path
+          }
+          this.active = routerActive
+          this.$refs.headerMenu &&
+            this.$nextTick(() => {
+              this.setSliderLine()
+              this.sliderAnima()
+            })
         }
-        this.active = routerActive
-        this.$refs.headerMenu &&
-          this.$nextTick(() => {
-            this.setSliderLine()
-            this.sliderAnima()
-          })
       },
       immediate: true
     }
@@ -274,17 +286,19 @@ export default {
     }
   },
   mounted() {
-    // 初始化判断
-    // 默认判断父元素和子元素的大小，以确定初始情况是否显示滚动
-    this.checkScroll()
-    // 全局窗口变化监听，判断父元素和子元素的大小，从而控制isScroll的开关
-    this.throttledCheckScroll = throttle(this.checkScroll, 300)
-    window.addEventListener('resize', this.throttledCheckScroll)
-    // 初始化line的样式
-    this.setSliderLine()
-    this.$nextTick(() => {
-      this.sliderAnima()
-    })
+    if (this.header.length > 1) {
+      // 初始化判断
+      // 默认判断父元素和子元素的大小，以确定初始情况是否显示滚动
+      this.checkScroll()
+      // 全局窗口变化监听，判断父元素和子元素的大小，从而控制isScroll的开关
+      this.throttledCheckScroll = throttle(this.checkScroll, 300)
+      window.addEventListener('resize', this.throttledCheckScroll)
+      // 初始化line的样式
+      this.setSliderLine()
+      this.$nextTick(() => {
+        this.sliderAnima()
+      })
+    }
   },
   beforeDestroy() {
     // 取消监听
