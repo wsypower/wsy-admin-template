@@ -1,7 +1,6 @@
-import { cloneDeep, uniq, get } from 'lodash'
-import router from '@/router'
+import { cloneDeep, uniq, get,set } from 'lodash'
+import { menuHeader } from '@/menu'
 import setting from '@/setting.js'
-
 // 判定是否需要缓存
 const isKeepAlive = data => get(data, 'meta.cache', false)
 
@@ -17,7 +16,19 @@ export default {
     // 当前页面
     current: '',
     // 需要缓存的页面 name
-    keepAlive: []
+    keepAlive: [],
+    /**
+     * 以menu-header为隔离key值
+     * {
+     *   'index':[],
+     *   'full':[],
+     *   'setting':[],
+     *  }
+     */
+    segregateOpened: menuHeader.reduce(
+      (acc, r) => ((acc[r.path] = []), acc),
+      {}
+    )
   },
   actions: {
     /**
@@ -152,7 +163,7 @@ export default {
      * @param {Object} payload 从路由钩子的 to 对象上获取 { name, params, query, fullPath, meta } 路由信息
      */
     async open(
-      { state, commit, dispatch },
+      { state, commit, dispatch, rootState },
       { name, params, query, fullPath, meta }
     ) {
       // 已经打开的页面

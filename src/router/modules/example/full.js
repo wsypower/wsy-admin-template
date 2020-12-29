@@ -7,7 +7,6 @@ export default [
     meta: {
       title: '测试切换full容器',
       auth: true,
-      full: true
     },
     component: () =>
       import(/* webpackChunkName: "page6" */ '@/views/demo/page5')

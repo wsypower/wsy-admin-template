@@ -3,7 +3,6 @@ export default [
   {
     path: '/page7',
     name: 'page7',
-    hidden: true,
     meta: {
       title: '测试切换大页面',
       auth: true,

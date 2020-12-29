@@ -29,7 +29,7 @@
           @contextmenu.native="handleContextmenu"
         >
           <el-tab-pane
-            v-for="page in opened"
+            v-for="page in MenuRouterFilterOpened"
             :key="page.fullPath"
             :label="page.meta.title || '未命名'"
             :name="page.fullPath"
@@ -116,14 +116,15 @@ export default {
       opened: state => state.page.opened,
       current: state => state.page.current
     }),
-    ...mapGetters('w-admin', {
-      filterMenuAside: 'menu/filterMenuAside'
-    })
-    // openedFilter() {
-    // console.log(this.opened)
-    // console.log(this.filterMenuAside)
-    // return this.opened.filter(router => this.filterMenuAside.includes(router.fullPath))
-    // }
+    /**
+     * @description
+     * [header-menu]多头部分页,tabs只取当前[header-menu]根路劲下的页面
+     * @author wsy
+     * @date 2020-12-29  15:25:55
+     */
+    MenuRouterFilterOpened() {
+      return this.opened
+    }
   },
   methods: {
     ...mapActions('w-admin/page', [
