@@ -50,7 +50,6 @@ new Vue({
           const _side = menuAside.filter(
             menu => !!~menu.path.search(matched[1].path)
           )
-          console.log(_side.map(e => e.children || e))
           this.$store.commit(
             'w-admin/menu/asideSet',
             _side.length > 0 ? flatten(_side.map(e => e.children || e)) : []

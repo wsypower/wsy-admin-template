@@ -1,6 +1,8 @@
 import api from '@/api'
 import setting from '@/setting'
-
+/**
+ * 新消息提醒（头部小铃铛）
+ */
 export default {
   namespaced: true,
   state: {
