@@ -93,17 +93,17 @@ export default {
   watch: {
     '$route.matched': {
       handler(val) {
+        const pageGroup = this.header.map(v => v.path)
         if (this.header.length > 0) {
           let routerActive = val[val.length - 1].path
-          if (
-            setting.headerMenu.disableCollapse &&
-            this.aside
-              .map(item => item.path)
-              .some(item => !!~item.search(val[1].path))
-          ) {
-            routerActive = val[1].path
+          const pageGroupIndex = pageGroup.findIndex(p =>
+            new RegExp(p).test(routerActive)
+          )
+          if (~pageGroupIndex) {
+            routerActive = pageGroup[pageGroupIndex]
           }
           this.active = routerActive
+          console.log(' this.active', this.active)
           this.$refs.headerMenu &&
             this.$nextTick(() => {
               this.setSliderLine()
