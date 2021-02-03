@@ -62,10 +62,6 @@
             v-if="tool.search"
           />
           <w-header-fullscreen v-if="tool.fullScreen" />
-          <w-header-theme v-if="tool.theme" />
-          <w-header-size v-if="tool.size" />
-          <w-header-locales v-if="tool.i18n" />
-          <w-header-color v-if="tool.color" />
           <w-header-user />
         </div>
       </div>
