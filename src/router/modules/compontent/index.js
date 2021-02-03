@@ -2,11 +2,11 @@ import { layoutContainer } from "@/layout/header-aside";
 export default [
   // 首页
   {
-    path: "index",
-    name: "index",
+    path: "component",
+    name: "component",
     meta: {
       auth: true,
-      title: "首页"
+      title: "组件"
     },
     redirect: { name: "page6" },
     component: layoutContainer,

@@ -15,7 +15,7 @@
         >
           <d2-contextmenu-list
             :menulist="
-              tagName === '/index' ? contextmenuListIndex : contextmenuList
+              tagName === poolPage.fullPath ? contextmenuListIndex : contextmenuList
             "
             @rowClick="contextmenuClick"
           />
@@ -108,13 +108,14 @@ export default {
         { icon: 'times', title: '关闭其它', value: 'other' },
         { icon: 'times-circle', title: '关闭全部', value: 'all' }
       ],
-      tagName: '/index'
+      tagName: this.$store.state['w-admin'].page.poolPage
     }
   },
   computed: {
     ...mapState('w-admin', {
       opened: state => state.page.opened,
-      current: state => state.page.current
+      current: state => state.page.current,
+      poolPage: state => state.page.poolPage
     }),
     /**
      * @description
@@ -140,7 +141,7 @@ export default {
      * @param {Object} page 其中一个标签页
      */
     isTabClosable(page) {
-      return page.name !== 'index'
+      return page.name !== this.poolPage.name
     },
     /**
      * @description 右键菜单功能点击
@@ -180,7 +181,9 @@ export default {
       const params = { pageSelect: tagName }
       switch (command) {
         case 'refresh':
-          this.$router.push({ name: 'refresh' })
+          // 从当前的基础路径匹配下属refresh,防止启动错动画
+          const basic = this.$router.currentRoute.matched[1].path
+          this.$router.push({ path: `${basic}/refresh` })
           break
         case 'left':
           this.closeLeft(params)
