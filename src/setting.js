@@ -1,10 +1,11 @@
 export default {
+  role: false,
   // 快捷键
   // 支持快捷键 例如 ctrl+shift+s
   hotkey: {
     search: {
-      open: 's',
-      close: 'esc'
+      open: "s",
+      close: "esc"
     }
   },
   // 头部menu配置
@@ -21,10 +22,10 @@ export default {
   page: {
     opened: [
       {
-        name: 'index',
-        fullPath: '/index',
+        name: "index",
+        fullPath: "/index",
         meta: {
-          title: '首页',
+          title: "首页",
           auth: false
         }
       }
@@ -53,41 +54,41 @@ export default {
   theme: {
     list: [
       {
-        title: '经典淡雅',
-        name: 'lightblue',
-        preview: 'image/theme/lightblue/preview@2x.png'
+        title: "经典淡雅",
+        name: "lightblue",
+        preview: "image/theme/lightblue/preview@2x.png"
       },
       {
-        title: '暗色模式',
-        name: 'chester',
-        preview: 'image/theme/chester/preview@2x.png'
+        title: "暗色模式",
+        name: "chester",
+        preview: "image/theme/chester/preview@2x.png"
       },
       {
-        title: '经典蔚蓝',
-        name: 'element',
-        preview: 'image/theme/element/preview@2x.png'
+        title: "经典蔚蓝",
+        name: "element",
+        preview: "image/theme/element/preview@2x.png"
       },
       {
-        title: '紫罗兰',
-        name: 'violet',
-        preview: 'image/theme/violet/preview@2x.png'
+        title: "紫罗兰",
+        name: "violet",
+        preview: "image/theme/violet/preview@2x.png"
       },
       {
-        title: '简约线条',
-        name: 'line',
-        backgroundImage: 'image/theme/line/bg.jpg',
-        preview: 'image/theme/line/preview@2x.png'
+        title: "简约线条",
+        name: "line",
+        backgroundImage: "image/theme/line/bg.jpg",
+        preview: "image/theme/line/preview@2x.png"
       },
       {
-        title: '流星',
-        name: 'star',
-        backgroundImage: 'image/theme/star/bg.jpg',
-        preview: 'image/theme/star/preview@2x.png'
+        title: "流星",
+        name: "star",
+        backgroundImage: "image/theme/star/bg.jpg",
+        preview: "image/theme/star/preview@2x.png"
       },
       {
-        title: '暗色模式',
-        name: 'tomorrow-night-blue',
-        preview: 'image/theme/tomorrow-night-blue/preview@2x.png'
+        title: "暗色模式",
+        name: "tomorrow-night-blue",
+        preview: "image/theme/tomorrow-night-blue/preview@2x.png"
       }
     ]
   },
@@ -95,4 +96,4 @@ export default {
   transition: {
     active: true
   }
-}
+};

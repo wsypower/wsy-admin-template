@@ -78,17 +78,27 @@ export default {
       // 以 fullPath 字段为准
       // 如果页面过多的话可能需要优化算法
       // valid 有效列表 1, 1, 0, 1 => 有效, 有效, 失效, 有效
+      // 获取当前header菜单路径
+      // console.log(state.poolPage);
+      // const site = state.poolPage.fullPath.match(/^\/([^\/]*)/)[1];
+      // const currentHeaderPathArr = router.options.routes[0].children
+      //   .find(({ path }) => path === site)
+      //   .children.map(item => item.path);
+
       const valid = [];
       // 处理数据
       state.opened = value
         .map(opened => {
-          // 忽略首页
+          // 忽略当前打开页
           if (opened.name === state.poolPage.name) {
             valid.push(1);
             return opened;
           }
           // 尝试在所有的支持多标签页的页面里找到 name 匹配的页面
-          const find = state.pool.find(item => item.name === opened.name);
+          // currentHeaderPathArr.includes(item.path)
+          const find = state.pool.find(item => {
+            return item.name === opened.name;
+          });
           // 记录有效或无效信息
           valid.push(find ? 1 : 0);
           // 返回合并后的数据 新的覆盖旧的

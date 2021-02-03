@@ -32,8 +32,8 @@ export default {
               ref="headerMenu"
               style={{ height: "100%" }}
             >
-              {this.header.length > 1 &&
-                this.header.map(menu =>
+              {this.roleHeader.length > 1 &&
+                this.roleHeader.map(menu =>
                   createMenu.call(
                     this,
                     h,
@@ -43,7 +43,7 @@ export default {
                 )}
             </el-menu>
             <div
-              class={{ "header-menu-line": this.header.length > 1 }}
+              class={{ "header-menu-line": this.roleHeader.length > 1 }}
               ref="line"
             ></div>
           </div>
@@ -73,8 +73,24 @@ export default {
   },
   computed: {
     ...mapState("w-admin/menu", ["header", "aside"]),
-    ...mapGetters("w-admin/menu", ["deepMenuAside", "deepMenuHeader"])
+    ...mapGetters("w-admin/menu", [
+      "deepMenuAside",
+      "deepMenuHeader",
+      "roleRouter"
+    ]),
+    roleHeader() {
+      const roleRouter = this.$store.getters["w-admin/user/roleRouter"];
+      if (Array.isArray(roleRouter)) {
+        const roleRouterCodeMaps = roleRouter.map(({ code }) => code);
+        const header = this.header.filter(({ code }) =>
+          code === undefined ? true : roleRouterCodeMaps.includes(code)
+        );
+        return header;
+      }
+      return this.header;
+    }
   },
+
   data() {
     return {
       active: "",
@@ -103,7 +119,6 @@ export default {
             routerActive = pageGroup[pageGroupIndex];
           }
           this.active = routerActive;
-          console.log(" this.active", this.active);
           this.$refs.headerMenu &&
             this.$nextTick(() => {
               this.setSliderLine();
@@ -114,7 +129,7 @@ export default {
       immediate: true
     },
     active(newValue, oldValue) {
-      console.log("active变化了");
+      console.log("头部数据变化了");
       this.$nextTick(() => {
         this.$store.dispatch("w-admin/page/closeAll");
       });
@@ -292,7 +307,7 @@ export default {
     }
   },
   mounted() {
-    if (this.header.length > 1) {
+    if (this.roleHeader.length > 1) {
       // 初始化判断
       // 默认判断父元素和子元素的大小，以确定初始情况是否显示滚动
       this.checkScroll();
