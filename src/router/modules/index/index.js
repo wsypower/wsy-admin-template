@@ -1,48 +1,68 @@
-import { layoutContainer, fullContainer } from '@/layout/header-aside'
+import { layoutContainer } from "@/layout/header-aside";
 export default [
   // 首页
   {
-    path: 'index',
-    name: 'index',
+    path: "index",
+    name: "index",
     meta: {
       auth: true,
-      title: '首页'
+      title: "首页"
     },
-    redirect: { name: 'page1' },
+    redirect: { name: "page1" },
     component: layoutContainer,
     children: [
-      // 演示页面
+      // 演示路由页面
       {
-        path: 'page1',
-        name: 'page1',
+        path: "page1",
+        name: "page1",
         meta: {
-          title: '测试缓存页面',
+          title: "page1",
           auth: true,
           cache: true
         },
         component: () =>
-          import(/* webpackChunkName: "page1" */ '@/views/demo/page1')
+          import(/* webpackChunkName: "page1" */ "@/views/demo/page1")
       },
       {
-        path: 'page2',
-        name: 'page2',
+        path: "page2",
+        name: "page2",
         meta: {
-          title: '页面 2',
+          title: "page2",
           auth: true
         },
         component: () =>
-          import(/* webpackChunkName: "page2" */ '@/views/demo/page2')
+          import(/* webpackChunkName: "page2" */ "@/views/demo/page2")
       },
       {
-        path: 'page3',
-        name: 'page3',
+        path: "page3",
+        name: "page3",
         meta: {
-          title: '页面 3',
+          title: "page3",
           auth: true
         },
         component: () =>
-          import(/* webpackChunkName: "page3" */ '@/views/demo/page3')
+          import(/* webpackChunkName: "page3" */ "@/views/demo/page3")
+      },
+      {
+        path: "page4",
+        name: "page4",
+        meta: {
+          title: "page4",
+          auth: true
+        },
+        component: () =>
+          import(/* webpackChunkName: "page4" */ "@/views/demo/page4")
+      },
+      {
+        path: "page5",
+        name: "page5",
+        meta: {
+          title: "page5",
+          auth: true
+        },
+        component: () =>
+          import(/* webpackChunkName: "page5" */ "@/views/demo/page5")
       }
     ]
   }
-]
+];

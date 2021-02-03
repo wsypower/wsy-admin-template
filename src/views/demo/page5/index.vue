@@ -1,6 +1,6 @@
 <template>
   <div class="page5">
-    大页面跳转demo
+    page5
   </div>
 </template>
 

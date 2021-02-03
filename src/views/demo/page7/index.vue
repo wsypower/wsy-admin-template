@@ -1,6 +1,6 @@
 <template>
   <div class="page7">
-    相同容器带有menu跳转demo
+    page7
   </div>
 </template>
 
