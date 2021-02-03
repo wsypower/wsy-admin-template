@@ -62,6 +62,7 @@
             v-if="tool.search"
           />
           <w-header-fullscreen v-if="tool.fullScreen" />
+          <w-header-color-pattern />
           <w-header-user />
         </div>
       </div>
@@ -88,12 +89,9 @@ import wMenuSide from './components/menu-side'
 import wMenuHeader from './components/menu-header'
 import wTabs from './components/tabs'
 import wHeaderFullscreen from './components/header-fullscreen'
-import wHeaderLocales from './components/header-locales'
 import wHeaderSearch from './components/header-search'
-import wHeaderSize from './components/header-size'
-import wHeaderTheme from './components/header-theme'
 import wHeaderUser from './components/header-user'
-import wHeaderColor from './components/header-color'
+import wHeaderColorPattern from './components/header-color-pattern'
 import wContainer from './components/container/container.vue'
 import wLayoutContainer from './components/container/layout-container.vue'
 import wNotification from './components/w-notification/index.vue'
@@ -101,7 +99,6 @@ import mixinSearch from './mixins/search'
 import menuIcon from './components/menu-icon'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import 'vue-transition.css'
-import { valid } from '@vue/test-utils'
 import setting from '@/setting'
 
 export default {
@@ -112,12 +109,9 @@ export default {
     wMenuHeader,
     wTabs,
     wHeaderFullscreen,
-    wHeaderLocales,
     wHeaderSearch,
-    wHeaderSize,
-    wHeaderTheme,
     wHeaderUser,
-    wHeaderColor,
+    wHeaderColorPattern,
     wContainer,
     wLayoutContainer,
     wNotification,
