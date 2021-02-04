@@ -1,5 +1,6 @@
 export default {
-  title: "切换容器full",
+  index: 1,
+  title: "component",
   icon: "folder-o",
   path: "/component",
   children: [

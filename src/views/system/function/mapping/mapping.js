@@ -58,7 +58,6 @@ export default {
       );
       // 重定向从哪来
       const redirectedFrom = to.redirectedFrom;
-
       const currentPage = menu.filter(item => {
         return item.includes(redirectedFrom);
       });
