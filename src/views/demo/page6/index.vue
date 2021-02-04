@@ -13,7 +13,6 @@ export default {
 .page6 {
   width: 100%;
   height: 100%;
-  background-color: rgb(104, 99, 99);
-  color: #fff;
+  background-color: #fff;
 }
 </style>

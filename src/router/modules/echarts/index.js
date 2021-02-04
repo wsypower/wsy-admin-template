@@ -1,4 +1,4 @@
-import { layoutContainer } from "@/layout/header-aside";
+import { fullContainer } from "@/layout/header-aside";
 import mapping from "@/views/system/function/mapping/mapping.js";
 export default [
   // 首页
@@ -9,7 +9,7 @@ export default [
       auth: true,
       title: "echarts"
     },
-    component: layoutContainer,
+    component: fullContainer,
     redirect: { name: "not-found" },
     children: [
       {
@@ -24,7 +24,8 @@ export default [
       {
         name: "page3",
         path: "page3",
-        component: mapping,
+        component: () =>
+          import(/* webpackChunkName: "page1" */ "@/views/demo/page3"),
         hidden: true,
         meta: {
           title: "page3"

@@ -7,6 +7,11 @@ export default {
     { path: "/index/page1", title: "page1" },
     { path: "/index/page2", title: "page2" },
     {
+      title: "page4",
+      icon: "folder-o",
+      path: "/index/page4"
+    },
+    {
       title: "page",
       icon: "folder-o",
       children: [
@@ -27,11 +32,6 @@ export default {
           icon: "folder-o"
         }
       ]
-    },
-    {
-      title: "page4",
-      icon: "folder-o",
-      path: "/index/page4"
     }
   ]
 };
