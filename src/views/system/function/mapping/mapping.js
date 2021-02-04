@@ -64,18 +64,19 @@ export default {
       if (!currentPage) {
         return instance.$router.replace({ name: "login" });
       } else if (currentPage.length == 0) {
+        console.log("currentPage", currentPage);
         // 没有一级权限的时候条转入404
         // 在重定向页面下没有子路由的情况下跳转入404
         instance.$router.replace({ name: "404" });
         // 极端情况一点权限都没有,避免陷入404死循环
         // 删除cookie
-        util.cookies.remove("token");
-        util.cookies.remove("uuid");
-        util.cookies.remove("expires");
-        // 清空tags
-        store.dispatch("w-admin/page/closeAllPage", {}, { root: true });
-        // 清空 vuex 用户信息
-        store.dispatch("w-admin/user/set", {}, { root: true });
+        // util.cookies.remove("token");
+        // util.cookies.remove("uuid");
+        // util.cookies.remove("expires");
+        // // 清空tags
+        // store.dispatch("w-admin/page/closeAllPage", {}, { root: true });
+        // // 清空 vuex 用户信息
+        // store.dispatch("w-admin/user/set", {}, { root: true });
         return;
       }
       instance.$router.replace(currentPage[0]);
