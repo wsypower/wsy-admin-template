@@ -3,74 +3,31 @@
 
 import layout from "@/layout/header-aside";
 import modulesRouter from "../utils/utils";
-import mapping from "@/views/system/function/mapping/mapping.js";
-//
-// ────────────────────────────────────────────────────────── I ──────────
-//   :::::: UTIL_ROUTER : :  :   :    :     :        :          :
-// ────────────────────────────────────────────────────────────────────
-// [log,refresh,redirect]等系统页面内需要调用的页面集合
-//
-const UTIL_ROUTER = [
-  // 系统 前端日志
-  {
-    path: "log",
-    name: "log",
-    meta: {
-      title: "前端日志",
-      auth: true
-    },
-    component: () => import(/* webpackChunkName: "log" */ "@/views/system/log")
-  },
-  // 刷新页面 必须保留
-  {
-    path: "refresh",
-    name: "refresh",
-    hidden: true,
-    component: () =>
-      import(
-        /* webpackChunkName: "refresh" */ "@/views/system/function/refresh"
-      )
-  },
-  // 页面重定向 必须保留
-  {
-    path: "redirect/:route*",
-    name: "redirect",
-    hidden: true,
-    component: () =>
-      import(
-        /* webpackChunkName: "redirect" */ "@/views/system/function/redirect"
-      )
-  }
-];
-
+import { functionPage, features } from "./sys.router";
 //
 // ────────────────────────────────────────────────────────────── II ──────────
 //   :::::: ROUTER : :  :   :    :     :        :          :
 // ────────────────────────────────────────────────────────────────────────
 // 收集的模块路由
 //
-const MODULES_ROUTER = modulesRouter;
+const MODULES_ROUTER = modulesRouter.map(item => {
+  item.children = [
+    ...item.children,
+    ...functionPage(item.name),
+    ...features(item.name)
+  ];
+  return { ...item, redirect: { name: `${item.name}-not-found` } };
+});
+console.log(modulesRouter);
 
 export const frameIn = [
   // 首页主路由
   {
     path: "/",
     name: "root",
-    redirect: { name: "not-found" },
     component: layout,
+    redirect: { name: `root-not-found` },
     meta: {},
-    children: [
-      {
-        name: "not-found",
-        path: "not-found",
-        component: mapping,
-        hidden: true,
-        meta: {
-          title: "转发页面"
-        }
-      },
-      ...MODULES_ROUTER,
-      ...UTIL_ROUTER
-    ]
+    children: [...MODULES_ROUTER, ...functionPage("root")]
   }
 ];

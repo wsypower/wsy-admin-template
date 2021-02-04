@@ -1,5 +1,4 @@
 import { layoutContainer } from "@/layout/header-aside";
-import mapping from "@/views/system/function/mapping/mapping.js";
 export default [
   // 首页
   {
@@ -10,17 +9,7 @@ export default [
       title: "首页"
     },
     component: layoutContainer,
-    redirect: { name: "not-found" },
     children: [
-      {
-        name: "not-found",
-        path: "not-found",
-        component: mapping,
-        hidden: true,
-        meta: {
-          title: "转发页面"
-        }
-      },
       // 演示路由页面
       {
         path: "page1",
@@ -42,16 +31,6 @@ export default [
         },
         component: () =>
           import(/* webpackChunkName: "page2" */ "@/views/demo/page2")
-      },
-      {
-        path: "page3",
-        name: "page3",
-        meta: {
-          title: "page3",
-          auth: true
-        },
-        component: () =>
-          import(/* webpackChunkName: "page3" */ "@/views/demo/page3")
       },
       {
         path: "page4",

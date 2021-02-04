@@ -8,7 +8,6 @@ export default [
       auth: true,
       title: "组件"
     },
-    redirect: { name: "page6" },
     component: layoutContainer,
     children: [
       // 组件演示页面
