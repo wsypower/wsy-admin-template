@@ -19,6 +19,7 @@ new Vue({
   i18n,
   render: h => h(App),
   created() {
+    console.log("这是created");
     // 处理顶级菜单（清空操作）
     // this.$store.dispatch("w-admin/page/closeAll");
     // 处理路由 得到每一级的路由设置

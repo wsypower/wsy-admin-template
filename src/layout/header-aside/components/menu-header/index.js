@@ -129,7 +129,6 @@ export default {
       immediate: true
     },
     active(newValue, oldValue) {
-      console.log("头部数据变化了");
       this.$nextTick(() => {
         this.$store.dispatch("w-admin/page/closeAll");
       });

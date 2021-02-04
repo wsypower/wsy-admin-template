@@ -6,15 +6,16 @@ import setting from "@/setting.js";
 // 判定是否需要缓存
 const isKeepAlive = data => get(data, "meta.cache", false);
 const { indexPageFullPath } = setting;
+
+const currentHeaderMap = new Map();
 export default {
   namespaced: true,
   state: {
     // TODO
     poolPage: {
-      name: "index",
-      fullPath: "/index/video-list",
+      name: "root",
+      path: "/",
       meta: {
-        title: "我的视频",
         auth: false
       }
     },
@@ -386,7 +387,20 @@ export default {
   },
   mutations: {
     setPoolCurrentGroupPage(state, page) {
-      state.poolPage = page;
+      const getParentPath = path => {
+        if (!path) {
+          return false;
+        }
+        if (currentHeaderMap.has(path)) {
+          return currentHeaderMap.get(path);
+        }
+        const parentPath = path.match(/^\/([^\/])*/g)[0];
+        currentHeaderMap.set(path, parentPath);
+        return parentPath;
+      };
+      if (getParentPath(page.path) !== getParentPath(state.poolPage.path)) {
+        state.poolPage = page;
+      }
     },
     /**
      * @class keepAlive
