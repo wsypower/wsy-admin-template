@@ -404,22 +404,6 @@ export default {
   },
   mutations: {
     setPoolCurrentGroupPage(state, page) {
-      // const getParentPath = path => {
-      //   if (!path) {
-      //     return false;
-      //   }
-      //   if (currentHeaderMap.has(path)) {
-      //     return currentHeaderMap.get(path);
-      //   }
-      //   const parentPath = path.match(/^\/([^\/])*/g)[0];
-      //   currentHeaderMap.set(path, parentPath);
-      //   return parentPath;
-      // };
-      // if (getParentPath(page.path) !== getParentPath(state.poolPage.path)) {
-      //   // state.poolPage = page;
-      //   // 持久化
-      //   // await dispatch("opened2db");
-      // }
       state.poolPage = page;
     },
     /**

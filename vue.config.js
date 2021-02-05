@@ -1,7 +1,7 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const VueFilenameInjector = require('@d2-projects/vue-filename-injector')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
-const forElementUI = require('webpack-theme-color-replacer/forElementUI')
+const forElementUI = require('@/store/modules/w-admin/modules/webpack-theme-color-replacer/forElementUI')
 const cdnDependencies = require('./dependencies-cdn')
 const { chain, set, each } = require('lodash')
 
@@ -10,7 +10,7 @@ const resolve = dir => require('path').join(__dirname, dir)
 
 // 增加环境变量
 process.env.VUE_APP_VERSION = require('./package.json').version
-process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYY-M-D HH:mm:ss')
+process.env.VUE_APP_BUILD_TIME = require('@/store/modules/w-admin/modules/dayjs')().format('YYYY-M-D HH:mm:ss')
 
 // 基础路径 注意发布之前要先修改这里
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || ''
