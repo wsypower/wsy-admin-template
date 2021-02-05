@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import wadmin from './w-admin'
-import _ from 'lodash'
+import Vue from "vue";
+import Vuex from "vuex";
+import wadmin from "@/store/modules/w-admin/index.js";
+import _ from "lodash";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /**
  * @description 收集modules文件下的store模块
@@ -19,12 +19,12 @@ Vue.use(Vuex)
  * @date 2020-11-30  18:53:11
  */
 const loadModules = () => {
-  const files = require.context('./modules', true, /\.js$/)
-  const storeModules = {}
+  const files = require.context("./modules", true, /\.js$/);
+  const storeModules = {};
   files.keys().forEach(key => {
     const namespacedKey = key
-      .replace(/(\.\/|\.js)/g, '')
-      .replace(/\/index/g, '')
+      .replace(/(\.\/|\.js)/g, "")
+      .replace(/\/index/g, "");
     /**
      * 模块内部的 [action]、[mutation] 和 [getter] 默认情况下是带命名空间的模块
      * 这样具有更高的封装度和复用性
@@ -35,17 +35,17 @@ const loadModules = () => {
         namespaced: true
       },
       files(key).default
-    )
-  })
-  return storeModules
-}
-const storeModules = loadModules()
+    );
+  });
+  return storeModules;
+};
+const storeModules = loadModules();
 
 // TODO 此处模块导出有待思考
 // 导出store模块
 export default new Vuex.Store({
   modules: {
-    'w-admin': wadmin,
+    "w-admin": wadmin,
     ...storeModules
   }
-})
+});
