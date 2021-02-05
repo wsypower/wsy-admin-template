@@ -4,6 +4,7 @@
       <el-avatar
         size='small'
         icon="el-icon-user-solid"
+        :src='avatar'
       ></el-avatar>
     </div>
     <el-dropdown
@@ -28,7 +29,10 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapState('w-admin/user', ['info'])
+    ...mapState('w-admin/user', ['info']),
+    avatar() {
+      return require('@/assets/images/people.png')
+    }
   },
   methods: {
     ...mapActions('w-admin/account', ['logout']),
