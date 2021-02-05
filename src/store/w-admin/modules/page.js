@@ -130,6 +130,23 @@ export default {
       );
     },
     /**
+     * 将 opened 属性赋值并持久化 在这之前请先确保已经更新了 state.opened
+     * @param {Object} context
+     */
+    async poolPage2db({ state, dispatch }) {
+      // 设置数据
+      dispatch(
+        "w-admin/db/set",
+        {
+          dbName: "sys",
+          path: "page.poolPage",
+          value: state.poolPage,
+          user: true
+        },
+        { root: true }
+      );
+    },
+    /**
      * @class opened
      * @description 更新页面列表上的某一项
      * @param {Object} context
@@ -387,20 +404,23 @@ export default {
   },
   mutations: {
     setPoolCurrentGroupPage(state, page) {
-      const getParentPath = path => {
-        if (!path) {
-          return false;
-        }
-        if (currentHeaderMap.has(path)) {
-          return currentHeaderMap.get(path);
-        }
-        const parentPath = path.match(/^\/([^\/])*/g)[0];
-        currentHeaderMap.set(path, parentPath);
-        return parentPath;
-      };
-      if (getParentPath(page.path) !== getParentPath(state.poolPage.path)) {
-        state.poolPage = page;
-      }
+      // const getParentPath = path => {
+      //   if (!path) {
+      //     return false;
+      //   }
+      //   if (currentHeaderMap.has(path)) {
+      //     return currentHeaderMap.get(path);
+      //   }
+      //   const parentPath = path.match(/^\/([^\/])*/g)[0];
+      //   currentHeaderMap.set(path, parentPath);
+      //   return parentPath;
+      // };
+      // if (getParentPath(page.path) !== getParentPath(state.poolPage.path)) {
+      //   // state.poolPage = page;
+      //   // 持久化
+      //   // await dispatch("opened2db");
+      // }
+      state.poolPage = page;
     },
     /**
      * @class keepAlive

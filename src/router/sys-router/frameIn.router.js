@@ -18,7 +18,6 @@ const MODULES_ROUTER = modulesRouter.map(item => {
   ];
   return { ...item, redirect: { name: `${item.name}-not-found` } };
 });
-console.log(modulesRouter);
 
 export const frameIn = [
   // 首页主路由

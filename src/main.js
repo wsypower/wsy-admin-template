@@ -19,7 +19,6 @@ new Vue({
   i18n,
   render: h => h(App),
   created() {
-    console.log("这是created");
     // 处理顶级菜单（清空操作）
     // this.$store.dispatch("w-admin/page/closeAll");
     // 处理路由 得到每一级的路由设置
@@ -54,13 +53,14 @@ new Vue({
             menu => !!~menu.path.search(matched[1].path)
           );
           const poolCurrent = matched[matched.length - 1];
+
+          const setSlider =
+            _side.length > 0 ? flatten(_side.map(e => e.children || e)) : [];
+
+          this.$store.commit("w-admin/menu/asideSet", setSlider);
           this.$store.commit(
             "w-admin/page/setPoolCurrentGroupPage",
             poolCurrent
-          );
-          this.$store.commit(
-            "w-admin/menu/asideSet",
-            _side.length > 0 ? flatten(_side.map(e => e.children || e)) : []
           );
         }
       },

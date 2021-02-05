@@ -1,16 +1,16 @@
 <template>
-  <div class="page3">
-    page3
+  <div class="page4">
+    page4
   </div>
 </template>
 
 <script>
 export default {
-  name: 'page3'
+  name: 'page4'
 }
 </script>
 <style lang="scss" scoped>
-.page3 {
+.page4 {
   width: 100%;
   height: 100%;
   background-color: #fff;
