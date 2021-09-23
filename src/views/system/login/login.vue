@@ -2,10 +2,7 @@
   <div class="page-login">
     <div class="page-login--layer page-login--layer-area">
       <ul class="circles">
-        <li
-          v-for="n in 30"
-          :key="n"
-        ></li>
+        <li v-for="n in 30" :key="n"></li>
       </ul>
     </div>
 
@@ -15,9 +12,7 @@
         flex="dir:top main:justify cross:stretch box:justify"
       >
         <div class="page-login--content-header">
-          <p class="page-login--content-header-motto">
-
-          </p>
+          <p class="page-login--content-header-motto"></p>
         </div>
         <div
           class="page-login--content-main"
@@ -26,12 +21,8 @@
           <div class="login-bg"></div>
           <!-- logo -->
           <div class="page-login--logo">
-            <d2-icon-svg
-              class="logo"
-              name="logo"
-              flex-box="0"
-            />
-            <div>{{headerTitle}}</div>
+            <d2-icon-svg class="logo" name="logo" flex-box="0" />
+            <div>{{ headerTitle }}</div>
           </div>
 
           <!-- form -->
@@ -50,10 +41,7 @@
                     v-model="formLogin.username"
                     placeholder="用户名"
                   >
-                    <i
-                      slot="prepend"
-                      class="fa fa-user-circle-o"
-                    ></i>
+                    <i slot="prepend" class="fa fa-user-circle-o"></i>
                   </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
@@ -62,10 +50,7 @@
                     v-model="formLogin.password"
                     placeholder="密码"
                   >
-                    <i
-                      slot="prepend"
-                      class="fa fa-keyboard-o"
-                    ></i>
+                    <i slot="prepend" class="fa fa-keyboard-o"></i>
                   </el-input>
                 </el-form-item>
                 <el-form-item prop="code">
@@ -75,10 +60,7 @@
                     placeholder="验证码"
                   >
                     <template slot="append">
-                      <img
-                        class="login-code"
-                        src="./image/login-code.png"
-                      >
+                      <img class="login-code" src="./image/login-code.png" />
                     </template>
                   </el-input>
                 </el-form-item>
@@ -92,10 +74,7 @@
                 </el-button>
               </el-form>
             </el-card>
-            <p
-              class="page-login--options"
-              flex="main:justify cross:center"
-            >
+            <p class="page-login--options" flex="main:justify cross:center">
               <!-- <span>
                 <d2-icon name="question-circle" /> 忘记密码
               </span>
@@ -136,22 +115,11 @@
       :modal-append-to-body="false"
       width="400px"
     >
-
-      <el-row
-        :gutter="10"
-        style="margin: -20px 0px -10px 0px;"
-      >
-        <el-col
-          v-for="(user, index) in users"
-          :key="index"
-          :span="8"
-        >
-          <div
-            class="page-login--quick-user"
-            @click="handleUserBtnClick(user)"
-          >
+      <el-row :gutter="10" style="margin: -20px 0px -10px 0px;">
+        <el-col v-for="(user, index) in users" :key="index" :span="8">
+          <div class="page-login--quick-user" @click="handleUserBtnClick(user)">
             <d2-icon name="user-circle-o" />
-            <span>{{user.name}}</span>
+            <span>{{ user.name }}</span>
           </div>
         </el-col>
       </el-row>
@@ -162,9 +130,7 @@
 <script>
 import dayjs from 'dayjs'
 import { mapActions } from 'vuex'
-import localeMixin from '@/locales/mixin.js'
 export default {
-  mixins: [localeMixin],
   data() {
     return {
       headerTitle: process.env.VUE_APP_PROJECT_NAME,
@@ -305,7 +271,7 @@ export default {
     position: absolute;
     width: 1100px;
     height: 600px;
-    background: #fff url("./image//login_data.gif") no-repeat;
+    background: #fff url('./image//login_data.gif') no-repeat;
     background-size: contain;
     border-radius: 8px;
     overflow: hidden;
@@ -323,7 +289,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-size: 28px;
-    font-family: "header-title";
+    font-family: 'header-title';
     color: rgba(64, 158, 255, 1);
     // background-image: -webkit-linear-gradient(
     //   right,

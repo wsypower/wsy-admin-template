@@ -39,14 +39,13 @@
     "sortablejs": "^1.10.1",
     "ua-parser-js": "^0.7.20",
     "vue": "^2.6.11",
-    "vue-i18n": "^8.15.1",
     "vue-router": "^3.1.3",
     "vue-transition.css": "^1.0.2",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@d2-projects/vue-filename-injector": "^1.1.0",
-    "@kazupon/vue-i18n-loader": "^0.5.0",
+    "@types/webpackbar": "^4.0.2",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-router": "^4.1.0",
@@ -72,10 +71,12 @@
     "serve": "^11.3.2",
     "svg-sprite-loader": "^4.1.6",
     "text-loader": "^0.0.1",
-    "vue-cli-plugin-i18n": "^1.0.1",
     "vue-template-compiler": "^2.6.10",
     "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-theme-color-replacer": "^1.3.3"
+    "webpack-theme-color-replacer": "^1.3.3",
+    "webpack-zip-plugin": "^0.1.6",
+    "webpackbar": "^5.0.0-3",
+    "zip-webpack-plugin": "^4.0.1"
   },
   "config": {
     "commitizen": {

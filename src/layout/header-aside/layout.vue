@@ -7,10 +7,7 @@
     <!-- [半透明遮罩] -->
     <div class="w-layout-header-aside-mask"></div>
     <!-- [主体内容] -->
-    <div
-      class="w-layout-header-aside-content"
-      flex="dir:top"
-    >
+    <div class="w-layout-header-aside-content" flex="dir:top">
       <!-- [顶栏] -->
       <div
         class="w-theme-header"
@@ -25,59 +22,34 @@
           flex-box="0"
         >
           <div class="logo-group-logo">
-            <d2-icon-svg
-              class="logo"
-              name="logo"
-              flex-box="0"
-            />
+            <d2-icon-svg class="logo" name="logo" flex-box="0" />
           </div>
           <transition name="el-fade-in">
-            <span
-              class="logo-group-title"
-              v-if="!asideCollapse"
-            >{{
+            <span class="logo-group-title" v-if="!asideCollapse">{{
               headerTitle
             }}</span>
           </transition>
         </router-link>
-        <div
-          class="toggle-aside-btn"
-          @click="handleToggleAside"
-          flex-box="0"
-        >
+        <div class="toggle-aside-btn" @click="handleToggleAside" flex-box="0">
           <d2-icon name="bars" />
           <!-- <menu-icon :open='asideCollapse' /> -->
         </div>
         <w-menu-header flex-box="1" />
         <!-- 顶栏右侧 -->
-        <div
-          class="w-header-right"
-          flex-box="0"
-        >
-
+        <div class="w-header-right" flex-box="0">
           <w-notification v-if="tool.notification" />
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
-          <w-header-search
-            @click="handleSearchClick"
-            v-if="tool.search"
-          />
+          <w-header-search @click="handleSearchClick" v-if="tool.search" />
           <w-header-fullscreen v-if="tool.fullScreen" />
           <w-header-color-pattern />
           <w-header-user />
         </div>
       </div>
       <!-- 下面 主体 -->
-      <div
-        class="w-theme-container transition-persoective"
-        flex-box="1"
-        flex
-      >
+      <div class="w-theme-container transition-persoective" flex-box="1" flex>
         <transition :name="transition">
           <!-- 相同组件不刷新页面,绑定一个不重复的key   :key='routerViewKey'-->
-          <router-view
-            class="transition-container"
-            :key="routerPagesKey"
-          />
+          <router-view class="transition-container" :key="routerPagesKey" />
         </transition>
       </div>
     </div>
@@ -130,7 +102,6 @@ export default {
        * | fullScreen  全屏
        * | theme       主题
        * | size        设置大小
-       * | i18n        多国语言
        * | color       颜色设置
        * --------------------
        */
@@ -160,8 +131,8 @@ export default {
     styleLayoutMainGroup() {
       return this.themeActiveSetting.backgroundImage
         ? {
-            backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
-          }
+          backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
+        }
         : {}
     },
     routerPagesKey() {
@@ -184,5 +155,5 @@ export default {
 
 <style lang="scss">
 // 注册主题
-@import "~@/assets/style/theme/register.scss";
+@import '~@/assets/style/theme/register.scss';
 </style>
